@@ -1,0 +1,12 @@
+.content{
+    display: grid;
+    grid-area: header;
+    grid-template-areas: "logo logo logo logo login";
+}
+.logo{
+    grid-area: logo;
+    margin-left: 10px;
+}
+.signin{
+    grid-area: login;
+}
