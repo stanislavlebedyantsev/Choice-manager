@@ -1,12 +1,33 @@
 .content{
-    display: grid;
+    display: flex;
     grid-area: header;
-    grid-template-areas: "logo logo logo logo login";
+    font-size: 24px;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid black;
 }
 .logo{
-    grid-area: logo;
-    margin-left: 10px;
 }
-.signin{
-    grid-area: login;
+.signin a{
+   /* text-decoration: none;
+    color: black;
+    background: green;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 30px;*/
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    background: rgb(64,199,129);
+    box-shadow: 0 -3px rgb(53,167,110) inset;
+    transition: 0.2s;
+}
+.signin a:hover{
+    background: rgb(53, 167, 110);
+}
+.signin a:active{
+    background: rgb(33,147,90);
+    box-shadow: 0 3px rgb(33,147,90) inset
 }
