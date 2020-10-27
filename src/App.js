@@ -16,8 +16,9 @@ function App() {
         <div>
           <Route path={"/login"} component={LoginComponent}/>
           <Route path={"/registration"} component={Registration}/>
-          <Route path={"/"} component={Mainpage}/>
+          <Route path={"/mainpage"} component={Mainpage}/>
         </div>
+
       </div>
     </BrowserRouter>
   );
