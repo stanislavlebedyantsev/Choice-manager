@@ -1,0 +1,22 @@
+.content {
+    display: grid;
+    grid-area: description;
+    grid-template-areas: "developerImg developerDescription";
+    grid-template-columns: 2fr 10fr;
+}
+
+.developerImg {
+    grid-area: developerImg;
+}
+
+.developerImg img {
+    margin-left: 50px;
+}
+
+.developerDescription {
+    grid-area: developerDescription;
+}
+
+.developerDescription p {
+    margin: 0 20px;
+}
