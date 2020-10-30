@@ -1,0 +1,54 @@
+.startPage{
+    background-image: url("./src/bgImage.jpg");
+    background-repeat: no-repeat;
+    height: 945px;
+    background-size: 100% 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+.content {
+    display: grid;
+    padding: 0;
+    color: #ffffff;
+}
+.leftSide{
+    grid-column: 1;
+    grid-row: 1;
+    padding-left: 30%;
+}
+.rightSide{
+    grid-column: 2;
+    grid-row: 1;
+}
+.greeting {
+}
+.greeting h1{
+    margin: 0;
+    padding-top: 25%;
+    font-weight: 100;
+}
+.greeting h2{
+    font-weight: 400;
+}
+
+.projectVision {
+    font-weight: 100;
+}
+.aboutUs{
+
+    margin-top: 20px;
+}
+.aboutUsLink {
+    text-decoration: none;
+    color: #ffffff;
+    background: #1fafed;
+    padding: 15px 30px;
+    border-radius: 30px;
+}
+.aboutUsLink:hover{
+    color: #ffffff;
+    background: #32b5ed;
+    box-shadow: 0 0 10px #1fafed;
+}
+.aboutUsLink:active{
+    color: #ffffff;
+}

@@ -1,0 +1,167 @@
+.background{
+    background-image: url("./src/bgImage.jpg");
+    height: 945px;
+    background-size:100% 100%;
+}
+.container {
+    height: 800px;
+    padding-left: 500px;
+    width: 30%; /*1530px*/
+    /*display: grid;*/
+    margin-left: 10%;
+    /*margin-top: 5%;
+    /*border: 1px solid;*/
+    grid-template-columns: 950px 580px;
+    grid-template-rows: 800px;
+   /* box-shadow: 0 0 5px 0px;*/
+}
+
+.leftSide{
+    grid-column: 1;
+    grid-row:1;
+    display: grid;
+    grid-template-columns: 950px;
+    grid-template-rows: 130px 670px;
+    /*background: linear-gradient(45deg, deepskyblue, DodgerBlue);*/
+}
+
+.leftHeader{
+    grid-column: 1;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: 800px 150px;
+    grid-template-rows: 800px;
+}
+
+.leftHeaderButtons{
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.leftText{
+    grid-column: 1;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: 950px;
+    grid-template-rows: 100px 300px 400px;
+}
+
+.leftTextHeader{
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.leftTextInfo{
+    grid-column: 1;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: 750px 250px;
+    grid-template-rows: 300px;
+}
+
+.textInfo{
+    grid-column: 1;
+    grid-row:1;
+}
+
+/*h1{
+    text-align: center;
+
+}*/
+
+.rightSide{
+    grid-column: 2;
+    grid-row:1;
+    display:grid;
+    grid-template-columns: 580px;
+    grid-template-rows: 275px 350px 175px;
+    background: #ffffff;
+}
+
+.rightHeader{
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.rightLogin{
+    grid-column: 1;
+    grid-row: 2;
+    display:grid;
+    grid-template-columns: 580px;
+    grid-template-rows: 40px 310px;
+}
+
+.rightFooter{
+    grid-column: 1;
+    grid-row: 3;
+    padding-left: 80px;
+}
+
+.rightH1{
+    text-align: center;
+}
+
+.rightLoginh2{
+    grid-column: 1;
+    grid-row: 1;
+    margin-top: 0px;
+    height: 81px;
+ }
+
+h3{
+    margin-left: 75px;
+    font-family: Kurale, sans-serif;
+    font-size: x-large;
+    color: deepskyblue;
+}
+
+
+/* Username */
+.rightLoginUser{
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 0px;
+}
+
+.login{
+    height: 30px;
+    width: 450px;
+    margin: 10px 76px 0;
+    border: none;
+    border-bottom: 3px solid ;
+    border-color: silver;
+    outline: none;
+}
+
+.password{
+    height: 30px;
+    width: 450px;
+    margin: 20px 76px 0;
+    border: none;
+    border-bottom: 3px solid ;
+    border-color: silver;
+    outline: none;
+}
+
+.button button{
+    text-align: center;
+    margin: 20px 76px;
+    width: 455px;
+    height: 38px;
+    border-radius: 30px;
+    background: deepskyblue;
+    text-decoration: none;
+    font-family: Kurale, sans-serif;
+    font-size: x-large;
+    color: #ffffff;
+}
+
+.leftButtons{
+    text-align: center;
+    font-size: x-large;
+    text-decoration: none;
+    outline: none;
+    font-family: Kurale, sans-serif;
+    color: ghostwhite;
+}
+
