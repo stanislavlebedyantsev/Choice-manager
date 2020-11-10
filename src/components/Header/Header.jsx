@@ -3,13 +3,13 @@ import {NavLink} from "react-router-dom";
 
 
 
-function Header(props) {
+const Header = (props) => {
   return (
     <nav className={s.content}>
       <div className={s.logo}>
         Choice manager
       </div>
-      <div className={s.signin}>
+      <div className={s.signIn}>
         <NavLink to="/login">SignIn</NavLink>
       </div>
     </nav>
