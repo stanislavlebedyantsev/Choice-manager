@@ -1,0 +1,134 @@
+.container{
+    width: 1450px;
+    height: 810px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    display:grid;
+    grid-template-columns: 1450px;
+    grid-template-rows: 300px 520px;
+    box-shadow: 0 0 5px;
+}
+
+.topSide{
+    grid-column: 1;
+    grid-row: 1;
+    display:grid;
+    grid-template-columns: 550px 900px;
+    grid-template-rows: 820px;
+}
+
+.topLeftSide{
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.profileImg{
+    width: 250px;
+    height: 250px;
+    border-radius: 150px;
+    margin-left: 60px;
+    margin-top: 5px;
+    border: 2px solid #23bbf7;
+}
+
+.accountH2{
+    margin-top: 15px;
+    margin-left: 50px;
+    font-family: Kholodos,sans-serif;
+}
+
+.topRightSide{
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.saveChange{
+    margin-left: 750px;
+    width: 100px;
+    height: 40px;
+    margin-top: 20px;
+    background: #23bbf7;
+    outline: none;
+    text-decoration: none;
+    border-radius: 5px;
+    border-color: #23bbf7;
+    font-size: larger;
+    color: honeydew;
+}
+
+.saveChange:after{
+
+}
+
+.usernameH1{
+    font-family: Kholodos,sans-serif;
+    font-size: xx-large;
+    font-weight: bold;
+    margin-top: -20px;
+    margin-left: 4px;
+}
+
+.emailH2{
+    font-family: Kholodos,sans-serif;
+    font-size: x-large;
+    font-weight: normal;
+    margin-top: -12px;
+    margin-left: 5px;
+}
+
+.downloadP{
+    margin-top: -10px;
+    margin-left: 5px;
+}
+
+.downloadButton{
+    width: 600px;
+    height: 60px;
+    margin-top: 10px;
+    margin-left: 5px;
+    outline: none;
+    border: 0.2em dashed black;
+    background: snow;
+}
+
+.buttonDownloadText{
+    font-family: Kholodos,sans-serif;
+    font-size: 20px;
+}
+
+.bottomSide{
+    grid-column: 1;
+    grid-row: 2;
+    border-top: 2px solid silver;
+    display: grid;
+    grid-template-columns: 550px 900px;
+    grid-template-rows: 520px;
+}
+
+.bottomLeftSide{
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.bottomLeftText{
+    font-family: Kholodos,sans-serif;
+    font-size: 20px;
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+.bottomRightSide{
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.bottomRightInput{
+    width: 600px;
+    height: 25px;
+    margin-top: 23px;
+    background: snow;
+    border-color: #23bbf7;
+    outline: none;
+}
