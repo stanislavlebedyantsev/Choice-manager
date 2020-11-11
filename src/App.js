@@ -8,7 +8,7 @@ import checkEmail from "./components/Registration/CheckEmail";
 import StartPage from "./components/StartPage/StartPage";
 import Profile from "./components/ProfilePage/Profile";
 import TestingContainer from "./components/TestingPage/TestingContainer";
-
+import Goals from "./components/GoalPage/Goals";
 
 function App(props) {
   return (
@@ -21,6 +21,7 @@ function App(props) {
           <Route path={"/checkEmail"} render={() => <checkEmail/>}/>
           <Route path={"/profile"} render={() => <Profile/>}/>
           <Route path={"/testing"} render={() => <TestingContainer/>}/>
+          <Route path={"/goals"} render={() => <Goals/>}/>
           <Route exact path={"/"} render={() => <StartPage/>}/>
         </div>
       </div>
