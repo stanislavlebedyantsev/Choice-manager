@@ -1,33 +1,228 @@
-.container{
-    max-width: 1330px;
+.container {
+    max-width: 1200px;
     margin: auto;
+    font-family: 'Montserrat', sans-serif;
 }
-.answerBlock{
+.background{
+    background-image: url("../../images/testingDiscription.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+}
+.answerBlock {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
 }
 
-.answerBlock textarea{
+.answerBlock textarea {
+    margin-bottom: 40px;
+    width: 50%;
+    line-height: 1.5;
+    padding: 15px 15px 30px;
+    border-radius: 3px;
+    border: 1px solid #b3b3b3;
+    border-bottom: black 1px solid;
+    font: 13px Tahoma, cursive;
+    transition: box-shadow 0.5s ease;
+    font-smoothing: subpixel-antialiased;
     resize: none;
-    height: 100px;
-    width: 300px;
     outline: none;
-    overflow: auto;
+    overflow: hidden;
 }
 
-.button {
-    text-decoration: none;
-    color: #ffffff;
-    background: #1fafed;
-    padding: 15px 30px;
+/*.pageDescription {
+    background-image: url("../../images/testingDiscription.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}*/
+
+.pageDescription h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 25px;
+}
+
+.marker {
+    width: 50px;
+    margin-left: 40px;
+}
+
+.descrMarker {
+    width: 30px;
+}
+
+.descriptionContainer {
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tip {
+    max-width: 350px;
+    height: 300px;
+    margin: 10px 10px 30px;
+    font-size: 24px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 30px;
+}
+
+.descriptionTime p {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.descriptionTime img {
+    width: 90px;
+    height: 90px;
+}
+
+.descriptionMarks p {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.checkMarkBlack {
+    width: 90px;
+    height: 90px;
+}
+
+.descriptionRadar p {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.descriptionRadar img {
+    width: 90px;
+    height: 90px;
+}
+
+.btn {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    color: #23bbf7;
+    font-size: 20px;
+    background: transparent;
+    cursor: pointer;
+    border: 1px solid #23bbf7;
     border-radius: 30px;
-    border-color: black;
+    width: 240px;
+    height: 70px;
+    margin-left: auto;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    overflow: hidden;
+    text-decoration: none;
     outline: none;
 }
-.button:hover{
-    color: #ffffff;
-    background: #32b5ed;
-    box-shadow: 0 0 10px #1fafed;
+
+.btn:before {
+    content: '';
+    position: absolute;
+    top: -130px;
+    margin: auto;
+    display: block;
+    border-radius: 50%;
+    width: 310px;
+    height: 300px;
+    left: -1px;
+    -webkit-transition: box-shadow .3s ease-in-out;
+    transition: box-shadow .3s ease-in-out;
+    z-index: -1;
+
 }
-.button:active{
-    color: #ffffff;
+
+.btn:hover {
+    color: #fff;
+}
+
+.btn:hover::before {
+    box-shadow: inset 0 0 0 160px #23bbf7;
+}
+.questDiscr p {
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.5em;
+    color: #2d6786;
+    width: 60%;
+}
+
+.questDiscr {
+    display: flex;
+    justify-content: center;
+}
+
+.option {
+    border-radius: 50%;
+    margin-left: 40px;
+}
+
+.disagree {
+    border: red 2px solid;
+}
+
+.disagree.min {
+    padding: 40px;
+}
+
+.disagree.med {
+    padding: 30px;
+}
+
+.neutral {
+    border: grey 2px solid;
+    padding: 20px;
+}
+
+.agree.med {
+    padding: 30px;
+}
+
+.agree.max {
+    padding: 40px;
+}
+
+.agree {
+    border: green 2px solid;
+}
+
+.agree.active {
+    background: #56ac8a url("../../images/checkMark.svg") no-repeat center;
+    background-size: 75%;
+}
+
+.disagree.active {
+    background: #5f394d url("../../images/checkMark.svg") no-repeat center;
+    background-size: 75%;
+}
+
+.neutral.active {
+    background: #aab5af url("../../images/checkMark.svg") no-repeat center;
+    background-size: 75%;
+}
+
+.options {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.questContainer {
+    border-bottom: 1px solid #dcdcdc;
+}
+.pageNavigation .btn{
+    left: 0;
+}
+.pageNavigation{
+    display: flex;
+    justify-content: space-between;
 }

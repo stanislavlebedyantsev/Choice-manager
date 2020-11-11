@@ -2,19 +2,17 @@ import s from "./Registration.module.css";
 import React from 'react';
 import {RegistrationHeader} from "./RegistrationFormComponents/RegistrationHeader";
 import {RegistrationFooter} from "./RegistrationFormComponents/RegistrationFooter";
+import {Redirect} from "react-router-dom";
+import btn from '../common/buttonsStyle/buttonsStyle.module.css'
+import ErrorComponent from "../common/errorAlert/errorComponent";
 
 const RegForm = (props) => {
   const onRegistration = () => {
-    props.registrationRequest();
+    props.registrationRequestThunkCreator(props.registrationState);
   };
-  const registrationUpdateText = (event) => {
+  const handleChange = (event) => {
     let obj = {
-      login: props.registrationStateText.login,
-      email: props.registrationStateText.email,
-      password: props.registrationStateText.password,
-      passwordConfirmation: props.registrationStateText.passwordConfirmation,
-      name: props.registrationStateText.name,
-      surname: props.registrationStateText.surname
+      ...props.registrationState
     };
     obj = {
       ...obj,
@@ -22,8 +20,13 @@ const RegForm = (props) => {
     };
     props.registrationUpdateText(obj);
   };
+  if(props.registrationState.isRegistrationSuccess) return  <Redirect to={'/login'}/>
   return (
     <div className={s.background}>
+      <ErrorComponent
+        isError={props.isError}
+        errorText={props.errorText}
+      />
       <div className={s.container}>
         <div className={s.rightSide}>
           <RegistrationHeader/>
@@ -32,34 +35,34 @@ const RegForm = (props) => {
             <div className={s.rightLoginUser}>
               <input name="name" placeholder="First name"
                      className={s.firstName}
-                     value={props.registrationStateText.name}
-                     onChange={registrationUpdateText}/>
+                     value={props.registrationState.name}
+                     onChange={handleChange} required/>
               <input name="surname" placeholder="Second name"
                      className={s.secondName}
-                     value={props.registrationStateText.surname}
-                     onChange={registrationUpdateText}/>
-              <input name="email" placeholder="Email"
+                     value={props.registrationState.surname}
+                     onChange={handleChange} required/>
+              <input type='email' name="email" placeholder="Email"
                      className={s.email}
-                     value={props.registrationStateText.email}
-                     onChange={registrationUpdateText}/>
-              <input name="login" placeholder="Username"
+                     value={props.registrationState.email}
+                     onChange={handleChange} required/>
+              <input name="username" placeholder="Username"
                      className={s.username}
-                     value={props.registrationStateText.login}
-                     onChange={registrationUpdateText}/>
+                     value={props.registrationState.login}
+                     onChange={handleChange} required/>
               <input type="password" name={"password"} placeholder="Password"
                      className={s.password}
-                     value={props.registrationStateText.password}
-                     onChange={registrationUpdateText}/>
+                     value={props.registrationState.password}
+                     onChange={handleChange} required/>
               <input type="password" name={"passwordConfirmation"} placeholder="Confirm password"
                      className={s.confPassword}
-                     value={props.registrationStateText.passwordConfirmation}
-                     onChange={registrationUpdateText}/>
+                     value={props.registrationState.passwordConfirmation}
+                     onChange={handleChange} required/>
               <div className={s.button}>
-                <button onClick={onRegistration}>Register</button>
+                <button className={btn.btn} type={"submit"} onClick={onRegistration}>Register</button>
               </div>
             </div>
           </div>
-          <RegistrationFooter/>
+          <RegistrationFooter hideError={props.hideError}/>
         </div>
       </div>
     </div>
