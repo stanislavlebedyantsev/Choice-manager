@@ -1,31 +1,30 @@
-.background{
-    background-image: url("./src/bgImage.jpg");
+.background {
+    background-image: url("../../images/goals.jpg");
     height: 945px;
-    background-size:100% 100%;
-}
-.container {
-    height: 800px;
-    padding-left: 500px;
-    width: 30%; /*1530px*/
-    /*display: grid;*/
-    margin-left: 10%;
-    /*margin-top: 5%;
-    /*border: 1px solid;*/
-    grid-template-columns: 950px 580px;
-    grid-template-rows: 800px;
-   /* box-shadow: 0 0 5px 0px;*/
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.leftSide{
+.container {
+    width: 30%;
+    grid-template-columns: 950px 580px;
+    grid-template-rows: 800px;
+}
+
+.leftSide {
+    margin-top: 30px;
     grid-column: 1;
-    grid-row:1;
+    grid-row: 1;
     display: grid;
     grid-template-columns: 950px;
     grid-template-rows: 130px 670px;
-    /*background: linear-gradient(45deg, deepskyblue, DodgerBlue);*/
 }
-
-.leftHeader{
+.socials{
+    padding: 10px 0;
+}
+.leftHeader {
     grid-column: 1;
     grid-row: 1;
     display: grid;
@@ -33,12 +32,12 @@
     grid-template-rows: 800px;
 }
 
-.leftHeaderButtons{
+.leftHeaderButtons {
     grid-column: 2;
     grid-row: 1;
 }
 
-.leftText{
+.leftText {
     grid-column: 1;
     grid-row: 2;
     display: grid;
@@ -46,12 +45,12 @@
     grid-template-rows: 100px 300px 400px;
 }
 
-.leftTextHeader{
+.leftTextHeader {
     grid-column: 1;
     grid-row: 1;
 }
 
-.leftTextInfo{
+.leftTextInfo {
     grid-column: 1;
     grid-row: 2;
     display: grid;
@@ -59,56 +58,93 @@
     grid-template-rows: 300px;
 }
 
-.textInfo{
-    grid-column: 1;
-    grid-row:1;
-}
-
-/*h1{
-    text-align: center;
-
-}*/
-
-.rightSide{
-    grid-column: 2;
-    grid-row:1;
-    display:grid;
-    grid-template-columns: 580px;
-    grid-template-rows: 275px 350px 175px;
-    background: #ffffff;
-}
-
-.rightHeader{
+.textInfo {
     grid-column: 1;
     grid-row: 1;
 }
 
-.rightLogin{
+
+.rightSide {
     grid-column: 1;
-    grid-row: 2;
-    display:grid;
+    grid-row: 1;
+    display: grid;
     grid-template-columns: 580px;
-    grid-template-rows: 40px 310px;
+    grid-template-rows: 170px 150px 50px 200px;
+    background: #ffffff;
+    border-radius: 20px;
 }
 
-.rightFooter{
+.rightHeader {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 1;
+}
+
+.rightLogin {
+    grid-column: 1;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: 580px;
+    grid-template-rows: 50px 500px;
+}
+
+.rightFooter {
+    grid-column: 1;
+    grid-row: 4;
+    padding-left: 80px;
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+
+/* google and facebook wrapper */
+
+.signFrom{
+    grid-column: 1;
+    grid-row: 4;
+    margin-top: 60px;
     padding-left: 80px;
 }
 
-.rightH1{
-    text-align: center;
+.signGoogle{
+    padding: 10px;
+    border: 2px solid;
+    text-decoration: none;
+    outline: none;
+    margin-left: 2em;
+    background-color: #2d6786;
+    display: inline-block;
 }
 
-.rightLoginh2{
+.googleIcon{
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+}
+
+.googleText{
+    margin-top: 0;
+}
+
+.signFacebook{
+    padding: 10px;
+    border: 2px solid;
+    margin-left: 3em;
+    background-color: #f2ebff;
+    display: inline-block;
+}
+
+.rightH1 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.rightLoginh2 {
     grid-column: 1;
     grid-row: 1;
     margin-top: 0px;
     height: 81px;
- }
+}
 
-h3{
+h3 {
     margin-left: 75px;
     font-family: Kurale, sans-serif;
     font-size: x-large;
@@ -117,46 +153,38 @@ h3{
 
 
 /* Username */
-.rightLoginUser{
+.rightLoginUser {
     grid-column: 1;
     grid-row: 2;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
-.login{
+.login {
     height: 30px;
     width: 450px;
     margin: 10px 76px 0;
     border: none;
-    border-bottom: 3px solid ;
-    border-color: silver;
+    border-bottom: 3px silver solid;
     outline: none;
+    font-size: 18px;
 }
 
-.password{
+.password {
     height: 30px;
     width: 450px;
     margin: 20px 76px 0;
     border: none;
-    border-bottom: 3px solid ;
-    border-color: silver;
+    border-bottom: 3px silver solid;
     outline: none;
+    font-size: 18px;
 }
 
-.button button{
-    text-align: center;
-    margin: 20px 76px;
-    width: 455px;
-    height: 38px;
-    border-radius: 30px;
-    background: deepskyblue;
-    text-decoration: none;
-    font-family: Kurale, sans-serif;
-    font-size: x-large;
-    color: #ffffff;
+.button {
+    display: flex;
+    justify-content: center;
 }
 
-.leftButtons{
+.leftButtons {
     text-align: center;
     font-size: x-large;
     text-decoration: none;
@@ -164,4 +192,6 @@ h3{
     font-family: Kurale, sans-serif;
     color: ghostwhite;
 }
+
+
 

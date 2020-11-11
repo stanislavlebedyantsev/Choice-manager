@@ -1,22 +1,16 @@
 .background{
-    background-image: url("./src/bgImage.jpg");
+    background-image: url("../../images/goals.jpg");
     height: 945px;
     background-size:100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /*test page because render trouble*/
 .container {
     display: flex;
     justify-content: center;
-    padding-left: 500px;
-    height: 800px;
-    width: 30%; /*1530px*/
-    /*display: grid;*/
-    margin-left: 10%;
-    /*margin-top: 5%;*/
-    /*border: 1px solid;*/
-    grid-template-columns: 950px 580px;
-    grid-template-rows: 800px;
-    /*box-shadow: 0 0 5px 0px;*/
+    align-items: center;
 }
 
 .leftSide{
@@ -67,17 +61,14 @@
     grid-row:1;
 }
 
-/*h1{
-    text-align: center;
-
-}*/
-
 .rightSide{
+    border-radius: 20px;
+    margin-top: 50px;
     grid-column: 2;
     grid-row:1;
     display:grid;
     grid-template-columns: 580px;
-    grid-template-rows: 225px 400px 175px;
+    grid-template-rows: 150px 380px 60px;
     background: white;
 }
 
@@ -102,6 +93,7 @@
 
 .rightH1{
     text-align: center;
+    margin-top: 50px;
 }
 
 .rightLoginh2{
@@ -134,16 +126,18 @@ h3{
     border-bottom: 3px solid ;
     border-color: silver;
     outline: none;
+    font-size: 18px;
 }
 
 .secondName{
     height: 30px;
-    width: 211px;
+    width: 215px;
     margin: 10px -50px 0px;
     border: none;
     border-bottom: 3px solid ;
     border-color: silver;
     outline: none;
+    font-size: 18px;
 }
 
 .email{
@@ -154,6 +148,7 @@ h3{
     border-bottom: 3px solid ;
     border-color: silver;
     outline: none;
+    font-size: 18px;
 }
 
 .username{
@@ -164,6 +159,7 @@ h3{
     border-bottom: 3px solid ;
     border-color: silver;
     outline: none;
+    font-size: 18px;
 }
 
 .phoneNumber{
@@ -174,6 +170,7 @@ h3{
     border-bottom: 3px solid ;
     border-color: silver;
     outline: none;
+    font-size: 18px;
 }
 
 .password{
@@ -184,6 +181,7 @@ h3{
     border-bottom: 3px solid ;
     border-color: silver;
     outline: none;
+    font-size: 18px;
 }
 
 .confPassword{
@@ -194,19 +192,12 @@ h3{
     border-bottom: 3px solid ;
     border-color: silver;
     outline: none;
+    font-size: 18px;
 }
 
-.button button {
-    text-align: center;
-    margin: 20px 76px;
-    width: 455px;
-    height: 38px;
-    border-radius: 30px;
-    background: deepskyblue;
-    text-decoration: none;
-    font-family: Kurale, sans-serif;
-    font-size: x-large;
-    color: #ffffff;
+.button {
+    display: flex;
+    justify-content: center;
 }
 
 

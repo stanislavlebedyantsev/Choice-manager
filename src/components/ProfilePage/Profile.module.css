@@ -1,134 +1,241 @@
-.container{
-    width: 1450px;
-    height: 810px;
-    margin-top: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 15px;
-    display:grid;
-    grid-template-columns: 1450px;
-    grid-template-rows: 300px 520px;
-    box-shadow: 0 0 5px;
+.background {
+    background-image: url("../../images/goals.jpg");
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    padding-bottom: 20px;
 }
 
-.topSide{
+.container {
+    width: 1480px;
+    margin: 20px auto;
+    background: white;
+    display: grid;
+    grid-template-columns: 550px 500px 430px;
+    grid-template-rows: 550px;
+    box-shadow: 0 0 5px;
+    opacity: 85%;
+    border-radius: 30px;
+}
+
+/* left photo and buttons topSide.jsx */
+
+.leftSide {
     grid-column: 1;
     grid-row: 1;
-    display:grid;
-    grid-template-columns: 550px 900px;
+    display: grid;
+    grid-template-columns: 650px;
     grid-template-rows: 820px;
 }
 
-.topLeftSide{
+.userAvatar {
     grid-column: 1;
     grid-row: 1;
 }
 
-.profileImg{
-    width: 250px;
-    height: 250px;
-    border-radius: 150px;
-    margin-left: 60px;
-    margin-top: 5px;
+/* circle div photo */
+
+.userPhoto {
+    width: 300px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+}
+
+.userPhoto img {
+    width: 300px;
+    height: 300px;
+    border-radius: 250px;
     border: 2px solid #23bbf7;
 }
 
-.accountH2{
-    margin-top: 15px;
-    margin-left: 50px;
-    font-family: Kholodos,sans-serif;
-}
-
-.topRightSide{
-    grid-column: 2;
-    grid-row: 1;
-}
-
-.saveChange{
-    margin-left: 750px;
-    width: 100px;
-    height: 40px;
-    margin-top: 20px;
-    background: #23bbf7;
-    outline: none;
-    text-decoration: none;
-    border-radius: 5px;
-    border-color: #23bbf7;
-    font-size: larger;
-    color: honeydew;
-}
-
-.saveChange:after{
-
-}
-
-.usernameH1{
-    font-family: Kholodos,sans-serif;
-    font-size: xx-large;
-    font-weight: bold;
-    margin-top: -20px;
-    margin-left: 4px;
-}
-
-.emailH2{
-    font-family: Kholodos,sans-serif;
-    font-size: x-large;
-    font-weight: normal;
-    margin-top: -12px;
-    margin-left: 5px;
-}
-
-.downloadP{
-    margin-top: -10px;
-    margin-left: 5px;
-}
-
-.downloadButton{
-    width: 600px;
-    height: 60px;
-    margin-top: 10px;
-    margin-left: 5px;
-    outline: none;
-    border: 0.2em dashed black;
-    background: snow;
-}
-
-.buttonDownloadText{
-    font-family: Kholodos,sans-serif;
-    font-size: 20px;
-}
-
-.bottomSide{
+.uploadImg {
     grid-column: 1;
     grid-row: 2;
-    border-top: 2px solid silver;
-    display: grid;
-    grid-template-columns: 550px 900px;
-    grid-template-rows: 520px;
 }
 
-.bottomLeftSide{
-    grid-column: 1;
-    grid-row: 1;
-}
 
-.bottomLeftText{
-    font-family: Kholodos,sans-serif;
-    font-size: 20px;
-    margin-left: 50px;
+/*upload photo button*/
+
+.btn {
     margin-top: 30px;
+    color: #23bbf7;
+    font-size: 20px;
+    background: transparent;
+    cursor: pointer;
+    border: 1px solid #23bbf7;
+    border-radius: 30px;
+    width: 240px;
+    height: 70px;
+    margin-left: auto;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    overflow: hidden;
+    text-decoration: none;
+    outline: none;
 }
 
-.bottomRightSide{
+.btn::before {
+    content: '';
+    position: absolute;
+    top: -130px;
+    margin: auto;
+    display: block;
+    border-radius: 50%;
+    width: 310px;
+    height: 300px;
+    left: -1px;
+    -webkit-transition: box-shadow .3s ease-in-out;
+    transition: box-shadow .3s ease-in-out;
+    z-index: -1;
+
+}
+
+.btn:hover {
+    color: #fff;
+}
+
+.btn:hover::before {
+    box-shadow: inset 0 0 0 160px #23bbf7;
+}
+
+/* input fields */
+
+.rightSide {
+    margin-top: 130px;
+    margin-left: 40px;
     grid-column: 2;
     grid-row: 1;
 }
 
-.bottomRightInput{
-    width: 600px;
-    height: 25px;
-    margin-top: 23px;
-    background: snow;
-    border-color: #23bbf7;
+/* Left input column(L), right input column(R) */
+
+.bottomRightInputL {
+    display: inline-block;
+    width: 65%;
+    height: 30px;
+    margin-top: 0;
+    margin-left: 20px;
+    border: none;
+    border-bottom: 3px solid darkgrey;
+    text-decoration: none;
     outline: none;
+    font-size: 23px;
+}
+
+.bottomRightInputR {
+    display: inline-block;
+    width: 40%;
+    height: 30px;
+    margin-top: 0;
+    margin-left: 20px;
+    border: none;
+    border-bottom: 3px solid darkgrey;
+    text-decoration: none;
+    outline: none;
+    font-size: 23px;
+}
+
+.textOverInput {
+    display: inline-block;
+    margin-left: 20px;
+    margin-bottom: 3px;
+    font-family: Kurale, sans-serif;
+    color: grey;
+    width: 70%;
+}
+
+/* Third column(logo) */
+
+.bottomLogoSide {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+
+.logo {
+    width: 330px;
+    height: 330px;
+    background-image: url("../../images/logoProfile.png");
+    margin-left: 10%;
+    margin-top: 0px;
+}
+
+.radarChartDescription {
+    font-size: 18px;
+    width: 50%;
+}
+
+.inputFile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.uploadBtn {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #23bbf7;
+    font-size: 20px;
+    background: transparent;
+    cursor: pointer;
+    border: 1px solid #23bbf7;
+    border-radius: 30px;
+    width: 240px;
+    height: 70px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    overflow: hidden;
+    text-decoration: none;
+    outline: none;
+}
+
+.uploadBtn:before {
+    content: '';
+    position: absolute;
+    top: -130px;
+    margin: auto;
+    display: block;
+    border-radius: 50%;
+    width: 310px;
+    height: 300px;
+    left: -1px;
+    -webkit-transition: box-shadow .3s ease-in-out;
+    transition: box-shadow .3s ease-in-out;
+    z-index: -1;
+
+}
+
+.uploadBtn:hover {
+    color: #fff;
+}
+
+.uploadBtn:hover::before {
+    box-shadow: inset 0 0 0 160px #23bbf7;
+}
+
+.retestBtn {
+    margin-left: 120px;
+    left: 0;
+}
+
+.radarChart {
+    width: 1480px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 50px;
 }

@@ -17,6 +17,7 @@
     grid-column: 1;
     grid-row: 3;
 }
+
 .links {
     margin-top: 10px;
     width: 100px;
@@ -26,11 +27,13 @@
     padding: 15px 30px;
     border-radius: 30px 0 0 30px;
 }
-.links:hover{
+
+.links:hover {
     color: #ffffff;
     background: #32b5ed;
     box-shadow: 0 0 10px #1fafed;
 }
-.links:active{
+
+.links:active {
     color: #ffffff;
 }

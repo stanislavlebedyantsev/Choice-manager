@@ -1,25 +1,93 @@
 import s from "./Profile.module.css";
-import Header from "../Header/Header";
+import Header from "../common/Header/Header";
 import TopSide from "./topSide/topSide";
 import BottomLeftText from "./bottomLeftText/bottomLeftText";
 import BottomRightInput from "./bottomRightInput/bottomRightInput";
-import Footer from "../Footer/Footer";
-import SlideMenuBtn from "./SlideMenuBtn/SlideMenuBtn";
+import RadarChart from 'react-svg-radar-chart';
+import 'react-svg-radar-chart/build/css/index.css';
+import FooterContainer from "../common/Footer/FooterContainer";
+import {NavLink} from "react-router-dom";
 
 const Profile = (props) => {
+  const handleClick = () => {
+    localStorage.setItem('isTested', false);
+  };
+  const defaultOptions = {
+    axes: true, // show axes?
+    scales: 10, // show scale circles?
+    captions: true, // show captions?
+    captionMargin: 10,
+    dots: false, // show dots?
+    zoomDistance: 1.2, // where on the axes are the captions?
+    setViewBox: (options) => `-${options.captionMargin} 0 ${options.size + options.captionMargin * 2} ${options.size}`, // custom viewBox ?
+    axisProps: () => ({className: 'axis'}),
+    scaleProps: () => ({className: 'scale', fill: 'none'}),
+    shapeProps: () => ({className: 'shape'}),
+    captionProps: () => ({
+      className: 'caption',
+      textAnchor: 'middle',
+      fontSize: 24,
+      fontFamily: 'sans-serif'
+    }),
+    dotProps: () => ({
+      className: 'dot',
+      mouseEnter: (dot) => {
+        console.log(dot);
+      },
+      mouseLeave: (dot) => {
+        console.log(dot);
+      }
+    })
+  };
+
+
   return (
     <div>
-      <Header></Header>
-      <div className={s.container}>
-        <TopSide/>
-        <div className={s.bottomSide}>
+      <div className={s.background}>
+        <Header/>
+        <div className={s.container}>
+          <TopSide state={props.state.userDto}
+                   profilePutState={props.profilePutState}
+                   editProfilePhoto={props.editProfilePhoto}
+          />
+          <BottomRightInput state={props.state.userDto}
+                            profileUpdateState={props.profileUpdateState}/>
+          <div>
+            {
+              props.state.radarChart.caption && props.state.radarChart.data ?
+                (<div className={s.radarChart}>
+                    <div className={s.radarChartDescription}>
+                      <h1>Here you can see Radar chart on your skills.</h1>
+                      <p>This radar chart built after your testing.
+                        If you would like to see your skill score improve on the radar chart,
+                        you can take the test again at any time.</p>
+                      <NavLink to={'/testing'} onClick={handleClick}
+                               className={`${s.uploadBtn} ${s.retestBtn}`}>Pass the test</NavLink>
+                    </div>
+                    <RadarChart
+                      captions={props.state.radarChart.caption}
+                      data={[
+                        // data
+                        {
+                          data: {...props.state.radarChart.data},
+                          meta: {color: '#00FFFF'}
+                        },
+                      ]}
+                      size={500}
+                      options={defaultOptions}
+                    />
+                  </div>
+                )
+                : <div/>
+            }
+          </div>
           <BottomLeftText/>
-          <BottomRightInput/>
         </div>
+        <FooterContainer/>
       </div>
-      <Footer></Footer>
     </div>
   );
 };
+
 
 export default Profile;

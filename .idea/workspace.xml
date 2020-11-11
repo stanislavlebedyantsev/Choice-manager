@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0c29d209-22d5-4c98-82c5-cac9b28833a0" name="Default Changelist" comment="Changes:&#10;Add footer">
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/GoalPage/Goals.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GoalPage/Goals.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/GoalPage/Goals.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GoalPage/Goals.module.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="ArtemKomarec &lt;artemkomarec10@gmail.com&gt;" />
+        <option value="a" />
+      </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main-page" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="ProjectId" id="1jrolJDavXwfiLQh9qZcimXaTOb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Choice-manager\Choice-manager\src\components\GoalPage\src" />
+      <recent name="D:\Choice-manager\Choice-manager\src\components\About\src" />
+      <recent name="D:\Choice-manager\Choice-manager\src\components\ProfilePage\src" />
+      <recent name="D:\Choice-manager\Choice-manager\src\components\Header\src" />
+      <recent name="D:\Choice-manager\Choice-manager\src\components\GoalPage\Goal" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Choice-manager\Choice-manager\src\components\About\src" />
+      <recent name="D:\Choice-manager\Choice-manager\src\components\GoalPage\src" />
+      <recent name="D:\Choiche-manager\Choice-manager\src" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0c29d209-22d5-4c98-82c5-cac9b28833a0" name="Default Changelist" comment="" />
+      <created>1604571723745</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604571723745</updated>
+      <workItem from="1604571726696" duration="2460000" />
+      <workItem from="1604604345578" duration="1238000" />
+      <workItem from="1605082511411" duration="684000" />
+      <workItem from="1605085190470" duration="14797000" />
+      <workItem from="1605197586326" duration="3271000" />
+      <workItem from="1605251698187" duration="26809000" />
+    </task>
+    <task id="LOCAL-00001" summary="Changes:&#10;page about&#10;add profile page">
+      <created>1604572797307</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604572797307</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Changes:&#10;finished goal page.">
+      <created>1605203804694</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605203804694</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Changes:&#10;background on profile page&#10;add image of logo">
+      <created>1605254940321</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605254940321</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Changes:&#10;goals page">
+      <created>1605347205578</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1605347205585</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Changes:&#10;Design in goal, login, registration pages">
+      <created>1605519839900</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605519839900</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Changes:&#10;page about">
+      <created>1605522940376</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605522940376</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Changes:&#10;Add footer">
+      <created>1605547125801</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605547125801</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Changes:&#10;page about&#10;add profile page" />
+    <MESSAGE value="Changes:&#10;finished goal page." />
+    <MESSAGE value="Changes:&#10;background on profile page&#10;add image of logo" />
+    <MESSAGE value="Changes:&#10;goals page" />
+    <MESSAGE value="Changes:&#10;Design in goal, login, registration pages" />
+    <MESSAGE value="Changes:&#10;page about" />
+    <MESSAGE value="Changes:&#10;Add footer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes:&#10;Add footer" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="501" y="263" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605097515731">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="501" y="263" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605097515731" />
+    <state x="418" y="134" key="CommitChangelistDialog2" timestamp="1605547123892">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="418" y="134" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1605547123892" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1605633886577">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605633886577" />
+    <state width="845" height="186" key="GridCell.Tab.0.bottom" timestamp="1604607445404">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="845" height="186" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604607445404" />
+    <state width="845" height="186" key="GridCell.Tab.0.center" timestamp="1604607445404">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="845" height="186" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604607445404" />
+    <state width="845" height="186" key="GridCell.Tab.0.left" timestamp="1604607445404">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="845" height="186" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604607445404" />
+    <state width="845" height="186" key="GridCell.Tab.0.right" timestamp="1604607445404">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="845" height="186" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604607445404" />
+    <state x="598" y="281" key="MultipleFileMergeDialog" timestamp="1605633426659">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="598" y="281" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605633426659" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1605547309463">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605547309463" />
+    <state x="777" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605633323636">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="777" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605633323636" />
+    <state x="427" y="241" key="run.anything.popup" timestamp="1605520253078">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="427" y="241" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605520253078" />
+  </component>
+</project>

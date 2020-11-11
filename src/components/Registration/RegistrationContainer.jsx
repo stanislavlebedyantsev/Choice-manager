@@ -1,25 +1,21 @@
 import RegForm from "./RegForm";
-import React from "react";
-import {requestRegistrationCreator, updateRegistrationTextCreator} from "../../redux/registrationReduser";
+import {
+  registrationRequestThunkCreator,
+  registrationUpdateText
+} from "../../redux/registrationReducer";
 import {connect} from "react-redux";
+import {hideError} from "../../redux/errorReducer";
 
 
-const mapStateToProps = (state) => {
-  return {
-    registrationStateText: state.registrationPage
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    registrationRequest: () => {
-      dispatch(requestRegistrationCreator());
-    },
-    registrationUpdateText: (obj) => {
-      dispatch(updateRegistrationTextCreator(obj));
-    }
-  };
-};
+const mapStateToProps = (state) => ({
+  registrationState: state.registrationPage,
+  isError: state.error.isError,
+  errorText: state.error.errorText
+});
 
-const RegistrationComponent = connect(mapStateToProps, mapDispatchToProps)(RegForm);
 
-export default RegistrationComponent;
+export default connect(mapStateToProps, {
+  registrationRequestThunkCreator,
+  registrationUpdateText,
+  hideError
+})(RegForm);

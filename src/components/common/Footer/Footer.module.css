@@ -1,0 +1,116 @@
+.background {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #081e36;
+    width: 100%;
+}
+
+.companyName {
+    text-align: center;
+    display: grid;
+    font-size: large;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 20px;
+    grid-row: 1;
+    grid-column: 1;
+    height: 150px;
+    width: 350px;
+    line-height: 25px;
+    color: white;
+}
+
+.quickLinks {
+    display: grid;
+    grid-row: 1;
+    grid-column: 2;
+    margin-top: 20px;
+    /*margin-left: 140px;*/
+    font-size: large;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    height: 150px;
+    width: 350px;
+    color: white;
+}
+
+.contactUs {
+    display: grid;
+    grid-row: 1;
+    grid-column: 3;
+    margin-top: 20px;
+    /*margin-left: 140px;*/
+    height: 150px;
+    width: 350px;
+    font-size: large;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    color: white;
+}
+/*
+.getStarted {
+    display: grid;
+    grid-row: 1;
+    grid-column: 3;
+    font-size: large;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 20px;
+    margin-left: 140px;
+    height: 150px;
+    width: 350px;
+    text-align: center;
+    color: white;
+}*/
+
+.aboutUs {
+    text-decoration: none;
+    margin-top: -25px;
+    color: #1fafed;
+}
+
+.getStartedP {
+    text-align: left;
+    margin-top: -20px;
+}
+
+.links {
+    height: 35px;
+    margin-top: -35px;
+    width: 140px;
+    text-decoration: none;
+    color: #ffffff;
+    background: #1fafed;
+    border-radius: 5px;
+    position: center;
+}
+
+.links:hover {
+    color: #ffffff;
+    background: #32b5ed;
+    box-shadow: 0 0 10px #1fafed;
+}
+
+.links:active {
+    color: #ffffff;
+}
+
+.textRegister {
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+.twitter {
+    color: #1fafed;
+}
+
+.instagram {
+    color: #1fafed;
+}
+
+.facebook {
+    color: #1fafed;
+}
