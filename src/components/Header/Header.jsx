@@ -1,7 +1,5 @@
-import s from './Header.module.css'
-import {NavLink} from "react-router-dom";
-
-
+import s from './Header.module.css';
+import {Route, NavLink} from "react-router-dom";
 
 const Header = (props) => {
   return (
@@ -10,10 +8,10 @@ const Header = (props) => {
         Choice manager
       </div>
       <div className={s.signIn}>
-        <NavLink to="/login">SignIn</NavLink>
+       <Route path={"/about"}><NavLink to="/login">SignIn</NavLink></Route>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
