@@ -4,7 +4,7 @@ import Footer from "../Footer/Footer";
 
 const goals = (props) => {
     return (
-        <div>
+        <div className={s.background}>
             <Header></Header>
             <div className={s.container}>
                 <div className={s.yourGoals}>Your Goals</div>

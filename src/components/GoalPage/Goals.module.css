@@ -1,3 +1,8 @@
+.background{
+    background-image: url("./src/goalBack.jpg");
+    background-size: 100% 100%;
+}
+
 .yourGoals{
     font-size: 50px;
     text-align: center;
