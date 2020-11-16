@@ -29,9 +29,9 @@ const About = (props) => {
           </div>
           <div className={s.rightSide}>
             <h1 className={s.rightH1}>The best mentors</h1>
-            <div className={s.mentorImg}></div>
-            <div className={s.mentorImg}></div>
-            <div className={s.mentorImg}></div>
+            <div className={s.mentorImgFirst}></div>
+            <div className={s.mentorImgSecond}></div>
+            <div className={s.mentorImgThird}></div>
           </div>
         </div>
       </div>
