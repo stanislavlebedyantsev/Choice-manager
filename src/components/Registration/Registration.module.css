@@ -97,11 +97,13 @@
 .rightFooter{
     grid-column: 1;
     grid-row: 3;
+    margin-top: -30px;
     padding-left: 80px;
 }
 
 .rightH1{
     text-align: center;
+    margin-top: 50px;
 }
 
 .rightLoginh2{
@@ -134,16 +136,18 @@ h3{
     border-bottom: 3px solid ;
     border-color: silver;
     outline: none;
+    font-size: 18px;
 }
 
 .secondName{
     height: 30px;
-    width: 211px;
+    width: 215px;
     margin: 10px -50px 0px;
     border: none;
     border-bottom: 3px solid ;
     border-color: silver;
     outline: none;
+    font-size: 18px;
 }
 
 .email{
@@ -154,6 +158,7 @@ h3{
     border-bottom: 3px solid ;
     border-color: silver;
     outline: none;
+    font-size: 18px;
 }
 
 .username{
@@ -164,6 +169,7 @@ h3{
     border-bottom: 3px solid ;
     border-color: silver;
     outline: none;
+    font-size: 18px;
 }
 
 .phoneNumber{
@@ -174,6 +180,7 @@ h3{
     border-bottom: 3px solid ;
     border-color: silver;
     outline: none;
+    font-size: 18px;
 }
 
 .password{
@@ -184,6 +191,7 @@ h3{
     border-bottom: 3px solid ;
     border-color: silver;
     outline: none;
+    font-size: 18px;
 }
 
 .confPassword{
@@ -194,6 +202,7 @@ h3{
     border-bottom: 3px solid ;
     border-color: silver;
     outline: none;
+    font-size: 18px;
 }
 
 .button button {
@@ -204,6 +213,7 @@ h3{
     border-radius: 30px;
     background: deepskyblue;
     text-decoration: none;
+    outline: none;
     font-family: Kurale, sans-serif;
     font-size: x-large;
     color: #ffffff;

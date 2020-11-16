@@ -95,10 +95,12 @@
     grid-column: 1;
     grid-row: 3;
     padding-left: 80px;
+    margin-top: -110px;
 }
 
 .rightH1{
     text-align: center;
+    margin-top: 50px;
 }
 
 .rightLoginh2{
@@ -131,6 +133,7 @@ h3{
     border-bottom: 3px solid ;
     border-color: silver;
     outline: none;
+    font-size: 18px;
 }
 
 .password{
@@ -141,6 +144,7 @@ h3{
     border-bottom: 3px solid ;
     border-color: silver;
     outline: none;
+    font-size: 18px;
 }
 
 .button button{
@@ -153,6 +157,7 @@ h3{
     text-decoration: none;
     font-family: Kurale, sans-serif;
     font-size: x-large;
+    outline: none;
     color: #ffffff;
 }
 
