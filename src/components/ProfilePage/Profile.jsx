@@ -8,6 +8,7 @@ import SlideMenuBtn from "./SlideMenuBtn/SlideMenuBtn";
 
 const Profile = (props) => {
     return (
+        <div>
         <div className={s.background}>
             <Header></Header>
             <div className={s.container}>
@@ -17,6 +18,8 @@ const Profile = (props) => {
                     <BottomRightInput/>
                 </div>
             </div>
+
+        </div>
             <Footer></Footer>
         </div>
     );
