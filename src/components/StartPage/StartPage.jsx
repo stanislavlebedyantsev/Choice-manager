@@ -1,9 +1,9 @@
-import s from "./StartPage.module.css"
+import s from "./StartPage.module.css";
 import {Route, NavLink} from "react-router-dom";
 import SlideMenuBtn from "./SlideMenuBtn/SlideMenuBtn";
 
-const StartPage = (props) =>{
-  return(
+const StartPage = (props) => {
+  return (
     <div className={s.startPage}>
       <div className={s.content}>
         <div className={s.leftSide}>
@@ -26,6 +26,6 @@ const StartPage = (props) =>{
       </div>
     </div>
 
-  )
-}
-export default StartPage
+  );
+};
+export default StartPage;
