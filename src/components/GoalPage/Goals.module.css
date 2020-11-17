@@ -1,5 +1,5 @@
 .background{
-    background-image: url("./src/goalBack.jpg");
+    background-image: url("../../images/goalBack.png");
     background-size: 100% 100%;
 }
 
@@ -42,8 +42,9 @@
     border: 0px;
     outline: none;
     background-color: white;
-    background-image: url("src/AddGoal.png");
+    background-image: url("../../images/AddGoal.png");
     background-size: 100% 100%;
+    background-color: transparent;
 }
 
 .goalNameH6{
@@ -87,7 +88,7 @@
     height: 30px;
     margin-right: 10px;
     background: white;
-    background-image: url("src/edit.png");
+    background-image: url("../../images/edit.png");
     background-size: 100%  100%;
     border: none;
     outline: none;
@@ -97,7 +98,7 @@
     width: 30px;
     height: 30px;
     background: white;
-    background-image: url("src/delete.png");
+    background-image: url("../../images/delete.png");
     background-size: 100%  100%;
     border: none;
     outline: none;

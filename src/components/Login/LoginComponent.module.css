@@ -1,5 +1,5 @@
 .background{
-    background-image: url("./src/bgImage.jpg");
+    background-image: url("../../images/bgImage.jpg");
     height: 945px;
     background-size:100% 100%;
 }
