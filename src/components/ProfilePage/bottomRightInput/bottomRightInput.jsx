@@ -7,9 +7,8 @@ const bottomRightInput = (props) => {
       <input className={s.bottomRightInput}/>
       <input className={s.bottomRightInput}/>
       <input className={s.bottomRightInput}/>
-      <input className={s.bottomRightInput}/>
-      <input className={s.bottomRightInput}/>
-      <input className={s.bottomRightInput}/>
+      <input className={s.bottomRightInput} type={'password'}/>
+      <input className={s.bottomRightInput} type={'password'}/>
     </div>
   );
 };

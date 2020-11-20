@@ -7,9 +7,8 @@ const bottomLeftText = (props) => {
       <p className={s.bottomLeftText}>Second name</p>
       <p className={s.bottomLeftText}>Email</p>
       <p className={s.bottomLeftText}>Username</p>
-      <p className={s.bottomLeftText}>Phone number</p>
-      <p className={s.bottomLeftText}>Title</p>
       <p className={s.bottomLeftText}>Password</p>
+      <p className={s.bottomLeftText}>Password confirm</p>
     </div>
   );
 };
