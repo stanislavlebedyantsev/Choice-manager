@@ -44,8 +44,8 @@ const Profile = (props) => {
           </div>
         </div>
 
+        <Footer/>
       </div>
-      <Footer/>
     </div>
   );
 };
