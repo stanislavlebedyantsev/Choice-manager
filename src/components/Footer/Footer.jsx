@@ -18,7 +18,7 @@ function Footer(props) {
             <div className={s.getStarted}>
                 Get started<br/>
                 <p className={s.getStartedP}>Let's start to use choice manager and change your life.</p>
-                <NavLink to={"/registration"} className={s.links}>Register now</NavLink>
+                <NavLink to={"/registration"} className={s.links}><p className={s.textRegister}>Register now</p></NavLink>
             </div>
             <div className={s.contactUs}>
                 Contact us

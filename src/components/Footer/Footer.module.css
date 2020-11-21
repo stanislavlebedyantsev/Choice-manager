@@ -22,6 +22,7 @@
     height: 150px;
     width: 350px;
     line-height: 25px;
+    color: white;
 }
 
 .quickLinks{
@@ -35,6 +36,7 @@
     text-align: center;
     height: 150px;
     width: 350px;
+    color: white;
 }
 
 .contactUs{
@@ -48,6 +50,7 @@
     font-size: large;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
+    color: white;
 }
 
 .getStarted{
@@ -61,6 +64,7 @@
     height: 150px;
     width: 350px;
     text-align: center;
+    color: white;
 }
 
 .aboutUs{
@@ -91,6 +95,11 @@
 }
 .links:active{
     color: #ffffff;
+}
+
+.textRegister{
+    margin: 0 auto;
+    margin-top: 5px;
 }
 
 .twitter{
