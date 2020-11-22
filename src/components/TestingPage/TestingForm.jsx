@@ -6,25 +6,22 @@ import QuestionComponent from "./QuestionComponent/QuestionComponent";
 import s from './TestingForm.module.css';
 
 class TestingForm extends React.Component {
-  getTests() {
-    axios
-      .get('http://127.0.0.1:8080/test')
-      .then(responce => {
-        this.props.getTest(responce.data);
-      });
+  componentDidMount() {
+
+    this.props.getTest();
   }
-  postAnswers(){
+
+  postAnswers() {
     this.props.postAnswersData();
   }
+
   render() {
-    if (this.props.TestingQuestions.categories.length === 1) {
-      this.getTests();
-    }
     return (
       <div>
         <Header/>
         <div className={s.container}>
           {
+            this.props.TestingQuestions.categories.length !== 0 ?
             this.props.TestingQuestions.categories.map((el) => {
               return (<QuestionComponent
                 state={this.props.TestingQuestions}
@@ -32,9 +29,16 @@ class TestingForm extends React.Component {
                 questions={el.questions} categoryName={el.name}
                 key={el.id}
               />);
-            })
+            }) : <div/>
+
+
           }
-          <button className={s.button} onClick={this.props.postAnswersData}>Send testing data</button>
+          {
+            this.props.TestingQuestions.categories.length !== 0 ?
+              <button className={s.button} onClick={this.props.postAnswersData}>Send testing data</button>
+              : <div/>
+
+          }
         </div>
         <Footer/>
       </div>

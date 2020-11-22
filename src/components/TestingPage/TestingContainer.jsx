@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getTest: (obj) => {
-      dispatch(getTestingQuestions(obj));
+      dispatch(getTestingQuestions());
     },
     updateTestAnswers: (obj) =>{
       dispatch(updateAnswers(obj))
@@ -23,6 +23,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const TestingContainer = connect(mapStateToProps, mapDispatchToProps)(TestingForm);
+export default connect(mapStateToProps, mapDispatchToProps)(TestingForm);
 
-export default TestingContainer;

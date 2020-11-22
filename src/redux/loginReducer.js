@@ -42,6 +42,6 @@ export const loginReducer = (state = initState, action) => {
 
 };
 
-export const updateLoginTextCreator = (obj) => ({type: 'LOGIN-UPDATE-TEXT', newData: obj});
+export const updateLoginTextCreator = (newData) => ({type: 'LOGIN-UPDATE-TEXT', newData});
 export const requestLoginCreator = () => ({type: 'LOGIN-REQUEST'});
 

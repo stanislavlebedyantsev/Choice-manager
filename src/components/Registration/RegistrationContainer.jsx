@@ -2,6 +2,7 @@ import RegForm from "./RegForm";
 import React from "react";
 import {requestRegistrationCreator, updateRegistrationTextCreator} from "../../redux/registrationReduser";
 import {connect} from "react-redux";
+import LoginContainer from "../Login/LoginContainer";
 
 
 const mapStateToProps = (state) => {
@@ -20,6 +21,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const RegistrationComponent = connect(mapStateToProps, mapDispatchToProps)(RegForm);
-
-export default RegistrationComponent;
+export default connect(mapStateToProps, mapDispatchToProps)(RegForm);
