@@ -36,14 +36,10 @@ export const testingReducer = (state = initState, action) => {
     case 'TESTING-GET-QUESTIONS': {
       let countOfQuests = 0;
       copyState = {...state};
-      axios
-        .get('http://127.0.0.1:8080/test')
-        .then(response => {
-          copyState = {
-            ...copyState,
-            categories: response.data
-          };
-        });
+      copyState = {
+        ...copyState,
+        categories: action.data
+      };
       for (let i of copyState.categories) {
         countOfQuests += i.questions.length;
       }
@@ -103,6 +99,6 @@ export const testingReducer = (state = initState, action) => {
 };
 
 
-export const getTestingQuestions = (obj) => ({type: 'TESTING-GET-QUESTIONS'});
+export const getTestingQuestions = (data) => ({type: 'TESTING-GET-QUESTIONS', data});
 export const updateAnswers = (data) => ({type: 'UPDATE-ANSWERS', data});
 export const postAnswers = () => ({type: 'POST-ANSWERS'});
