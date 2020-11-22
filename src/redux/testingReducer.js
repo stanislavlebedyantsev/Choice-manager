@@ -92,7 +92,7 @@ export const testingReducer = (state = initState, action) => {
       })
         .catch(() => {
           //temp redirect
-          alert('Server connection error')
+          alert('Server connection error');
         });
       return taskList;
     }

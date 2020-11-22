@@ -1,21 +1,24 @@
-.startPage{
+.startPage {
     background-image: url("../../images/bgImage.jpg");
     background-repeat: no-repeat;
     height: 945px;
     background-size: 100% 100%;
     font-family: 'Montserrat', sans-serif;
 }
+
 .content {
     display: grid;
     padding: 0;
     color: #ffffff;
 }
-.leftSide{
+
+.leftSide {
     grid-column: 1;
     grid-row: 1;
     padding-left: 25%;
 }
-.rightSide{
+
+.rightSide {
     grid-column: 2;
     grid-row: 1;
     height: 130px;
@@ -34,13 +37,15 @@
 
 .greeting {
 }
-.greeting h1{
+
+.greeting h1 {
     margin: 0;
     padding-top: 20%;
     font-weight: 100;
     font-size: 38px;
 }
-.greeting h2{
+
+.greeting h2 {
     font-weight: 400;
     font-size: 32px;
     margin-top: 0;
@@ -51,18 +56,22 @@
     font-weight: 100;
     margin-bottom: 0;
 }
-.projectVision p{
+
+.projectVision p {
     margin-bottom: 0;
 }
-.description{
+
+.description {
     font-size: 24px;
     width: 700px;
     font-weight: 100;
 }
-.aboutUs{
+
+.aboutUs {
 
     margin-top: 20px;
 }
+
 .aboutUsLink {
     text-decoration: none;
     color: #ffffff;
@@ -70,11 +79,13 @@
     padding: 15px 30px;
     border-radius: 30px;
 }
-.aboutUsLink:hover{
+
+.aboutUsLink:hover {
     color: #ffffff;
     background: #32b5ed;
     box-shadow: 0 0 10px #1fafed;
 }
-.aboutUsLink:active{
+
+.aboutUsLink:active {
     color: #ffffff;
 }

@@ -1,10 +1,10 @@
 /*maybe made positioning in blocks by flex-box*/
-.background{
+.background {
     background-image: url("../../images/bgImage.jpg");
     background-size: 100% 100%;
 }
 
-.content{
+.content {
     width: 1800px;
     height: 830px;
     margin-left: auto;
@@ -16,12 +16,12 @@
     grid-template-rows: 200px 630px;
 }
 
-.topSide{
+.topSide {
     grid-column: 1;
     grid-row: 1;
 }
 
-.aboutUsP{
+.aboutUsP {
     text-align: center;
     font-size: 265px;
     margin-top: -65px;
@@ -30,7 +30,7 @@
     color: aliceblue;
 }
 
-.bottomSide{
+.bottomSide {
     grid-column: 1;
     grid-row: 2;
     display: grid;
@@ -38,12 +38,12 @@
     grid-template-rows: 630px;
 }
 
-.leftText{
+.leftText {
     grid-column: 1;
     grid-row: 1;
 }
 
-.leftTextH1{
+.leftTextH1 {
     font-family: 'Montserrat', sans-serif;
     color: white;
     font-size: 40px;
@@ -52,7 +52,7 @@
     margin-left: 50px;
 }
 
-.underH1{
+.underH1 {
     font-family: 'Montserrat', sans-serif;
     color: white;
     font-size: 25px;
@@ -61,17 +61,17 @@
     margin-top: -15px;
 }
 
-.navLinkRegistr{
+.navLinkRegistr {
     text-decoration: underline;
     color: white;
 }
 
-.rightSide{
+.rightSide {
     grid-column: 2;
     grid-row: 1;
 }
 
-.rightH1{
+.rightH1 {
     font-family: 'Montserrat', sans-serif;
     color: white;
     font-size: 40px;
@@ -79,7 +79,7 @@
     text-align: center;
 }
 
-.mentorImgFirst{
+.mentorImgFirst {
     width: 250px;
     height: 250px;
     border-radius: 150px;
@@ -92,7 +92,7 @@
     background-size: 100% 100%;
 }
 
-.mentorImgSecond{
+.mentorImgSecond {
     width: 250px;
     height: 250px;
     border-radius: 150px;
@@ -105,7 +105,7 @@
     background-size: 100% 100%;
 }
 
-.mentorImgThird{
+.mentorImgThird {
     width: 250px;
     height: 250px;
     border-radius: 150px;

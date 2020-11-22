@@ -8,7 +8,7 @@ const Header = (props) => {
         Choice manager
       </div>
       <div className={s.signIn}>
-       <Route path={"/about"}><NavLink to="/login">SignIn</NavLink></Route>
+        <Route path={"/about"}><NavLink to="/login">SignIn</NavLink></Route>
       </div>
     </nav>
   );

@@ -1,4 +1,4 @@
-.content{
+.content {
     display: flex;
     grid-area: header;
     font-size: 24px;
@@ -9,38 +9,11 @@
     margin-bottom: 5px;
     box-shadow: 0 0 10px;
 }
-.logo{
+
+.logo {
 }
-/*.aboutUsLink {
-    text-decoration: none;
-    color: #ffffff;
-    background: #1fafed;
-    padding: 15px 30px;
-    border-radius: 30px;
-}
-.aboutUsLink:hover{
-    color: #ffffff;
-    background: #32b5ed;
-    box-shadow: 0 0 10px #1fafed;
-}
-.aboutUsLink:active{
-    color: #ffffff;
-}*/
-.signIn a{
-   /* text-decoration: none;
-    color: black;
-    background: green;
-    padding: 10px 20px;
-    margin-left: 10px;
-    border-radius: 30px;*/
-    /*font-weight: 700;
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 3px;
-    background: rgb(64,199,129);
-    box-shadow: 0 -3px rgb(53,167,110) inset;
-    transition: 0.2s;*/
+
+.signIn a {
     text-decoration: none;
     color: #ffffff;
     background: #1fafed;
@@ -48,14 +21,13 @@
     border-radius: 30px;
     border: 3px #23bbf7 solid;
 }
-.signIn a:hover{
-    /*background: rgb(53, 167, 110);*/
+
+.signIn a:hover {
     color: #ffffff;
     background: #32b5ed;
     box-shadow: 0 0 10px #1fafed;
 }
-.signIn a:active{
-    /*background: rgb(33,147,90);
-    box-shadow: 0 3px rgb(33,147,90) inset*/
+
+.signIn a:active {
     color: #ffffff;
 }

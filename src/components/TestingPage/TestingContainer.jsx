@@ -14,11 +14,11 @@ const mapDispatchToProps = (dispatch) => {
     getTest: (obj) => {
       dispatch(getTestingQuestions());
     },
-    updateTestAnswers: (obj) =>{
-      dispatch(updateAnswers(obj))
+    updateTestAnswers: (obj) => {
+      dispatch(updateAnswers(obj));
     },
-    postAnswersData: () =>{
-      dispatch(postAnswers())
+    postAnswersData: () => {
+      dispatch(postAnswers());
     }
   };
 };

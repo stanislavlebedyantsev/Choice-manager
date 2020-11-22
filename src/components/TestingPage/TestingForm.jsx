@@ -22,14 +22,14 @@ class TestingForm extends React.Component {
         <div className={s.container}>
           {
             this.props.TestingQuestions.categories.length !== 0 ?
-            this.props.TestingQuestions.categories.map((el) => {
-              return (<QuestionComponent
-                state={this.props.TestingQuestions}
-                dispatch={this.props.updateTestAnswers}
-                questions={el.questions} categoryName={el.name}
-                key={el.id}
-              />);
-            }) : <div/>
+              this.props.TestingQuestions.categories.map((el) => {
+                return (<QuestionComponent
+                  state={this.props.TestingQuestions}
+                  dispatch={this.props.updateTestAnswers}
+                  questions={el.questions} categoryName={el.name}
+                  key={el.id}
+                />);
+              }) : <div/>
 
 
           }

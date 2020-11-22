@@ -32,13 +32,13 @@ export const registrationReducer = (state = initState, action) => {
         .then(response => {
           copyState = {...initState};
         })
-      .then(() => {
-        //change it to normal redirect
-        window.location.href = '/login';
-      })
-        .catch(() =>{
-          alert("smth goes wrong")
+        .then(() => {
+          //change it to normal redirect
+          window.location.href = '/login';
         })
+        .catch(() => {
+          alert("smth goes wrong");
+        });
       return copyState;
     }
     default:
