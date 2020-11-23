@@ -38,23 +38,23 @@ export const testingReducer = (state = initState, action) => {
       copyState = {...state};
       copyState = {
         ...copyState,
-        categories: action.data
+        categories: action.data.categories
       };
       for (let i of copyState.categories) {
         countOfQuests += i.questions.length;
       }
-      for (let i = 0; i < countOfQuests; i++) {
+      for (let i = 1; i <= countOfQuests; i++) {
 
         copyState.answers[i] = {
           question: {
-            id: i + 1
+            id: i
           },
           user: {
             id: localStorage.getItem('userId')
           },
           value: ""
         };
-        if (i > 1) copyState.answers[i].value = "2.5";
+        if (i > 2) copyState.answers[i].value = "2.5";
       }
       return copyState;
     }

@@ -33,7 +33,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getTest: (obj) => {
-      dispatch(getTestingQuestions());
+      dispatch(getTestingQuestions(obj));
     },
     updateTestAnswers: (obj) => {
       dispatch(updateAnswers(obj));
