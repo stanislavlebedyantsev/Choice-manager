@@ -3,7 +3,7 @@ import s from '../TestingForm.module.css';
 import {updateAnswers} from "../../../redux/testingReducer";
 
 const QuestionComponent = (props) => {
-  const answerChange = (event) => {
+  const handleChange = (event) => {
     let copyState = props.state.answers;
     let obj = [
       ...copyState
@@ -27,14 +27,14 @@ const QuestionComponent = (props) => {
         <div className={s.answerBlock}>
           {
             el.type === 'special' ?
-              <textarea id={el.id} name={"answers"} placeholder={"Type your answer here"} onChange={answerChange}/> :
+              <textarea id={el.id} name={"answers"} placeholder={"Type your answer here"} onChange={handleChange}/> :
               <div>
                 <input name={"answers"}
                        type="range"
                        id={el.id}
                        min={0} max={5} step={0.5}
                        value={props.state.answers[Number(el.id) - 1].value}
-                       onChange={answerChange}/>
+                       onChange={handleChange}/>
                 <label htmlFor="answer">{props.state.answers[Number(el.id) - 1].value}</label>
               </div>
 

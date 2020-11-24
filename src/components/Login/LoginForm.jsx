@@ -9,10 +9,9 @@ const LoginForm = (props) => {
   const onLogin = () => {
     props.loginRequest();
   };
-  const loginUpdateText = (event) => {
+  const handleChange = (event) => {
     let obj = {
-      username: props.loginStateText.username,
-      password: props.loginStateText.password
+      ...props.loginStateText
     };
     obj = {
       ...obj,
@@ -31,11 +30,11 @@ const LoginForm = (props) => {
               <input name="username" placeholder="Username"
                      className={s.login}
                      value={props.loginStateText.username}
-                     onChange={loginUpdateText}/>
+                     onChange={handleChange}/>
               <input type="password" name={"password"} placeholder="Password"
                      className={s.password}
                      value={props.loginStateText.password}
-                     onChange={loginUpdateText}/>
+                     onChange={handleChange}/>
               <div className={s.button}>
                 <button onClick={onLogin}>Login</button>
               </div>

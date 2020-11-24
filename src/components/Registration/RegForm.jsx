@@ -7,14 +7,9 @@ const RegForm = (props) => {
   const onRegistration = () => {
     props.registrationRequest();
   };
-  const registrationUpdateText = (event) => {
+  const handleChange = (event) => {
     let obj = {
-      login: props.registrationStateText.login,
-      email: props.registrationStateText.email,
-      password: props.registrationStateText.password,
-      passwordConfirmation: props.registrationStateText.passwordConfirmation,
-      name: props.registrationStateText.name,
-      surname: props.registrationStateText.surname
+      ...props.registrationStateText
     };
     obj = {
       ...obj,
@@ -33,27 +28,27 @@ const RegForm = (props) => {
               <input name="name" placeholder="First name"
                      className={s.firstName}
                      value={props.registrationStateText.name}
-                     onChange={registrationUpdateText}/>
+                     onChange={handleChange}/>
               <input name="surname" placeholder="Second name"
                      className={s.secondName}
                      value={props.registrationStateText.surname}
-                     onChange={registrationUpdateText}/>
+                     onChange={handleChange}/>
               <input name="email" placeholder="Email"
                      className={s.email}
                      value={props.registrationStateText.email}
-                     onChange={registrationUpdateText}/>
+                     onChange={handleChange}/>
               <input name="login" placeholder="Username"
                      className={s.username}
                      value={props.registrationStateText.login}
-                     onChange={registrationUpdateText}/>
+                     onChange={handleChange}/>
               <input type="password" name={"password"} placeholder="Password"
                      className={s.password}
                      value={props.registrationStateText.password}
-                     onChange={registrationUpdateText}/>
+                     onChange={handleChange}/>
               <input type="password" name={"passwordConfirmation"} placeholder="Confirm password"
                      className={s.confPassword}
                      value={props.registrationStateText.passwordConfirmation}
-                     onChange={registrationUpdateText}/>
+                     onChange={handleChange}/>
               <div className={s.button}>
                 <button onClick={onRegistration}>Register</button>
               </div>
