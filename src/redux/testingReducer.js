@@ -1,5 +1,4 @@
 import * as axios from 'axios';
-import QuestionComponent from "../components/TestingPage/QuestionComponent/QuestionComponent";
 import {Redirect} from 'react-router-dom';
 
 const initState = {
@@ -43,19 +42,23 @@ export const testingReducer = (state = initState, action) => {
       for (let i of copyState.categories) {
         countOfQuests += i.questions.length;
       }
-      for (let i = 1; i <= countOfQuests; i++) {
-
+      const userId = Number(localStorage.getItem('userId'))
+      for (let i = 0; i < countOfQuests; i++) {
         copyState.answers[i] = {
           question: {
-            id: i
+            id: i + 1
           },
           user: {
-            id: localStorage.getItem('userId')
+            id: userId
           },
-          value: ""
+          value: "2.5"
         };
-        if (i > 2) copyState.answers[i].value = "2.5";
       }
+      copyState.categories.forEach(el =>{
+        el.questions.forEach(el =>{
+          if(el.type === "special") copyState.answers[el.id - 1].value = ''
+        })
+      })
       return copyState;
     }
     case 'UPDATE-ANSWERS': {
@@ -77,6 +80,10 @@ export const testingReducer = (state = initState, action) => {
       axios
         .post("http://127.0.0.1:8080/test", {
           ...copyState
+        }, {
+          headers:{
+            h:1123
+          }
         })
         .then(response => {
           console.log(response.data);
@@ -84,7 +91,7 @@ export const testingReducer = (state = initState, action) => {
           return copyState;
         }).then(() => {
         //change it to normal redirect
-        window.location.href = '/profile';
+        /*window.location.href = '/profile';*/
       })
         .catch(() => {
           //temp redirect

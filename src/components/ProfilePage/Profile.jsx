@@ -4,7 +4,6 @@ import TopSide from "./topSide/topSide";
 import BottomLeftText from "./bottomLeftText/bottomLeftText";
 import BottomRightInput from "./bottomRightInput/bottomRightInput";
 import Footer from "../Footer/Footer";
-import SlideMenuBtn from "./SlideMenuBtn/SlideMenuBtn";
 import RadarChart from 'react-svg-radar-chart';
 import 'react-svg-radar-chart/build/css/index.css';
 
@@ -17,8 +16,7 @@ const Profile = (props) => {
           <TopSide/>
           <div className={s.bottomSide}>
             <BottomLeftText/>
-            <BottomRightInput/>
-
+            <BottomRightInput state={props.state}/>
           </div>
           <div>
             <RadarChart
@@ -43,7 +41,6 @@ const Profile = (props) => {
             />
           </div>
         </div>
-
         <Footer/>
       </div>
     </div>
