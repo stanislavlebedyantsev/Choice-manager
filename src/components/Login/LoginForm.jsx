@@ -29,7 +29,7 @@ const LoginForm = (props) => {
             <div className={s.rightLoginUser}>
               <input name="username" placeholder="Username"
                      className={s.login}
-                     value={props.loginStateText.username}
+                     value={props.loginStateText.usernameOrEmail}
                      onChange={handleChange}/>
               <input type="password" name={"password"} placeholder="Password"
                      className={s.password}

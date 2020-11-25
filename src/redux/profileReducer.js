@@ -51,11 +51,6 @@ export const profileReducer = (state = initState, action) => {
               accessKey: localStorage.getItem('accessKey')
             }
           })
-        .then(response => {
-          console.log(response);
-          localStorage.removeItem('username');
-          localStorage.removeItem('email');
-        });
       return copyState;
     }
     default: {

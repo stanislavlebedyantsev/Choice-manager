@@ -1,7 +1,7 @@
 import * as axios from 'axios';
 
 const initState = {
-  username: '',
+  usernameOrEmail: '',
   password: ''
 };
 
@@ -25,7 +25,8 @@ export const loginReducer = (state = initState, action) => {
         })
         .then(response => {
           copyState = {...initState};
-          localStorage.setItem('userId', response.data.id);
+          localStorage.setItem('accessToken', response.data.accessKey);
+          localStorage.setItem('tokenType', response.data.tokenType);
           window.location.replace('/testing');
           console.log(localStorage.getItem('userId'));
           return copyState;
