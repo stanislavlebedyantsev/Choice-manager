@@ -19,7 +19,7 @@ const StartPage = (props) => {
               </div>
           </li>
           <li>
-              <div>asd</div>
+              <div></div>
           </li>
           <li>
           </li>

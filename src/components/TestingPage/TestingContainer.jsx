@@ -17,10 +17,16 @@ class TestingApiContainer extends React.Component {
     console.log(this.props);
     this.props.postAnswersData();
   }
+  updateAnswers(obj){
+    this.props.updateTestAnswers(updateAnswers(obj));
+  }
 
   render() {
     return (
-      <Testing TestingQuestions={this.props.TestingQuestions} postAnswers={this.postAnswers.bind(this )}/>
+      <Testing TestingQuestions={this.props.TestingQuestions}
+               postAnswers={this.postAnswers.bind(this)}
+               updateAnswers={this.updateAnswers.bind(this)}
+      />
     );
   }
 }

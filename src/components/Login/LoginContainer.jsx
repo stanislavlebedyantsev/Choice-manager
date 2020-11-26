@@ -1,4 +1,4 @@
-import LoginForm from "./LoginForm";
+import Login from "./Login";
 import {requestLoginCreator, updateLoginTextCreator} from "../../redux/loginReducer";
 import {connect} from "react-redux";
 
@@ -20,4 +20,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

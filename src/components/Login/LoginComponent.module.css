@@ -25,7 +25,12 @@
     grid-template-rows: 130px 670px;
     /*background: linear-gradient(45deg, deepskyblue, DodgerBlue);*/
 }
-
+.socials{
+    grid-column: 1;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: 580px;
+}
 .leftHeader {
     grid-column: 1;
     grid-row: 1;
@@ -71,11 +76,11 @@
 }*/
 
 .rightSide {
-    grid-column: 2;
+    grid-column: 1;
     grid-row: 1;
     display: grid;
     grid-template-columns: 580px;
-    grid-template-rows: 275px 350px 175px;
+    grid-template-rows: 100px 150px 175px;
     background: #ffffff;
 }
 
@@ -86,17 +91,18 @@
 
 .rightLogin {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 3;
     display: grid;
     grid-template-columns: 580px;
-    grid-template-rows: 40px 310px;
+    grid-template-rows: 50px 500px;
 }
 
 .rightFooter {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 4;
     padding-left: 80px;
-    margin-top: -110px;
+    margin-top: 110px;
+    margin-bottom: 200px;
 }
 
 .rightH1 {

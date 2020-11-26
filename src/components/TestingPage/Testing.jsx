@@ -13,7 +13,7 @@ const Testing = (props) => {
             props.TestingQuestions.categories.map((el) => {
               return (<QuestionComponent
                 state={props.TestingQuestions}
-                dispatch={props.updateTestAnswers}
+                updateAnswers={props.updateAnswers}
                 questions={el.questions} categoryName={el.name}
                 key={el.id}
               />);

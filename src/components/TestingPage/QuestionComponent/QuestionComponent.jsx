@@ -12,12 +12,9 @@ const QuestionComponent = (props) => {
       question: {
         id: Number(event.target.id)
       },
-      user: {
-        id: 1
-      },
       value: event.target.value
     };
-    props.dispatch(updateAnswers(obj));
+    props.updateAnswers(obj)
     console.log(props.state.answers);
   };
   const questArr = props.questions.map(el => {

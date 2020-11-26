@@ -26,8 +26,12 @@ export const profileReducer = (state = initState, action) => {
       localStorage.setItem('email', copyState.userDto.email);
       for (let i in copyState.radarChart.data) {
         copyState.radarChart.data[i] = Number(copyState.radarChart.data[i]) / 5;
-      }
-      console.log(copyState.radarChart.data);
+      }/*
+      copyState.radarChart = {
+        data: Object.values(copyState.radarChart.data),
+        caption: Object.values(copyState.radarChart.caption)
+      }*/
+      console.log(copyState.radarChart);
       return copyState;
     }
     case 'UPDATE-PROFILE-DATA': {
@@ -50,7 +54,7 @@ export const profileReducer = (state = initState, action) => {
             headers: {
               accessToken: localStorage.getItem('accessKey')
             }
-          })
+          });
       return copyState;
     }
     default: {

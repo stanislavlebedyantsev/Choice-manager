@@ -22,7 +22,7 @@ const Profile = (props) => {
     captionProps: () => ({
       className: 'caption',
       textAnchor: 'middle',
-      fontSize: 10,
+      fontSize: 24,
       fontFamily: 'sans-serif'
     }),
     dotProps: () => ({
@@ -35,6 +35,7 @@ const Profile = (props) => {
       }
     })
   };
+
   return (
     <div>
       <div className={s.background}>
