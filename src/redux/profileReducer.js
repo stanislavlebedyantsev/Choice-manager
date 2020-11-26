@@ -1,7 +1,7 @@
 import * as axios from 'axios';
 
 const initState = {
-  user: {
+  userDto: {
     /*name: '',
     surname: '',
     email: '',
@@ -19,11 +19,11 @@ export const profileReducer = (state = initState, action) => {
       copyState = {
         ...action.data
       };
-      copyState.user.password = '';
-      copyState.user.passwordConfirmation = '';
-
-      localStorage.setItem('username', copyState.user.username);
-      localStorage.setItem('email', copyState.user.email);
+      copyState.userDto.password = '';
+      copyState.userDto.passwordConfirmation = '';
+      console.log(copyState);
+      localStorage.setItem('username', copyState.userDto.username);
+      localStorage.setItem('email', copyState.userDto.email);
       for (let i in copyState.radarChart.data) {
         copyState.radarChart.data[i] = Number(copyState.radarChart.data[i]) / 5;
       }
@@ -34,7 +34,7 @@ export const profileReducer = (state = initState, action) => {
       copyState = {
         ...state
       };
-      copyState.user = {
+      copyState.userDto = {
         ...action.data
       };
       console.log(copyState);
@@ -45,10 +45,10 @@ export const profileReducer = (state = initState, action) => {
         ...state
       };
       axios
-        .put(`http://127.0.0.1:8080/profile`, copyState.user,
+        .put(`http://127.0.0.1:8080/profile/put`, copyState.userDto,
           {
             headers: {
-              accessKey: localStorage.getItem('accessKey')
+              accessToken: localStorage.getItem('accessKey')
             }
           })
       return copyState;

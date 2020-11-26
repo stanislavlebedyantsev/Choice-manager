@@ -27,7 +27,7 @@ const LoginForm = (props) => {
           <div className={s.rightLogin}>
             <h3 className={s.rightLoginh2}>Login</h3>
             <div className={s.rightLoginUser}>
-              <input name="username" placeholder="Username"
+              <input name="usernameOrEmail" placeholder="Username"
                      className={s.login}
                      value={props.loginStateText.usernameOrEmail}
                      onChange={handleChange}/>

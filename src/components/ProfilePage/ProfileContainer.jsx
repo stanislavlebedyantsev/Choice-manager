@@ -7,7 +7,7 @@ import {profilePutOnApi, requestProfileData, updateProfileData} from "../../redu
 class ProfileApiContainer extends React.Component {
   componentDidMount() {
     axios
-      .get(`http://127.0.0.1:8080/user/me/${localStorage.getItem('accessKey')}`,
+      .get(`http://127.0.0.1:8080/profile/me`,
         {
           headers: {
             Authorization: `${localStorage.getItem('tokenType')} ${localStorage.getItem('accessToken')}`
@@ -15,6 +15,7 @@ class ProfileApiContainer extends React.Component {
         })
       .then(response => {
         this.props.getProfileData(response.data);
+        console.log(response.data);
       });
   }
   componentWillUnmount() {

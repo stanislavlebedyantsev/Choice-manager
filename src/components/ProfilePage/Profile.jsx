@@ -43,7 +43,7 @@ const Profile = (props) => {
           <TopSide profilePutState={props.profilePutState}/>
           <div className={s.bottomSide}>
             <BottomLeftText/>
-            <BottomRightInput state={props.state} profileUpdateState={props.profileUpdateState}/>
+            <BottomRightInput state={props.state.userDto} profileUpdateState={props.profileUpdateState}/>
           </div>
           <div>
             {

@@ -16,8 +16,7 @@ export const loginReducer = (state = initState, action) => {
     //fix async troubles
     case 'LOGIN-REQUEST': {
       copyState = {
-        email: state.username,
-        password: state.password
+        ...state
       };
       axios
         .post("http://127.0.0.1:8080/auth/login", {
@@ -25,9 +24,9 @@ export const loginReducer = (state = initState, action) => {
         })
         .then(response => {
           copyState = {...initState};
-          localStorage.setItem('accessToken', response.data.accessKey);
+          localStorage.setItem('accessToken', response.data.accessToken);
           localStorage.setItem('tokenType', response.data.tokenType);
-          window.location.replace('/testing');
+          /*window.location.replace('/testing');*/
           console.log(localStorage.getItem('userId'));
           return copyState;
         })

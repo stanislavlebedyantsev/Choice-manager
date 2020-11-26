@@ -42,14 +42,10 @@ export const testingReducer = (state = initState, action) => {
       for (let i of copyState.categories) {
         countOfQuests += i.questions.length;
       }
-      const userId = Number(localStorage.getItem('userId'))
       for (let i = 0; i < countOfQuests; i++) {
         copyState.answers[i] = {
           question: {
             id: i + 1
-          },
-          user: {
-            id: userId
           },
           value: "2.5"
         };
@@ -82,7 +78,7 @@ export const testingReducer = (state = initState, action) => {
           ...copyState
         }, {
           headers:{
-            h:1123
+            Authorization: `${localStorage.getItem('tokenType')} ${localStorage.getItem('accessToken')}`
           }
         })
         .then(response => {

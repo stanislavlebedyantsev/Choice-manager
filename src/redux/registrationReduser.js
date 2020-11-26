@@ -1,12 +1,6 @@
 import * as axios from "axios";
 
 const initState = {
-  login: '',
-  email: '',
-  password: '',
-  passwordConfirmation: '',
-  name: '',
-  surname: ''
 };
 
 export const registrationReducer = (state = initState, action) => {

@@ -37,7 +37,7 @@ const RegForm = (props) => {
                      className={s.email}
                      value={props.registrationStateText.email}
                      onChange={handleChange}/>
-              <input name="login" placeholder="Username"
+              <input name="username" placeholder="Username"
                      className={s.username}
                      value={props.registrationStateText.login}
                      onChange={handleChange}/>
