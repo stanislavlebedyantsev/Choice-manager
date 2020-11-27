@@ -35,18 +35,13 @@ const StartPage = (props) => {
                 </li>
                 <li>
                     <div className={s.container}>
-                        <div className={s.ourStory}>Our story</div>
+                        <div className={s.ourStory}></div>
                         <div className={s.containerText}>
                             <div className={s.leftText}>
                                 I am thankful for all of those who said NO to me. It’s because of them I’m doing it myself
                             </div>
                             <div className={s.rightText}>
-                                <blockquote>
-                                    <p>Since everything is in our heads, we had better not lose them.</p>
-                                    <footer>— <cite>Coco Chanel</cite></footer>
-                                    <p>Since everything is in our heads, we had better not lose them.</p>
-                                    <footer>— <cite>Coco Chanel</cite></footer>
-                                </blockquote>
+                                (c) ALbert Einstein
                             </div>
                         </div>
                     </div>
