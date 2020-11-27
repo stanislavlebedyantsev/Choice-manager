@@ -8,6 +8,7 @@ const StartPage = (props) => {
         <div className={s.logo}>
             <div>
             <ul className={s.body_slides}>
+                <div >
                 <li>
                     <div className={s.slider1}>
                         <div className={s.slider1H1}>
@@ -26,15 +27,31 @@ const StartPage = (props) => {
                         <div className={s.overText}>
                             <div className={s.overText2}></div>
                         </div>
-                        <div className={s.slider2Text}>Just<br/> DO<br/> IT</div>
+                        <div className={s.slider2Text}>JUST<br/> DO<br/> IT</div>
                         <div className={s.underText}>
                             <div className={s.underText2}></div>
                         </div>
                     </div>
                 </li>
                 <li>
-                    <div>asdasd</div>
+                    <div className={s.container}>
+                        <div className={s.ourStory}>Our story</div>
+                        <div className={s.containerText}>
+                            <div className={s.leftText}>
+                                I am thankful for all of those who said NO to me. It’s because of them I’m doing it myself
+                            </div>
+                            <div className={s.rightText}>
+                                <blockquote>
+                                    <p>Since everything is in our heads, we had better not lose them.</p>
+                                    <footer>— <cite>Coco Chanel</cite></footer>
+                                    <p>Since everything is in our heads, we had better not lose them.</p>
+                                    <footer>— <cite>Coco Chanel</cite></footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
                 </li>
+                </div>
             </ul>
             </div>
             <div>
