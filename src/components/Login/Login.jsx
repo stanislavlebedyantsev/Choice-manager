@@ -5,11 +5,14 @@ import {LoginHeader} from "./LoginFormComponents/LoginHeader";
 import {LoginFooter} from "./LoginFormComponents/LoginFooter";
 import LoginForm from "./LoginFormComponents/LoginForm";
 import SocialsLogin from "./LoginFormComponents/SocialsLogin";
+import preloader from "../../images/Preloader.svg";
 
 
 const Login = (props) => {
   const handleClick = () => {
+    props.toggleIsFetching(true)
     props.loginRequest();
+    props.toggleIsFetching(false)
   };
   const handleChange = (event) => {
     let obj = {
@@ -22,18 +25,25 @@ const Login = (props) => {
     props.loginUpdateText(obj);
   };
   return (
-    <div className={s.background}>
-      <div className={s.container}>
-        <div className={s.rightSide}>
-          <LoginHeader/>
-          <SocialsLogin/>
-          <LoginForm handleChange={handleChange}
-          handleClick={handleClick}
-          stateText={props.loginStateText}/>
-          <LoginFooter/>
+    <>
+      {props.isFetching ?
+        (<div className={s.preloader}>
+          <img src={preloader}/>
+        </div>) :
+        <div className={s.background}>
+          <div className={s.container}>
+            <div className={s.rightSide}>
+              <LoginHeader/>
+              <SocialsLogin/>
+              <LoginForm handleChange={handleChange}
+                         handleClick={handleClick}
+                         stateText={props.loginStateText}/>
+              <LoginFooter/>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      }
+    </>
   );
 };
 export default Login;

@@ -38,7 +38,7 @@
     -ms-animation: anim_slides 18s linear infinite 0s;
     animation: anim_slides 18s linear infinite 0s;
 }
-/*.body_slides li:nth-child(1){
+.body_slides li:nth-child(1){
     background-color: #2d6786;
     background-image: url("../../images/slider1.png");
     background-size: 100% 100%;
@@ -48,7 +48,7 @@
     -moz-animation-delay: 5.0s;
     background-image: url("../../images/slider2.png");
     background-size: 100% 100%;
-}*/
+}
 .body_slides li:nth-child(3){
     -webkit-animation-delay: 10.0s;
     -moz-animation-delay: 10.0s;

@@ -1,12 +1,13 @@
-.container{
+.container {
     max-width: 1330px;
     margin: auto;
 }
-.answerBlock{
+
+.answerBlock {
     margin-bottom: 20px;
 }
 
-.answerBlock textarea{
+.answerBlock textarea {
     resize: none;
     height: 100px;
     width: 300px;
@@ -23,11 +24,20 @@
     border-color: black;
     outline: none;
 }
-.button:hover{
+
+.preloader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.button:hover {
     color: #ffffff;
     background: #32b5ed;
     box-shadow: 0 0 10px #1fafed;
 }
-.button:active{
+
+.button:active {
     color: #ffffff;
 }

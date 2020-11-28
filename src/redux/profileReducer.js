@@ -57,6 +57,9 @@ export const profileReducer = (state = initState, action) => {
           });
       return copyState;
     }
+    case 'TOGGLE-IS-FETCHING': {
+      return {...state, isFetching: action.data};
+    }
     default: {
       return state;
     }
@@ -66,3 +69,4 @@ export const profileReducer = (state = initState, action) => {
 export const requestProfileData = (data) => ({type: 'GET-PROFILE-DATA', data});
 export const updateProfileData = (data) => ({type: 'UPDATE-PROFILE-DATA', data});
 export const profilePutOnApi = () => ({type: 'PUT-PROFILE-DATA'});
+export const toggleIsFetching = (data) => ({type: 'TOGGLE-IS-FETCHING', data});

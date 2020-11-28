@@ -5,6 +5,9 @@ import * as axios from 'axios';
 import {profilePutOnApi, requestProfileData, updateProfileData} from "../../redux/profileReducer";
 import ApexCharts from 'apexcharts';
 import ReactApexChart from 'apexcharts';
+import {toggleIsFetching} from "../../redux/testingReducer";
+import s from "../TestingPage/TestingForm.module.css";
+import preloader from "../../images/Preloader.svg";
 
 
 /*class ApexChart extends React.Component {
@@ -43,6 +46,7 @@ class ProfileApiContainer extends React.Component {
   }*/
 
   componentDidMount() {
+    this.props.toggleIsFetching(true);
     axios
       .get(`http://127.0.0.1:8080/profile/me`,
         {
@@ -52,7 +56,7 @@ class ProfileApiContainer extends React.Component {
         })
       .then(response => {
         this.props.getProfileData(response.data);
-        console.log(response.data);
+        this.props.toggleIsFetching(false);
       });
   }
 
@@ -68,23 +72,31 @@ class ProfileApiContainer extends React.Component {
   }*/
   render() {
     return (
-      <div ref={this.contentRef}>
-        <Profile state={this.props.profileStateData}
-                 profileUpdateState={this.props.profileUpdateText}
-                 profilePutState={this.props.profilePutUpdates}/>
-        {
-          /*this.props.profileStateData.radarChart.data && this.props.profileStateData.radarChart.caption ?
-            this.chart
-            : <div/>*/
+      <>
+        {this.props.isFetching ?
+          (<div className={s.preloader}>
+            <img src={preloader}/>
+          </div>) :
+          <div ref={this.contentRef}>
+            <Profile state={this.props.profileStateData}
+                     profileUpdateState={this.props.profileUpdateText}
+                     profilePutState={this.props.profilePutUpdates}/>
+            {
+              /*this.props.profileStateData.radarChart.data && this.props.profileStateData.radarChart.caption ?
+                this.chart
+                : <div/>*/
+            }
+          </div>
         }
-      </div>
+      </>
     );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    profileStateData: state.profilePage
+    profileStateData: state.profilePage,
+    isFetching: state.testingPage.isFetching
   };
 };
 
@@ -98,6 +110,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     profilePutUpdates: () => {
       dispatch(profilePutOnApi());
+    },
+    toggleIsFetching: (isFetching) => {
+      dispatch(toggleIsFetching(isFetching));
     }
   };
 };

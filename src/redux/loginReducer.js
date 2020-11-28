@@ -36,12 +36,16 @@ export const loginReducer = (state = initState, action) => {
       return copyState;
 
     }
+    case 'TOGGLE-IS-FETCHING': {
+      return {...state, isFetching: action.data};
+    }
     default:
       return state;
   }
 
 };
 
+export const toggleIsFetching = (data) => ({type: 'TOGGLE-IS-FETCHING', data});
 export const updateLoginTextCreator = (newData) => ({type: 'LOGIN-UPDATE-TEXT', newData});
 export const requestLoginCreator = () => ({type: 'LOGIN-REQUEST'});
 

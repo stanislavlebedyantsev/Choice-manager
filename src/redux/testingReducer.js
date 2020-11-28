@@ -25,8 +25,8 @@ const initState = {
       },
       value: ""
     }*/
-  ]
-
+  ],
+  isFetching: false
 };
 
 export const testingReducer = (state = initState, action) => {
@@ -50,11 +50,11 @@ export const testingReducer = (state = initState, action) => {
           value: "2.5"
         };
       }
-      copyState.categories.forEach(el =>{
-        el.questions.forEach(el =>{
-          if(el.type === "special") copyState.answers[el.id - 1].value = ''
-        })
-      })
+      copyState.categories.forEach(el => {
+        el.questions.forEach(el => {
+          if (el.type === "special") copyState.answers[el.id - 1].value = '';
+        });
+      });
       return copyState;
     }
     case 'UPDATE-ANSWERS': {
@@ -77,12 +77,11 @@ export const testingReducer = (state = initState, action) => {
         .post("http://127.0.0.1:8080/test", {
           ...copyState
         }, {
-          headers:{
+          headers: {
             Authorization: `${localStorage.getItem('tokenType')} ${localStorage.getItem('accessToken')}`
           }
         })
         .then(response => {
-          console.log(response.data);
           copyState = {...initState};
           return copyState;
         }).then(() => {
@@ -91,9 +90,13 @@ export const testingReducer = (state = initState, action) => {
       })
         .catch(() => {
           //temp redirect
+          taskList.isFetching = false
           alert('Server connection error');
+          return taskList;
         });
-      return taskList;
+    }
+    case 'TOGGLE-IS-FETCHING': {
+      return {...state, isFetching: action.data};
     }
     default:
       copyState = state;
@@ -105,3 +108,4 @@ export const testingReducer = (state = initState, action) => {
 export const getTestingQuestions = (data) => ({type: 'TESTING-GET-QUESTIONS', data});
 export const updateAnswers = (data) => ({type: 'UPDATE-ANSWERS', data});
 export const postAnswers = () => ({type: 'POST-ANSWERS'});
+export const toggleIsFetching = (data) => ({type: 'TOGGLE-IS-FETCHING', data});

@@ -24,7 +24,7 @@ const Testing = (props) => {
         {
           props.TestingQuestions.categories.length !== 0 ?
             <button className={s.button} onClick={props.postAnswers}>Send testing data</button>
-            : <div/>
+            : null
 
         }
       </div>
