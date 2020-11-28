@@ -5,7 +5,7 @@ import * as axios from 'axios';
 import {profilePutOnApi, requestProfileData, updateProfileData} from "../../redux/profileReducer";
 import ApexCharts from 'apexcharts';
 import ReactApexChart from 'apexcharts';
-import {toggleIsFetching} from "../../redux/testingReducer";
+import {toggleIsFetching} from "../../redux/profileReducer";
 import s from "../TestingPage/TestingForm.module.css";
 import preloader from "../../images/Preloader.svg";
 
@@ -96,7 +96,7 @@ class ProfileApiContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     profileStateData: state.profilePage,
-    isFetching: state.testingPage.isFetching
+    isFetching: state.profilePage.isFetching
   };
 };
 

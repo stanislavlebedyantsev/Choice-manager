@@ -7,7 +7,7 @@ import About from "./components/About/About";
 import checkEmail from "./components/Registration/CheckEmail";
 import StartPage from "./components/StartPage/StartPage";
 import TestingContainer from "./components/TestingPage/TestingContainer";
-import Goals from "./components/GoalPage/Goals";
+import GoalContainer from "./components/GoalPage/GoalContainer";
 import ProfileContainer from "./components/ProfilePage/ProfileContainer";
 
 function App(props) {
@@ -21,7 +21,7 @@ function App(props) {
           <Route path={"/checkEmail"} render={() => <checkEmail/>}/>
           <Route path={"/profile"} render={() => <ProfileContainer/>}/>
           <Route path={"/testing"} render={() => <TestingContainer/>}/>
-          <Route path={"/goals"} render={() => <Goals/>}/>
+          <Route path={"/goals"} render={() => <GoalContainer/>}/>
           <Route exact path={"/"} render={() => <StartPage/>}/>
         </div>
       </div>

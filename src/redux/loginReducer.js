@@ -2,7 +2,8 @@ import * as axios from 'axios';
 
 const initState = {
   usernameOrEmail: '',
-  password: ''
+  password: '',
+  isFetching: false
 };
 
 export const loginReducer = (state = initState, action) => {

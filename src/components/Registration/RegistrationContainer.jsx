@@ -1,6 +1,6 @@
 import RegForm from "./RegForm";
 import React from "react";
-import {requestRegistrationCreator, updateRegistrationTextCreator} from "../../redux/registrationReduser";
+import {requestRegistrationCreator, updateRegistrationTextCreator} from "../../redux/registrationReducer";
 import {connect} from "react-redux";
 import LoginContainer from "../Login/LoginContainer";
 

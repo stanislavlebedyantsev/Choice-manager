@@ -8,7 +8,8 @@ const initState = {
     password:'',
     passwordConfirmation:''*/
   },
-  radarChart: {}
+  radarChart: {},
+  isFetching: false
 };
 
 export const profileReducer = (state = initState, action) => {
