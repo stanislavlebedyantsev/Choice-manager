@@ -4,15 +4,43 @@ import s from "./Goals.module.css";
 import Header from "../Header/Header";
 import GoalComponent from "./GoalsComponents/GoalComponent";
 import Footer from "../Footer/Footer";
-import {toggleEdit, updateTask} from "../../redux/goalsReducer";
+import {
+  addSubtask, addTaskAc, deleteTask, deleteTaskAc,
+  putEditedTaskAc,
+  subtaskIsDoneChange,
+  toggleEdit,
+  updateSubtask,
+  updateTask
+} from "../../redux/goalsReducer";
 
 
 class GoalApiComponent extends React.Component {
-  toggleEditBtn(){
-    this.props.toggleEdit()
+  toggleEditBtn(id) {
+    this.props.toggleEdit(id);
   }
-  EditGoal(data){
-    this.props.EditGoals(data)
+
+  editGoal(data) {
+    this.props.editGoals(data);
+  }
+  editSubtask(data) {
+    this.props.editSubtask(data);
+  }
+
+  putEditedTaskBtn(obj) {
+    this.props.putEditedTask(obj);
+  }
+
+  subtaskStateChange(obj) {
+    this.props.subtaskIsDoneChange(obj);
+  }
+  addStateSubtask(obj){
+    this.props.addSubtask(obj)
+  }
+  deleteTask(obj){
+    this.props.deleteTask(obj)
+  }
+  addNewTask(){
+    this.props.addTask()
   }
   render() {
     return (
@@ -26,12 +54,16 @@ class GoalApiComponent extends React.Component {
                 <GoalComponent state={el}
                                isEdit={this.props.isEdit}
                                toogleEditBtn={this.toggleEditBtn.bind(this)}
-                               EditGoal={this.EditGoal.bind(this)}
+                               editGoal={this.editGoal.bind(this)}
+                               putEditedTask={this.putEditedTaskBtn.bind(this)}
+                               subtaskIsDoneChange={this.subtaskStateChange.bind(this)}
+                               editSubtask={this.editSubtask.bind(this)}
+                               addSubtask={this.addStateSubtask.bind(this)}
+                               deleteTask={this.deleteTask.bind(this)}
                 />
               ))
             }
-
-            <button className={s.addGoalBtn}/>
+            <button className={s.addGoalBtn} onClick={this.addNewTask.bind(this)}/>
           </div>
         </div>
         <Footer/>
@@ -50,11 +82,29 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleEdit: () => {
-      dispatch(toggleEdit())
+    toggleEdit: (data) => {
+      dispatch(toggleEdit(data));
     },
-    EditGoals: (obj) => {
-      dispatch(updateTask(obj))
+    editGoals: (obj) => {
+      dispatch(updateTask(obj));
+    },
+    editSubtask: (obj) => {
+      dispatch(updateSubtask(obj));
+    },
+    addSubtask: (obj) => {
+      dispatch(addSubtask(obj));
+    },
+    putEditedTask: (obj) => {
+      dispatch(putEditedTaskAc(obj));
+    },
+    deleteTask: (obj) => {
+      dispatch(deleteTaskAc(obj));
+    },
+    addTask: () => {
+      dispatch(addTaskAc());
+    },
+    subtaskIsDoneChange: (obj) => {
+      dispatch(subtaskIsDoneChange(obj));
     }
   };
 };

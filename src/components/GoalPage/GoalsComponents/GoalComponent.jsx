@@ -10,13 +10,18 @@ const GoalComponent = (props) => {
       ...obj,
       [event.target.name]: event.target.value
     };
-    props.EditGoal(obj);
-    console.log(props.state);
+    props.editGoal(obj);
   };
   const handleClick = (event) => {
-    console.log(event.target.name);
-    if (event.target.name === 'edit') {
-      props.toogleEditBtn();
+    if (event.target.name === 'edit' && !props.state.isEdit) {
+      props.toogleEditBtn(Number(props.state.id));
+    } else if (event.target.name === 'edit' && props.state.isEdit) {
+      props.putEditedTask(props.state);
+    } else if (event.target.name === 'addSubtask') {
+      props.addSubtask(props.state.id)
+    }
+    else if (event.target.name === 'delete') {
+      props.deleteTask(props.state.id)
     }
   };
   return (
@@ -24,19 +29,21 @@ const GoalComponent = (props) => {
       <div>
         <div className={s.buttons}>
           <button className={s.editButton} name={'edit'} onClick={handleClick}/>
-          <button className={s.deleteButton}/>
+          <button className={s.deleteButton} name={'delete'} onClick={handleClick}/>
         </div>
         <div className={s.goalNameH6}>
           {
-            props.isEdit ?
+            props.state.isEdit ?
               (
                 <div>
                   <p><input className={s.editInput} name={"name"} value={props.state.name}
+                            placeholder={'Type title of your goal'}
                             onChange={handleChange}/>
                   </p>
                   <p><input className={s.editInput}
-                                                             name={"explanations"} value={props.state.explanations}
-                                                             onChange={handleChange}/>
+                            name={"explanations"} value={props.state.explanations}
+                            placeholder={'Type your goal'}
+                            onChange={handleChange}/>
                   </p>
                 </div>
               )
@@ -50,8 +57,17 @@ const GoalComponent = (props) => {
           }
         </div>
         <progress className={s.progressBar} value="57" max="100"/>
-        <SubtaskComponent/>
-        <button>Add subtask</button>
+        {props.state.tasks.map(el => (
+          <SubtaskComponent subtaskState={el}
+                            taskId={props.state.id}
+                            subtaskIsDoneChange={props.subtaskIsDoneChange}
+                            isEdit={props.state.isEdit}
+                            editSubtask={props.editSubtask}
+          />
+        ))}
+        {props.state.isEdit ?
+          <button name={'addSubtask'} onClick={handleClick}>Add subtask</button>
+          : null}
         <button>Complete task</button>
       </div>
     </div>
