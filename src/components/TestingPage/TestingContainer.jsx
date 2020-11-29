@@ -13,8 +13,12 @@ class TestingApiContainer extends React.Component {
       .get('http://127.0.0.1:8080/test')
       .then(response => {
         this.props.getTest(response.data);
+        /*if(!this.props.TestingQuestions.isTesting){
+          window.location.href = '/goals'
+        }*/
         this.props.toggleIsFetching(false)
-      });
+      })
+      .catch();
   }
 
   postAnswers() {

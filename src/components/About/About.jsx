@@ -6,7 +6,7 @@ import {Route, NavLink} from "react-router-dom";
 const About = (props) => {
   return (
     <div className={s.background}>
-      <Header/>
+      {/*<Header/>*/}
       <div className={s.content}>
         <div className={s.topSide}>
           <p className={s.aboutUsP}>ABOUT US</p>

@@ -17,7 +17,6 @@ function App(props) {
         <div>
           <Route path={"/login"} render={() =>  <LoginContainer/>}/>
           <Route path={"/registration"} render={() => <Registration/>}/>
-          <Route path={"/about"} render={() => <About/>}/>
           <Route path={"/checkEmail"} render={() => <checkEmail/>}/>
           <Route path={"/profile"} render={() => <ProfileContainer/>}/>
           <Route path={"/testing"} render={() => <TestingContainer/>}/>

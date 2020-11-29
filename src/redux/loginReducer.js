@@ -27,8 +27,7 @@ export const loginReducer = (state = initState, action) => {
           copyState = {...initState};
           localStorage.setItem('accessToken', response.data.accessToken);
           localStorage.setItem('tokenType', response.data.tokenType);
-          /*window.location.replace('/testing');*/
-          console.log(localStorage.getItem('userId'));
+          window.location.href = '/testing';
           return copyState;
         })
         .catch(() => {

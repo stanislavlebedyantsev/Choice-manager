@@ -26,7 +26,8 @@ const initState = {
       value: ""
     }*/
   ],
-  isFetching: false
+  isFetching: false,
+  isTesting: false
 };
 
 export const testingReducer = (state = initState, action) => {
@@ -37,7 +38,8 @@ export const testingReducer = (state = initState, action) => {
       copyState = {...state};
       copyState = {
         ...copyState,
-        categories: action.data.categories
+        categories: action.data.categories,
+        isTesting: action.data.isTesting
       };
       for (let i of copyState.categories) {
         countOfQuests += i.questions.length;
@@ -86,7 +88,7 @@ export const testingReducer = (state = initState, action) => {
           return copyState;
         }).then(() => {
         //change it to normal redirect
-        /*window.location.href = '/profile';*/
+        window.location.href = '/profile';
       })
         .catch(() => {
           //temp redirect

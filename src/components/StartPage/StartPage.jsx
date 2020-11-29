@@ -41,7 +41,7 @@ const StartPage = (props) => {
                                 I am thankful for all of those who said NO to me. It’s because of them I’m doing it myself
                             </div>
                             <div className={s.rightText}>
-                                (c) ALbert Einstein
+                                 Albert Einstein
                             </div>
                         </div>
                     </div>
