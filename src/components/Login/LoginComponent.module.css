@@ -1,7 +1,8 @@
 .background {
     background-image: url("../../images/bgImage.jpg");
-    height: 945px;
+    height: 825px;
     background-size: 100% 100%;
+    padding: 70px 0px;
 }
 
 .container {
@@ -18,6 +19,7 @@
 }
 
 .leftSide {
+    margin-top: 30px;
     grid-column: 1;
     grid-row: 1;
     display: grid;
@@ -26,10 +28,7 @@
     /*background: linear-gradient(45deg, deepskyblue, DodgerBlue);*/
 }
 .socials{
-    grid-column: 1;
-    grid-row: 2;
-    display: grid;
-    grid-template-columns: 580px;
+    padding: 10px 0px;
 }
 .leftHeader {
     grid-column: 1;
@@ -80,8 +79,9 @@
     grid-row: 1;
     display: grid;
     grid-template-columns: 580px;
-    grid-template-rows: 100px 150px 175px;
+    grid-template-rows: 100px 150px 175px 300px;
     background: #ffffff;
+    border-radius: 20px;
 }
 
 .rightHeader {
@@ -102,7 +102,14 @@
     grid-row: 4;
     padding-left: 80px;
     margin-top: 110px;
-    margin-bottom: 200px;
+    margin-bottom: 20px;
+}
+
+.signGoogle{
+    grid-column: 1;
+    grid-row: 4;
+    margin-top: 60px;
+    padding-left: 80px;
 }
 
 .rightH1 {
@@ -176,4 +183,6 @@ h3 {
     font-family: Kurale, sans-serif;
     color: ghostwhite;
 }
+
+
 

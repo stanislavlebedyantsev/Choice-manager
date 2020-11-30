@@ -73,6 +73,8 @@
 }*/
 
 .rightSide{
+    border-radius: 20px;
+    margin-top: 50px;
     grid-column: 2;
     grid-row:1;
     display:grid;
