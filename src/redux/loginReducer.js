@@ -46,6 +46,6 @@ export const loginReducer = (state = initState, action) => {
 };
 
 export const toggleIsFetching = (data) => ({type: 'TOGGLE-IS-FETCHING', data});
-export const updateLoginTextCreator = (newData) => ({type: 'LOGIN-UPDATE-TEXT', newData});
-export const requestLoginCreator = () => ({type: 'LOGIN-REQUEST'});
+export const loginUpdateText = (newData) => ({type: 'LOGIN-UPDATE-TEXT', newData});
+export const loginRequest = () => ({type: 'LOGIN-REQUEST'});
 

@@ -1,16 +1,13 @@
 import React from 'react';
 import {connect} from "react-redux";
 import s from "./Goals.module.css";
-import Header from "../Header/Header";
+import Header from "../common/Header/Header";
 import GoalComponent from "./GoalsComponents/GoalComponent";
-import Footer from "../Footer/Footer";
+import Footer from "../common/Footer/Footer";
 import {
-  addSubtask, addTaskAc, deleteTask, deleteTaskAc,
-  putEditedTaskAc,
+  addSubtask, addTask, deleteTask, editGoals, editSubtask, putEditedTask,
   subtaskIsDoneChange,
-  toggleEdit,
-  updateSubtask,
-  updateTask
+  toggleEdit
 } from "../../redux/goalsReducer";
 
 
@@ -19,9 +16,11 @@ class GoalApiComponent extends React.Component {
     this.props.toggleEdit(id);
   }
 
+
   editGoal(data) {
     this.props.editGoals(data);
   }
+
   editSubtask(data) {
     this.props.editSubtask(data);
   }
@@ -33,15 +32,19 @@ class GoalApiComponent extends React.Component {
   subtaskStateChange(obj) {
     this.props.subtaskIsDoneChange(obj);
   }
-  addStateSubtask(obj){
-    this.props.addSubtask(obj)
+
+  addStateSubtask(obj) {
+    this.props.addSubtask(obj);
   }
-  deleteTask(obj){
-    this.props.deleteTask(obj)
+
+  deleteTask(obj) {
+    this.props.deleteTask(obj);
   }
-  addNewTask(){
-    this.props.addTask()
+
+  addNewTask() {
+    this.props.addTask();
   }
+
   render() {
     return (
       <div className={s.background}>
@@ -72,41 +75,21 @@ class GoalApiComponent extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    goalsStateData: state.goalsPage,
-    isFetching: state.goalsPage.isFetching,
-    isEdit: state.goalsPage.isEdit
-  };
-};
+const mapStateToProps = (state) => ({
+  goalsStateData: state.goalsPage,
+  isFetching: state.goalsPage.isFetching,
+  isEdit: state.goalsPage.isEdit
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    toggleEdit: (data) => {
-      dispatch(toggleEdit(data));
-    },
-    editGoals: (obj) => {
-      dispatch(updateTask(obj));
-    },
-    editSubtask: (obj) => {
-      dispatch(updateSubtask(obj));
-    },
-    addSubtask: (obj) => {
-      dispatch(addSubtask(obj));
-    },
-    putEditedTask: (obj) => {
-      dispatch(putEditedTaskAc(obj));
-    },
-    deleteTask: (obj) => {
-      dispatch(deleteTaskAc(obj));
-    },
-    addTask: () => {
-      dispatch(addTaskAc());
-    },
-    subtaskIsDoneChange: (obj) => {
-      dispatch(subtaskIsDoneChange(obj));
-    }
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(GoalApiComponent);
+
+export default connect(mapStateToProps, {
+  toggleEdit,
+  editGoals,
+  editSubtask,
+  addSubtask,
+  putEditedTask,
+  deleteTask,
+  addTask,
+  subtaskIsDoneChange
+})(GoalApiComponent);

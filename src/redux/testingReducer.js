@@ -63,11 +63,12 @@ export const testingReducer = (state = initState, action) => {
       copyState = {...state};
       copyState = {
         ...copyState,
-        answers: [...action.data.data]
+        answers: [...action.data]
       };
       return copyState;
     }
     case 'POST-ANSWERS': {
+      debugger
       let taskList = {
         ...state
       };
@@ -85,17 +86,17 @@ export const testingReducer = (state = initState, action) => {
         })
         .then(response => {
           copyState = {...initState};
-          return copyState;
-        }).then(() => {
-        //change it to normal redirect
-        window.location.href = '/profile';
-      })
+        })
+        .then(() => {
+          //change it to normal redirect
+          window.location.href = '/profile';
+        })
         .catch(() => {
           //temp redirect
-          taskList.isFetching = false
+          taskList.isFetching = false;
           alert('Server connection error');
-          return taskList;
         });
+      return initState;
     }
     case 'TOGGLE-IS-FETCHING': {
       return {...state, isFetching: action.data};
@@ -107,7 +108,7 @@ export const testingReducer = (state = initState, action) => {
 };
 
 
-export const getTestingQuestions = (data) => ({type: 'TESTING-GET-QUESTIONS', data});
-export const updateAnswers = (data) => ({type: 'UPDATE-ANSWERS', data});
-export const postAnswers = () => ({type: 'POST-ANSWERS'});
+export const getTest = (data) => ({type: 'TESTING-GET-QUESTIONS', data});
+export const updateTestAnswers = (data) => ({type: 'UPDATE-ANSWERS', data});
+export const postAnswersData = () => ({type: 'POST-ANSWERS'});
 export const toggleIsFetching = (data) => ({type: 'TOGGLE-IS-FETCHING', data});

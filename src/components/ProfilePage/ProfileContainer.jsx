@@ -2,12 +2,15 @@ import React from 'react';
 import {connect} from "react-redux";
 import Profile from "./Profile";
 import * as axios from 'axios';
-import {profilePutOnApi, requestProfileData, updateProfileData} from "../../redux/profileReducer";
+import {
+  getProfileData,
+  profilePutUpdates,
+  profileUpdateText,
+} from "../../redux/profileReducer";
 import ApexCharts from 'apexcharts';
 import ReactApexChart from 'apexcharts';
 import {toggleIsFetching} from "../../redux/profileReducer";
-import s from "../TestingPage/TestingForm.module.css";
-import preloader from "../../images/Preloader.svg";
+import Preloader from "../common/Preloader/Preloader";
 
 
 /*class ApexChart extends React.Component {
@@ -74,9 +77,7 @@ class ProfileApiContainer extends React.Component {
     return (
       <>
         {this.props.isFetching ?
-          (<div className={s.preloader}>
-            <img src={preloader}/>
-          </div>) :
+          (<Preloader/>) :
           <div ref={this.contentRef}>
             <Profile state={this.props.profileStateData}
                      profileUpdateState={this.props.profileUpdateText}
@@ -93,28 +94,15 @@ class ProfileApiContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    profileStateData: state.profilePage,
-    isFetching: state.profilePage.isFetching
-  };
-};
+const mapStateToProps = (state) => ({
+  profileStateData: state.profilePage,
+  isFetching: state.profilePage.isFetching
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getProfileData: (obj) => {
-      dispatch(requestProfileData(obj));
-    },
-    profileUpdateText: (obj) => {
-      dispatch(updateProfileData(obj));
-    },
-    profilePutUpdates: () => {
-      dispatch(profilePutOnApi());
-    },
-    toggleIsFetching: (isFetching) => {
-      dispatch(toggleIsFetching(isFetching));
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileApiContainer);
+export default connect(mapStateToProps,
+  {
+    getProfileData,
+    profileUpdateText,
+    profilePutUpdates,
+    toggleIsFetching
+  })(ProfileApiContainer);

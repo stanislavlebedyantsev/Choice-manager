@@ -126,11 +126,11 @@ export const goalsReducer = (state = initState, action) => {
   }
 };
 
-export const updateTask = (data) => ({type: 'EDIT-TASK', data});
-export const updateSubtask = (data) => ({type: 'EDIT-SUBTASK', data});
+export const editGoals = (data) => ({type: 'EDIT-TASK', data});
+export const editSubtask = (data) => ({type: 'EDIT-SUBTASK', data});
 export const toggleEdit = (data) => ({type: 'TOGGLE-EDIT', data});
-export const putEditedTaskAc = (data) => ({type: 'PUT-EDITED-TASK', data});
+export const putEditedTask = (data) => ({type: 'PUT-EDITED-TASK', data});
 export const subtaskIsDoneChange = (data) => ({type: 'TOGGLE-SUBTASK', data});
 export const addSubtask = (data) => ({type: 'ADD-SUBTASK', data});
-export const deleteTaskAc = (data) => ({type: 'DELETE-TASK', data});
-export const addTaskAc = () => ({type: 'ADD-TASK'});
+export const deleteTask = (data) => ({type: 'DELETE-TASK', data});
+export const addTask = () => ({type: 'ADD-TASK'});

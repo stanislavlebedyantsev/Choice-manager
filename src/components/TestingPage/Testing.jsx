@@ -1,7 +1,7 @@
-import Header from "../Header/Header";
+import Header from "../common/Header/Header";
 import s from "./TestingForm.module.css";
 import QuestionComponent from "./QuestionComponent/QuestionComponent";
-import Footer from "../Footer/Footer";
+import Footer from "../common/Footer/Footer";
 
 const Testing = (props) => {
   return (

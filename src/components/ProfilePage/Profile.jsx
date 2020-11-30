@@ -1,9 +1,9 @@
 import s from "./Profile.module.css";
-import Header from "../Header/Header";
+import Header from "../common/Header/Header";
 import TopSide from "./topSide/topSide";
 import BottomLeftText from "./bottomLeftText/bottomLeftText";
 import BottomRightInput from "./bottomRightInput/bottomRightInput";
-import Footer from "../Footer/Footer";
+import Footer from "../common/Footer/Footer";
 import RadarChart from 'react-svg-radar-chart';
 import 'react-svg-radar-chart/build/css/index.css';
 

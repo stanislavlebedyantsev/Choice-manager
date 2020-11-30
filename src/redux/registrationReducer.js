@@ -36,5 +36,5 @@ export const registrationReducer = (state = initState, action) => {
 
 };
 
-export const updateRegistrationTextCreator = (newData) => ({type: 'REGISTRATION-UPDATE-TEXT', newData});
-export const requestRegistrationCreator = () => ({type: 'REGISTRATION-REQUEST'});
+export const registrationUpdateText = (newData) => ({type: 'REGISTRATION-UPDATE-TEXT', newData});
+export const registrationRequest = () => ({type: 'REGISTRATION-REQUEST'});

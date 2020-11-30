@@ -1,6 +1,6 @@
 import s from './About.module.css';
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import Header from "../common/Header/Header";
+import Footer from "../common/Footer/Footer";
 import {Route, NavLink} from "react-router-dom";
 
 const About = (props) => {
