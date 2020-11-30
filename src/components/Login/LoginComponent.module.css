@@ -101,15 +101,45 @@
     grid-column: 1;
     grid-row: 4;
     padding-left: 80px;
-    margin-top: 110px;
+    margin-top: 140px;
     margin-bottom: 20px;
 }
 
-.signGoogle{
+/* google and facebook wrapper */
+
+.signFrom{
     grid-column: 1;
     grid-row: 4;
     margin-top: 60px;
     padding-left: 80px;
+}
+
+.signGoogle{
+    padding: 10px;
+    border: 2px solid;
+    text-decoration: none;
+    outline: none;
+    margin-left: 2em;
+    background-color: #2d6786;
+    display: inline-block;
+}
+
+.googleIcon{
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+}
+
+.googleText{
+    margin-top: 0px;
+}
+
+.signFacebook{
+    padding: 10px;
+    border: 2px solid;
+    margin-left: 3em;
+    background-color: #f2ebff;
+    display: inline-block;
 }
 
 .rightH1 {

@@ -12,8 +12,9 @@ export const GITHUB_AUTH_URL = API_BASE_URL + '/oauth2/authorize/github?redirect
 
 const SocialsLogin= (props) =>{
   return(
-    <div className={s.signGoogle}>
-      <a href={GOOGLE_AUTH_URL}>Login with Google </a>
+    <div className={s.signFrom}>
+        <a href={GOOGLE_AUTH_URL} className={s.signGoogle}>Login with Google</a>
+        <a href={GOOGLE_AUTH_URL} className={s.signFacebook}>Login with Facebook </a>
     </div>
   )
 }
