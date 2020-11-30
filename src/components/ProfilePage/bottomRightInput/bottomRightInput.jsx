@@ -12,23 +12,29 @@ const bottomRightInput = (props) => {
     props.profileUpdateState(obj);
   };
   return (
-    <div className={s.bottomRightSide}>
-      <input className={s.bottomRightInput} name={'name'}
+    <div className={s.rightSide}>
+        <p className={s.textOverInput}>Name </p>
+      <input className={s.bottomRightInputL} name={'name'}
              value={props.state.name}
              onChange={handleChange}/>
-      <input className={s.bottomRightInput} name={'surname'}
+        <p className={s.textOverInput}>Surname</p>
+      <input className={s.bottomRightInputR} name={'surname'}
              value={props.state.surname}
              onChange={handleChange}/>
-      <input className={s.bottomRightInput} name={'email'}
+        <p className={s.textOverInput}>Email</p>
+      <input className={s.bottomRightInputL} name={'email'}
              value={props.state.email}
              onChange={handleChange}/>
-      <input className={s.bottomRightInput} name={'username'}
+        <p className={s.textOverInput}>Username</p>
+      <input className={s.bottomRightInputR} name={'username'}
              value={props.state.username}
              onChange={handleChange}/>
-      <input className={s.bottomRightInput} type={'password'}
+        <p className={s.textOverInput}>Password</p>
+      <input className={s.bottomRightInputL} type={'password'}
              name={'password'} value={props.state.password}
              onChange={handleChange}/>
-      <input className={s.bottomRightInput} type={'password'}
+        <p className={s.textOverInput}>Confirm password</p>
+      <input className={s.bottomRightInputR} type={'password'}
              name={'passwordConfirmation'} value={props.state.passwordConfirmation}
              onChange={handleChange}/>
     </div>

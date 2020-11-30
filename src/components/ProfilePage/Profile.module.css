@@ -8,130 +8,132 @@
     margin: 20px auto;
     background: white;
     display: grid;
-    grid-template-columns: 1450px;
-    grid-template-rows: 300px 520px;
+    grid-template-columns: 550px 900px;
+    grid-template-rows: 820px;
     box-shadow: 0 0 5px;
     opacity: 93%;
 }
 
-.topSide {
+/* left photo and buttons topSide.jsx */
+
+.leftSide{
     grid-column: 1;
     grid-row: 1;
     display: grid;
-    grid-template-columns: 550px 900px;
-    grid-template-rows: 820px;
+    grid-template-columns: 650px;
+    grid-template-rows: 520px 300px;
 }
 
-.topLeftSide {
+.userImg{
     grid-column: 1;
     grid-row: 1;
 }
 
-.profileImg {
-    width: 250px;
-    height: 250px;
-    border-radius: 150px;
-    margin-left: 60px;
-    margin-top: 5px;
+/* circle div photo */
+
+.userPhoto{
+    width: 400px;
+    height: 400px;
+    border-radius: 250px;
     border: 2px solid #23bbf7;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
 }
 
-.accountH2 {
-    margin-top: 15px;
-    margin-left: 50px;
-    font-family: Kholodos, sans-serif;
-}
-
-.topRightSide {
-    grid-column: 2;
-    grid-row: 1;
-}
-
-.saveChange {
-    margin-left: 750px;
-    width: 100px;
-    height: 40px;
-    margin-top: 20px;
-    background: #23bbf7;
-    outline: none;
-    text-decoration: none;
-    border-radius: 5px;
-    border-color: #23bbf7;
-    font-size: larger;
-    color: honeydew;
-}
-
-.saveChange:after {
-
-}
-
-.usernameH1 {
-    font-family: Kholodos, sans-serif;
-    font-size: xx-large;
-    font-weight: bold;
-    margin-top: -20px;
-    margin-left: 4px;
-}
-
-.emailH2 {
-    font-family: Kholodos, sans-serif;
-    font-size: x-large;
-    font-weight: normal;
-    margin-top: -12px;
-    margin-left: 5px;
-}
-
-.downloadP {
-    margin-top: -10px;
-    margin-left: 5px;
-}
-
-.downloadButton {
-    width: 600px;
-    height: 60px;
-    margin-top: 10px;
-    margin-left: 5px;
-    outline: none;
-    border: 0.2em dashed black;
-    background: snow;
-}
-
-.buttonDownloadText {
-    font-family: Kholodos, sans-serif;
-    font-size: 20px;
-}
-
-.bottomSide {
+.uploadImg{
     grid-column: 1;
     grid-row: 2;
-    border-top: 2px solid silver;
-    display: grid;
-    grid-template-columns: 550px 900px;
-    grid-template-rows: 520px;
 }
 
-.bottomLeftSide {
-    grid-column: 1;
-    grid-row: 1;
-}
+/*upload photo button*/
 
-.bottomLeftText {
-    font-family: Kholodos, sans-serif;
-    font-size: 20px;
-    margin-left: 50px;
+.btn{
     margin-top: 30px;
+    color: #23bbf7;
+    font-size:20px;
+    background:transparent;
+    cursor:pointer;
+    border:1px solid #23bbf7;
+    border-radius: 30px;
+    width:310px;
+    height:70px;
+    margin-left: 9%;
+    margin-right: 9%;
+    position:absolute;
+    text-align:center;
+    -webkit-transition:all .6s ease-in-out;
+    transition:all .6s ease-in-out;
+    overflow:hidden;
+    text-decoration: none;
+    outline: none;
 }
 
-.bottomRightSide {
+.btn::before{
+    content:'';
+    position:absolute;
+    top:-130px;
+    margin:auto;
+    display:block;
+    border-radius:50%;
+    width:310px;
+    height:300px;
+    left: -1px;
+    -webkit-transition:box-shadow .6s ease-in-out;
+    transition:box-shadow .6s ease-in-out;
+    z-index:-1;
+
+}
+
+.btn:hover{
+    color:#fff;
+}
+
+.btn:hover::before{
+    box-shadow:inset 0 0 0 160px #23bbf7;
+}
+
+/* input fields */
+
+.rightSide{
+    margin-top: 100px;
     grid-column: 2;
     grid-row: 1;
 }
 
-.bottomRightInput {
-    width: 600px;
-    height: 25px;
-    margin-top: 23px;
-    background: snow;
-    border-color: #23bbf7;
+/* Left input column(L), right input column(R) */
+
+.bottomRightInputL{
+    display: inline-block;
+    width: 45%;
+    height: 30px;
+    margin-top: 0px;
+    margin-left: 20px;
+    border: none;
+    border-bottom: 3px solid darkgrey;
+    text-decoration: none;
     outline: none;
+    font-size: 23px;
+}
+
+.bottomRightInputR{
+    display: inline-block;
+    width: 35%;
+    height: 30px;
+    margin-top: 0px;
+    margin-left: 20px;
+    border: none;
+    border-bottom: 3px solid darkgrey;
+    text-decoration: none;
+    outline: none;
+    font-size: 23px;
+}
+
+.textOverInput{
+    display: inline-block;
+    margin-left: 20px;
+    margin-bottom: 3px;
+    font-family: Kurale, sans-serif;
+    color: grey;
+    width: 90%;
 }

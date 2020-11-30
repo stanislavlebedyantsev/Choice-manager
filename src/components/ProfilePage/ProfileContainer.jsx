@@ -49,7 +49,7 @@ class ProfileApiContainer extends React.Component {
   }*/
 
   componentDidMount() {
-    this.props.toggleIsFetching(true);
+      // this.props.toggleIsFetching(true);
     axios
       .get(`http://127.0.0.1:8080/profile/me`,
         {
@@ -59,7 +59,7 @@ class ProfileApiContainer extends React.Component {
         })
       .then(response => {
         this.props.getProfileData(response.data);
-        this.props.toggleIsFetching(false);
+        // this.props.toggleIsFetching(false);
       });
   }
 
