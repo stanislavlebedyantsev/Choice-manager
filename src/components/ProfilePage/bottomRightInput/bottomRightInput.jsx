@@ -12,7 +12,9 @@ const bottomRightInput = (props) => {
     props.profileUpdateState(obj);
   };
   return (
+
     <div className={s.rightSide}>
+        {/*<button className={s.saveChange}>Save</button>*/}
         <p className={s.textOverInput}>Name </p>
       <input className={s.bottomRightInputL} name={'name'}
              value={props.state.name}
@@ -37,6 +39,7 @@ const bottomRightInput = (props) => {
       <input className={s.bottomRightInputR} type={'password'}
              name={'passwordConfirmation'} value={props.state.passwordConfirmation}
              onChange={handleChange}/>
+
     </div>
   );
 };

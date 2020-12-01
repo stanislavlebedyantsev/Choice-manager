@@ -4,11 +4,11 @@
 }
 
 .container {
-    width: 1450px;
+    width: 1480px;
     margin: 20px auto;
     background: white;
     display: grid;
-    grid-template-columns: 550px 900px;
+    grid-template-columns: 550px 500px 430px;
     grid-template-rows: 820px;
     box-shadow: 0 0 5px;
     opacity: 93%;
@@ -93,10 +93,27 @@
     box-shadow:inset 0 0 0 160px #23bbf7;
 }
 
+/* Save button */
+
+.saveChange{
+    margin-left: 80%;
+    margin-top: -10px;
+    width: 100px;
+    height: 40px;
+    background: #23bbf7;
+    outline: none;
+    text-decoration: none;
+    border-radius: 5px;
+    border-color: #23bbf7;
+    font-size: larger;
+    color: honeydew;
+}
+
 /* input fields */
 
 .rightSide{
-    margin-top: 100px;
+    margin-top: 130px;
+    margin-left: 40px;
     grid-column: 2;
     grid-row: 1;
 }
@@ -105,7 +122,7 @@
 
 .bottomRightInputL{
     display: inline-block;
-    width: 45%;
+    width: 65%;
     height: 30px;
     margin-top: 0px;
     margin-left: 20px;
@@ -118,7 +135,7 @@
 
 .bottomRightInputR{
     display: inline-block;
-    width: 35%;
+    width: 40%;
     height: 30px;
     margin-top: 0px;
     margin-left: 20px;
@@ -135,5 +152,21 @@
     margin-bottom: 3px;
     font-family: Kurale, sans-serif;
     color: grey;
-    width: 90%;
+    width: 70%;
+}
+
+/* Third column(logo) */
+
+.bottomLogoSide{
+    grid-column: 3;
+    grid-row: 1;
+}
+
+
+.logo{
+    width: 330px;
+    height: 330px;
+    background-image: url("../../images/logoProfile.png");
+    margin-left: 10%;
+    margin-top: 0px;
 }
