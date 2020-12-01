@@ -21,7 +21,7 @@
     grid-row: 1;
     display: grid;
     grid-template-columns: 650px;
-    grid-template-rows: 520px 300px;
+    grid-template-rows: 820px;
 }
 
 .userImg{
@@ -32,19 +32,21 @@
 /* circle div photo */
 
 .userPhoto{
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     border-radius: 250px;
     border: 2px solid #23bbf7;
     margin-left: auto;
     margin-right: auto;
     margin-top: 80px;
+
 }
 
 .uploadImg{
     grid-column: 1;
     grid-row: 2;
 }
+
 
 /*upload photo button*/
 
@@ -56,14 +58,15 @@
     cursor:pointer;
     border:1px solid #23bbf7;
     border-radius: 30px;
-    width:310px;
+    width:240px;
     height:70px;
-    margin-left: 9%;
-    margin-right: 9%;
-    position:absolute;
+    margin-left: auto;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
     text-align:center;
-    -webkit-transition:all .6s ease-in-out;
-    transition:all .6s ease-in-out;
+    -webkit-transition:all .3s ease-in-out;
+    transition:all .3s ease-in-out;
     overflow:hidden;
     text-decoration: none;
     outline: none;
@@ -79,8 +82,8 @@
     width:310px;
     height:300px;
     left: -1px;
-    -webkit-transition:box-shadow .6s ease-in-out;
-    transition:box-shadow .6s ease-in-out;
+    -webkit-transition:box-shadow .3s ease-in-out;
+    transition:box-shadow .3s ease-in-out;
     z-index:-1;
 
 }
