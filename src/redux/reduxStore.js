@@ -4,6 +4,7 @@ import {registrationReducer} from "./registrationReducer";
 import {testingReducer} from "./testingReducer";
 import {profileReducer} from "./profileReducer";
 import {goalsReducer} from "./goalsReducer";
+import {authReducer} from "./authReducer";
 
 
 let reducers = combineReducers({
@@ -11,7 +12,8 @@ let reducers = combineReducers({
   registrationPage: registrationReducer,
   testingPage: testingReducer,
   profilePage: profileReducer,
-  goalsPage: goalsReducer
+  goalsPage: goalsReducer,
+  auth: authReducer,
 });
 
 /*
