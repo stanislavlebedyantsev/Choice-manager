@@ -66,9 +66,9 @@ const GoalComponent = (props) => {
           />
         ))}
         {props.state.isEdit ?
-          <button name={'addSubtask'} onClick={handleClick}>Add subtask</button>
+          <button name={'addSubtask'} onClick={handleClick} className={s.btn} >Add subtask</button>
           : null}
-        <button>Complete task</button>
+        <button className={s.btn}>Complete task</button>
       </div>
     </div>
   );

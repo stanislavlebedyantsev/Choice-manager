@@ -1,4 +1,4 @@
-import React from 'react';
+  import React from 'react';
 import {connect} from "react-redux";
 import s from "./Goals.module.css";
 import Header from "../common/Header/Header";

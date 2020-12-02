@@ -1,6 +1,6 @@
 .background {
     background-image: url("../../images/profileBack.png");
-    background-size: 100% 100%;
+    background-size: 100% 100%          ;
 }
 
 .container {
@@ -12,11 +12,12 @@
     grid-template-rows: 820px;
     box-shadow: 0 0 5px;
     opacity: 93%;
+    border-radius: 30px;
 }
 
 /* left photo and buttons topSide.jsx */
 
-.leftSide{
+.leftSide {
     grid-column: 1;
     grid-row: 1;
     display: grid;
@@ -24,14 +25,14 @@
     grid-template-rows: 820px;
 }
 
-.userImg{
+.userImg {
     grid-column: 1;
     grid-row: 1;
 }
 
 /* circle div photo */
 
-.userPhoto{
+.userPhoto {
     width: 300px;
     height: 300px;
     border-radius: 250px;
@@ -42,7 +43,7 @@
 
 }
 
-.uploadImg{
+.uploadImg {
     grid-column: 1;
     grid-row: 2;
 }
@@ -50,55 +51,55 @@
 
 /*upload photo button*/
 
-.btn{
+.btn {
     margin-top: 30px;
     color: #23bbf7;
-    font-size:20px;
-    background:transparent;
-    cursor:pointer;
-    border:1px solid #23bbf7;
+    font-size: 20px;
+    background: transparent;
+    cursor: pointer;
+    border: 1px solid #23bbf7;
     border-radius: 30px;
-    width:240px;
-    height:70px;
+    width: 240px;
+    height: 70px;
     margin-left: auto;
     position: relative;
     left: 50%;
     transform: translate(-50%, 0);
-    text-align:center;
-    -webkit-transition:all .3s ease-in-out;
-    transition:all .3s ease-in-out;
-    overflow:hidden;
+    text-align: center;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    overflow: hidden;
     text-decoration: none;
     outline: none;
 }
 
-.btn::before{
-    content:'';
-    position:absolute;
-    top:-130px;
-    margin:auto;
-    display:block;
-    border-radius:50%;
-    width:310px;
-    height:300px;
+.btn::before {
+    content: '';
+    position: absolute;
+    top: -130px;
+    margin: auto;
+    display: block;
+    border-radius: 50%;
+    width: 310px;
+    height: 300px;
     left: -1px;
-    -webkit-transition:box-shadow .3s ease-in-out;
-    transition:box-shadow .3s ease-in-out;
-    z-index:-1;
+    -webkit-transition: box-shadow .3s ease-in-out;
+    transition: box-shadow .3s ease-in-out;
+    z-index: -1;
 
 }
 
-.btn:hover{
-    color:#fff;
+.btn:hover {
+    color: #fff;
 }
 
-.btn:hover::before{
-    box-shadow:inset 0 0 0 160px #23bbf7;
+.btn:hover::before {
+    box-shadow: inset 0 0 0 160px #23bbf7;
 }
 
 /* Save button */
 
-.saveChange{
+.saveChange {
     margin-left: 80%;
     margin-top: -10px;
     width: 100px;
@@ -114,7 +115,7 @@
 
 /* input fields */
 
-.rightSide{
+.rightSide {
     margin-top: 130px;
     margin-left: 40px;
     grid-column: 2;
@@ -123,7 +124,7 @@
 
 /* Left input column(L), right input column(R) */
 
-.bottomRightInputL{
+.bottomRightInputL {
     display: inline-block;
     width: 65%;
     height: 30px;
@@ -136,7 +137,7 @@
     font-size: 23px;
 }
 
-.bottomRightInputR{
+.bottomRightInputR {
     display: inline-block;
     width: 40%;
     height: 30px;
@@ -149,7 +150,7 @@
     font-size: 23px;
 }
 
-.textOverInput{
+.textOverInput {
     display: inline-block;
     margin-left: 20px;
     margin-bottom: 3px;
@@ -160,13 +161,13 @@
 
 /* Third column(logo) */
 
-.bottomLogoSide{
+.bottomLogoSide {
     grid-column: 3;
     grid-row: 1;
 }
 
 
-.logo{
+.logo {
     width: 330px;
     height: 330px;
     background-image: url("../../images/logoProfile.png");
