@@ -49,7 +49,7 @@ export const testingReducer = (state = initState, action) => {
           question: {
             id: i + 1
           },
-          value: "2.5"
+          value: "2"
         };
       }
       copyState.categories.forEach(el => {
@@ -60,6 +60,7 @@ export const testingReducer = (state = initState, action) => {
       return copyState;
     }
     case 'UPDATE-ANSWERS': {
+      debugger
       copyState = {...state};
       copyState = {
         ...copyState,

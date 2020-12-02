@@ -15,7 +15,7 @@ export const authReducer = (state = initState, action) => {
       };
     }
     default:
-      return copyState;
+      return state;
   }
 };
 

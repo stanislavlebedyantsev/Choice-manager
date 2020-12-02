@@ -34,3 +34,48 @@
 .button:active {
     color: #ffffff;
 }
+
+.questDiscr {
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.5em;
+    color: #2d6786;
+}
+
+.option {
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+.disagree {
+    border: red 1px solid;
+}
+.disagree.min{
+    padding: 50px;
+}
+.disagree.med{
+    padding: 40px;
+}
+.neutral {
+    border: grey 1px solid;
+    padding: 30px;
+}
+.agree.med{
+    padding: 40px;
+}
+
+.agree.max{
+    padding: 50px;
+}
+
+.agree{
+    border: green 1px solid;
+}
+
+.options {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: dimgrey 2px;
+}
