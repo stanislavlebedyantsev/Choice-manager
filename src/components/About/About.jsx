@@ -1,12 +1,10 @@
 import s from './About.module.css';
-import Header from "../common/Header/Header";
 import Footer from "../common/Footer/Footer";
-import {Route, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const About = (props) => {
   return (
     <div className={s.background}>
-      {/*<Header/>*/}
       <div className={s.content}>
         <div className={s.topSide}>
           <p className={s.aboutUsP}>ABOUT US</p>
@@ -29,9 +27,9 @@ const About = (props) => {
           </div>
           <div className={s.rightSide}>
             <h1 className={s.rightH1}>The best mentors</h1>
-            <div className={s.mentorImgFirst}></div>
-            <div className={s.mentorImgSecond}></div>
-            <div className={s.mentorImgThird}></div>
+            <div className={s.mentorImgFirst}/>
+            <div className={s.mentorImgSecond}/>
+            <div className={s.mentorImgThird}/>
           </div>
         </div>
       </div>

@@ -48,34 +48,57 @@
 }
 
 .disagree {
-    border: red 1px solid;
+    border: red 2px solid;
 }
-.disagree.min{
+
+.disagree.min {
     padding: 50px;
 }
-.disagree.med{
+
+.disagree.med {
     padding: 40px;
 }
+
 .neutral {
-    border: grey 1px solid;
+    border: grey 2px solid;
     padding: 30px;
 }
-.agree.med{
+
+.agree.med {
     padding: 40px;
 }
 
-.agree.max{
+.agree.max {
     padding: 50px;
 }
 
-.agree{
-    border: green 1px solid;
+.agree {
+    border: green 2px solid;
+}
+
+.agree.active {
+    background: #56ac8a url("../../images/checkMark.svg") no-repeat center;
+}
+
+.disagree.active{
+    background: #5f394d url("../../images/checkMark.svg") no-repeat center;
+}
+
+.neutral.active {
+    background: #aab5af url("../../images/checkMark.svg") no-repeat center;
 }
 
 .options {
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: dimgrey 2px;
+}
+.questContainer{
+    border-bottom: 2px grey solid;
+}
+.textAnswers{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

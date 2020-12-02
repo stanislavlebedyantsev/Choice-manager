@@ -3,19 +3,18 @@ import s from '../TestingForm.module.css';
 import AnswersRadioComponent from "../AnswersRadioComponent/AnswersRadioComponent";
 
 const QuestionComponent = (props) => {
-  const handleChange = (id, value) => {
+  const handleChange = (event) => {
     let copyState = props.state.answers;
     let obj = [
       ...copyState
     ];
-    obj[id - 1] = {
+    obj[Number(event.target.id) - 1] = {
       question: {
-        id: Number(id)
+        id: Number(event.target.id)
       },
-      value: value
+      value: event.target.value
     };
     props.updateAnswers(obj)
-    console.log(props.state.answers);
   };
   const questArr = props.questions.map(el => {
     return (
@@ -24,8 +23,13 @@ const QuestionComponent = (props) => {
         <div className={s.answerBlock}>
           {
             el.type === 'special' ?
-              <textarea key={el.id} id={el.id} name={"answers"} placeholder={"Type your answer here"} onChange={handleChange}/>
-              : <AnswersRadioComponent key={el.id} id={el.id} updateAnswer={handleChange}/>
+              <textarea key={el.id} id={el.id} className={s.textAnswers}
+                        name={"answers"} placeholder={"Type your answer here"}
+                        value={props.state.answers[el.id-1].value}
+                        onChange={handleChange}/>
+              : <AnswersRadioComponent updateAnswers={props.updateAnswers}
+                                       answersState={props.state.answers}
+                                       key={el.id} id={el.id} />
                 /*<input name={"answers"}
                        type="range"
                        id={el.id}

@@ -60,7 +60,6 @@ export const testingReducer = (state = initState, action) => {
       return copyState;
     }
     case 'UPDATE-ANSWERS': {
-      debugger
       copyState = {...state};
       copyState = {
         ...copyState,
