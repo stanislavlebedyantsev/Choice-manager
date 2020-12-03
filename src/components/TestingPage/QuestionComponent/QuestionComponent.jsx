@@ -19,11 +19,11 @@ const QuestionComponent = (props) => {
   const questArr = props.questions.map(el => {
     return (
       <div className={s.questContainer}>
-        <div className={s.questDiscr}>{el.description}</div>
+        <div className={s.questDiscr}><p>{el.description}</p></div>
         <div className={s.answerBlock}>
           {
             el.type === 'special' ?
-              <textarea key={el.id} id={el.id} className={s.textAnswers}
+              <textarea key={el.id} id={el.id} className={s.textAnswers} rows={'5'}
                         name={"answers"} placeholder={"Type your answer here"}
                         value={props.state.answers[el.id-1].value}
                         onChange={handleChange}/>

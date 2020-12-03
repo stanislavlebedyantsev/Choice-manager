@@ -1,18 +1,28 @@
 .container {
-    max-width: 1330px;
+    max-width: 1200px;
     margin: auto;
 }
 
 .answerBlock {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .answerBlock textarea {
+    margin-bottom: 40px;
+    width:50%;
+    line-height:1.5;
+    padding:15px 15px 30px;
+    border-radius:3px;
+    border:1px solid #b3b3b3;
+    border-bottom: black 1px solid;
+    font:13px Tahoma, cursive;
+    transition:box-shadow 0.5s ease;
+    font-smoothing:subpixel-antialiased;
     resize: none;
-    height: 100px;
-    width: 300px;
     outline: none;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .button {
@@ -34,12 +44,16 @@
 .button:active {
     color: #ffffff;
 }
-
-.questDiscr {
+.questDiscr p{
     font-weight: 600;
     text-align: center;
     font-size: 1.5em;
     color: #2d6786;
+    width: 60%;
+}
+.questDiscr {
+    display: flex;
+    justify-content: center;
 }
 
 .option {
@@ -96,9 +110,5 @@
     align-items: center;
 }
 .questContainer{
-    border-bottom: 2px grey solid;
-}
-.textAnswers{
-    margin-top: 20px;
-    margin-bottom: 20px;
+    border-bottom: 1px solid #dcdcdc;
 }

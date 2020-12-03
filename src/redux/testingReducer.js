@@ -43,22 +43,25 @@ export const testingReducer = (state = initState, action) => {
       };
       for (let i of copyState.categories) {
         countOfQuests += i.questions.length;
+        i.questions.forEach(el => {
+          el = {
+            ...el,
+            isAnswered: false
+          }
+        })
       }
+      copyState.categories[0].questions[0].isAnswered = true;
       for (let i = 0; i < countOfQuests; i++) {
         copyState.answers[i] = {
           question: {
             id: i + 1
           },
-          value: "2"
+          value: ""
         };
       }
-      copyState.categories.forEach(el => {
-        el.questions.forEach(el => {
-          if (el.type === "special") copyState.answers[el.id - 1].value = '';
-        });
-      });
       return copyState;
     }
+
     case 'UPDATE-ANSWERS': {
       copyState = {...state};
       copyState = {
@@ -67,8 +70,8 @@ export const testingReducer = (state = initState, action) => {
       };
       return copyState;
     }
+
     case 'POST-ANSWERS': {
-      debugger
       let taskList = {
         ...state
       };
@@ -101,6 +104,7 @@ export const testingReducer = (state = initState, action) => {
     case 'TOGGLE-IS-FETCHING': {
       return {...state, isFetching: action.data};
     }
+
     default:
       copyState = state;
       return copyState;

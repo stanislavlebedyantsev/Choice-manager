@@ -18,17 +18,15 @@ const Testing = (props) => {
                 key={el.id}
               />);
             }) : <div/>
-
-
         }
         {
           props.TestingQuestions.categories.length !== 0 ?
             <button className={s.button} onClick={props.postAnswers}>Send testing data</button>
             : null
-
         }
       </div>
       <Footer/>
-    </div>);
-};
+    </div>
+  );
+}
 export default Testing;
