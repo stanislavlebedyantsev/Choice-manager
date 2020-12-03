@@ -1,5 +1,7 @@
 import s from "../TestingForm.module.css";
 import React from "react";
+import like from '../../../images/like.svg';
+import dislike from '../../../images/dislike.svg';
 
 const AnswersRadioComponent = (props) => {
   const REF_MIN_DIS = React.createRef();
@@ -15,9 +17,9 @@ const AnswersRadioComponent = (props) => {
       medDis: REF_MED_DIS.current,
       minDis: REF_MIN_DIS.current
     };
-    for (let i in refObj){
-      refObj[i].ariaChecked = false
-      refObj[i].className = refObj[i].className.replace(s.active, '')
+    for (let i in refObj) {
+      refObj[i].ariaChecked = false;
+      refObj[i].className = refObj[i].className.replace(s.active, '');
     }
     let copyState = props.answersState;
     let obj = [
@@ -30,11 +32,14 @@ const AnswersRadioComponent = (props) => {
       value: event.target.id
     };
     event.target.ariaChecked = true;
-    event.target.className += s.active
+    event.target.className += s.active;
     props.updateAnswers(obj);
   };
   return (
     <div className={s.options}>
+      <div className={s.marker}>
+        <img src={dislike} alt=""/>
+      </div>
       <div className={`${s.option} ${s.disagree} ${s.min} `} ref={REF_MIN_DIS}
            aria-checked={false} id={0} onClick={handleClick}/>
       <div className={`${s.option} ${s.disagree} ${s.med} `} ref={REF_MED_DIS} aria-checked={false} id={1}
@@ -45,6 +50,9 @@ const AnswersRadioComponent = (props) => {
            onClick={handleClick}/>
       <div className={`${s.option} ${s.agree} ${s.max} `} ref={REF_MAX_AGR} aria-checked={false} id={4}
            onClick={handleClick}/>
+      <div className={s.marker}>
+        <img src={like} alt=""/>
+      </div>
     </div>
   );
 };

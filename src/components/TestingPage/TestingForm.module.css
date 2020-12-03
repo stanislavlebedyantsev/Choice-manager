@@ -1,6 +1,7 @@
 .container {
     max-width: 1200px;
     margin: auto;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .answerBlock {
@@ -11,18 +12,82 @@
 
 .answerBlock textarea {
     margin-bottom: 40px;
-    width:50%;
-    line-height:1.5;
-    padding:15px 15px 30px;
-    border-radius:3px;
-    border:1px solid #b3b3b3;
+    width: 50%;
+    line-height: 1.5;
+    padding: 15px 15px 30px;
+    border-radius: 3px;
+    border: 1px solid #b3b3b3;
     border-bottom: black 1px solid;
-    font:13px Tahoma, cursive;
-    transition:box-shadow 0.5s ease;
-    font-smoothing:subpixel-antialiased;
+    font: 13px Tahoma, cursive;
+    transition: box-shadow 0.5s ease;
+    font-smoothing: subpixel-antialiased;
     resize: none;
     outline: none;
     overflow: hidden;
+}
+
+.pageDescription {
+    background-image: url("../../images/testingDiscription.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.pageDescription h1 {
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 25px;
+}
+
+.marker {
+    width: 50px;
+    margin-left: 20px;
+}
+
+.descriptionContainer {
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tip {
+    max-width: 350px;
+    height: 300px;
+    margin: 10px 10px 30px;
+    font-size: 24px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 30px;
+}
+
+.descriptionTime p {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.descriptionTime img {
+    width: 90px;
+    height: 90px;
+}
+
+.descriptionMarks p {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.checkMarkBlack {
+    width: 90px;
+    height: 90px;
+}
+
+.descriptionRadar p {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.descriptionRadar img {
+    width: 90px;
+    height: 90px;
 }
 
 .button {
@@ -44,13 +109,15 @@
 .button:active {
     color: #ffffff;
 }
-.questDiscr p{
+
+.questDiscr p {
     font-weight: 600;
     text-align: center;
     font-size: 1.5em;
     color: #2d6786;
     width: 60%;
 }
+
 .questDiscr {
     display: flex;
     justify-content: center;
@@ -94,7 +161,7 @@
     background: #56ac8a url("../../images/checkMark.svg") no-repeat center;
 }
 
-.disagree.active{
+.disagree.active {
     background: #5f394d url("../../images/checkMark.svg") no-repeat center;
 }
 
@@ -109,6 +176,7 @@
     justify-content: center;
     align-items: center;
 }
-.questContainer{
+
+.questContainer {
     border-bottom: 1px solid #dcdcdc;
 }

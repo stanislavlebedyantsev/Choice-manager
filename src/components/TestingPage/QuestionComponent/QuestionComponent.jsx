@@ -2,6 +2,7 @@ import React from "react";
 import s from '../TestingForm.module.css';
 import AnswersRadioComponent from "../AnswersRadioComponent/AnswersRadioComponent";
 
+
 const QuestionComponent = (props) => {
   const handleChange = (event) => {
     let copyState = props.state.answers;
