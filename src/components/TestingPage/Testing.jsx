@@ -4,7 +4,7 @@ import QuestionComponent from "./QuestionComponent/QuestionComponent";
 import Footer from "../common/Footer/Footer";
 import like from '../../images/like.svg';
 import dislike from '../../images/dislike.svg';
-import timer from '../../images/timer-testing-header.png';
+import timer from '../../images/timer-testing-header.svg';
 import radarChart from '../../images/radarChart-testing-description.svg';
 import checkMark from "../../images/checkMark-black.svg"
 
@@ -21,8 +21,8 @@ const Testing = (props) => {
           </div>
           <div className={`${s.descriptionMarks} ${s.tip}`}>
             <p><img src={checkMark} className={s.checkMarkBlack} alt=""/></p>
-            <p>Answers rotated from <img src={dislike} className={s.marker} alt=""/> (or 0 value) to
-              <img src={like} className={s.marker} alt=""/>(or 4 value)</p>
+            <p>Answers rotated from <img src={dislike} className={s.descrMarker} alt=""/> (or 0 value)
+              to <img src={like} className={s.descrMarker} alt=""/> (or 4 value)</p>
           </div>
           <div className={`${s.descriptionRadar} ${s.tip}`}>
             <p><img src={radarChart} alt=""/></p>
@@ -44,7 +44,7 @@ const Testing = (props) => {
         }
         {
           props.TestingQuestions.categories.length !== 0 ?
-            <button className={s.button} onClick={props.postAnswers}>Send testing data</button>
+            <button className={s.btn} onClick={props.postAnswers}>Send testing data</button>
             : null
         }
       </div>

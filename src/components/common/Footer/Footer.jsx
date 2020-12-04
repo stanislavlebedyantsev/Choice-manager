@@ -14,12 +14,12 @@ function Footer(props) {
                 Quick links
                 <NavLink to="/about" className={s.aboutUs}>About us</NavLink>
                 <NavLink to="/registration" className={s.aboutUs}>Join us</NavLink>
-            </div>
+            </div>{/*
             <div className={s.getStarted}>
                 Get started<br/>
                 <p className={s.getStartedP}>Let's start to use choice manager and change your life.</p>
                 <NavLink to={"/registration"} className={s.links}><p className={s.textRegister}>Register now</p></NavLink>
-            </div>
+            </div>*/}
             <div className={s.contactUs}>
                 Contact us
                 <a href="" className={s.twitter}>Twitter</a>

@@ -7,19 +7,17 @@ const topSide = (props) => {
     return (
         <div className={s.leftSide}>
             <div className={s.userImg}>
-                <div className={s.userPhoto}></div>
+                <div className={s.userPhoto}/>
                 <button className={s.btn}>
                     Upload photo
                 </button>
                 <div>
-                    <button className={s.btn}>
+                    <button className={s.btn} onClick={handleClick}>
                         Save
                     </button>
                 </div>
             </div>
-            <div className={s.uploadImg}>
-
-            </div>
+            <div className={s.uploadImg}/>
             {/*<div className={s.topLeftSide}>*/}
             {/*  <div className={s.profileImg}></div>*/}
             {/*  /!*<h2 className={s.accountH2}>Account</h2>*!/*/}

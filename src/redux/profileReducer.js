@@ -23,8 +23,6 @@ export const profileReducer = (state = initState, action) => {
       copyState.userDto.password = '';
       copyState.userDto.passwordConfirmation = '';
       console.log(copyState);
-      localStorage.setItem('username', copyState.userDto.username);
-      localStorage.setItem('email', copyState.userDto.email);
       for (let i in copyState.radarChart.data) {
         copyState.radarChart.data[i] = Number(copyState.radarChart.data[i]) / 5;
       }/*
