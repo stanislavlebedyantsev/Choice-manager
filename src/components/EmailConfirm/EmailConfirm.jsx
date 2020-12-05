@@ -5,13 +5,13 @@ const EmailConfirm = () => {
   return (
     <div className={s.background}>
         <div className={s.container}>
-            <div className={s.logoGrid}>
+            {/*<div className={s.logoGrid}>
                 <div className={s.d3}>
                 </div>
                 <p className={s.chcMngr}>Choice Manager</p>
-            </div>
+            </div>*/}
             <div className={s.welcomeGrid}>
-                <p className={s.H1}>Welcome!</p>
+                <p className={s.H1}>Welcome to choice manager!</p>
                 <p className={s.underWelc}>We are thrilled to have you on board</p>
             </div>
             <div className={s.thirdGrid}>

@@ -15,8 +15,13 @@ const GoalComponent = (props) => {
   const handleClick = (event) => {
     if (event.target.name === 'edit' && !props.state.isEdit) {
       props.toogleEditBtn(Number(props.state.id));
-    } else if (event.target.name === 'edit' && props.state.isEdit) {
+    } else if (event.target.name === 'save' && props.state.isEdit && !props.state.hasOwnProperty('isAdded')) {
       props.putEditedTask(props.state);
+      props.toogleEditBtn(Number(props.state.id));
+    }
+    else if (event.target.name === 'save' && props.state.isEdit && props.state.hasOwnProperty('isAdded')) {
+      props.postEditedTask(props.state);
+      props.toogleEditBtn(Number(props.state.id));
     } else if (event.target.name === 'addSubtask') {
       props.addSubtask(props.state.id)
     }
@@ -28,7 +33,12 @@ const GoalComponent = (props) => {
     <div className={s.goalContainer}>
       <div>
         <div className={s.buttons}>
-          <button className={s.editButton} name={'edit'} onClick={handleClick}/>
+          {
+            !props.state.isEdit ?
+              <button className={s.editButton} name={'edit'} onClick={handleClick}/>
+              :
+              <button className={s.saveButton} name={'save'} onClick={handleClick}/>
+          }
           <button className={s.deleteButton} name={'delete'} onClick={handleClick}/>
         </div>
         <div className={s.goalNameH6}>
@@ -41,7 +51,7 @@ const GoalComponent = (props) => {
                             onChange={handleChange}/>
                   </p>
                   <p><input className={s.editInput}
-                            name={"explanations"} value={props.state.explanations}
+                            name={"explanation"} value={props.state.explanation}
                             placeholder={'Type your goal'}
                             onChange={handleChange}/>
                   </p>
@@ -51,7 +61,7 @@ const GoalComponent = (props) => {
               (
                 <div>
                   <p className={s.taskName}>{props.state.name}</p>
-                  <p className={`{/*${s.descriptionP}*/} ${s.discrPaddings}`}>{props.state.explanations}</p>
+                  <p className={`{/*${s.descriptionP}*/} ${s.discrPaddings}`}>{props.state.explanation}</p>
                 </div>
               )
           }
