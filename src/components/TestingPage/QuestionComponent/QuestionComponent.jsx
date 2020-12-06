@@ -31,13 +31,6 @@ const QuestionComponent = (props) => {
               : <AnswersRadioComponent updateAnswers={props.updateAnswers}
                                        answersState={props.state.answers}
                                        key={el.id} id={el.id} />
-                /*<input name={"answers"}
-                       type="range"
-                       id={el.id}
-                       min={0} max={5} step={0.5}
-                       value={props.state.answers[Number(el.id) - 1].value}
-                       onChange={handleChange}/>
-                <label htmlFor="answer">{props.state.answers[Number(el.id) - 1].value}</label>*/
           }
         </div>
       </div>

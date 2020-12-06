@@ -5,7 +5,7 @@ let initState = {
 };
 
 export const authReducer = (state = initState, action) => {
-  let copyState;
+  //let copyState;
   switch (action.type) {
     case 'SET-USER-DATA': {
       return {

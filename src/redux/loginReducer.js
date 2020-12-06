@@ -25,13 +25,14 @@ export const loginReducer = (state = initState, action) => {
           localStorage.setItem('accessToken', data.accessToken);
           localStorage.setItem('tokenType', data.tokenType);
           window.location.href = '/testing';
-          return copyState;
         })
         .catch(() => {
           alert("Wrong data. try again");
-        });
-      return copyState;
+        }).finally(() => {
 
+        copyState.isFetching = false;
+      });
+      return copyState;
     }
     case 'TOGGLE-IS-FETCHING': {
       return {...state, isFetching: action.data};

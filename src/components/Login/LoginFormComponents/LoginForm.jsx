@@ -15,6 +15,7 @@ const LoginForm = (props) => {
                value={props.password}
                onChange={props.handleChange}/>
         <div className={s.button}>
+          {/*disabled={props.isFetching}*/}
           <button onClick={props.handleClick}>Login</button>
         </div>
       </div>

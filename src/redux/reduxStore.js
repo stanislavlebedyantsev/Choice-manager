@@ -1,10 +1,11 @@
-import {combineReducers, createStore} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
 import {loginReducer} from "./loginReducer";
 import {registrationReducer} from "./registrationReducer";
 import {testingReducer} from "./testingReducer";
 import {profileReducer} from "./profileReducer";
 import {goalsReducer} from "./goalsReducer";
 import {authReducer} from "./authReducer";
+import thunkMiddleware from "redux-thunk";
 
 
 let reducers = combineReducers({
@@ -16,6 +17,4 @@ let reducers = combineReducers({
   auth: authReducer,
 });
 
-/*
-*/
-export let store = createStore(reducers);
+export let store = createStore(reducers, applyMiddleware(thunkMiddleware));

@@ -1,27 +1,19 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {
-  getTest,
-  postAnswersData,
-  toggleIsFetching,
+  getTestingQuestionsThunkCreator, postAnswersThunkCreator,
   updateTestAnswers
 } from "../../redux/testingReducer";
 import Testing from "./Testing";
 import Preloader from "../common/Preloader/Preloader";
-import {testingAPI} from "../../api/testingApi";
 
 class TestingApiContainer extends React.Component {
   componentDidMount() {
-    this.props.toggleIsFetching(true);
-    testingAPI.getTest()
-      .then(data => {
-        this.props.toggleIsFetching(false);
-        this.props.getTest(data);
-      })
+    this.props.getTestingQuestionsThunkCreator()
   }
 
   postAnswers() {
-    this.props.postAnswersData();
+    this.props.postAnswersThunkCreator(this.props.TestingQuestions.answers)
   }
 
   updateAnswers(obj) {
@@ -53,9 +45,8 @@ const mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps, {
-  getTest,
   updateTestAnswers,
-  postAnswersData,
-  toggleIsFetching
+  postAnswersThunkCreator,
+  getTestingQuestionsThunkCreator
 })(TestingApiContainer);
 

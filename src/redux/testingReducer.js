@@ -1,5 +1,3 @@
-import * as axios from 'axios';
-import {Redirect} from 'react-router-dom';
 import {testingAPI} from "../api/testingApi";
 
 const initState = {
@@ -44,14 +42,7 @@ export const testingReducer = (state = initState, action) => {
       };
       for (let i of copyState.categories) {
         countOfQuests += i.questions.length;
-        i.questions.forEach(el => {
-          el = {
-            ...el,
-            isAnswered: false
-          }
-        })
       }
-      copyState.categories[0].questions[0].isAnswered = true;
       for (let i = 0; i < countOfQuests; i++) {
         copyState.answers[i] = {
           question: {
@@ -72,26 +63,6 @@ export const testingReducer = (state = initState, action) => {
       return copyState;
     }
 
-    case 'POST-ANSWERS': {
-      let taskList = {
-        ...state
-      };
-      copyState = {
-        answers: [...state.answers]
-      };
-      console.log(copyState);
-      testingAPI.postAnswers(copyState)
-        .then(() => {
-          //change it to normal redirect
-          window.location.href = '/profile';
-        })
-        .catch((err) => {
-          //temp redirect
-          taskList.isFetching = false;
-          alert(err);
-        });
-      return taskList;
-    }
     case 'TOGGLE-IS-FETCHING': {
       return {...state, isFetching: action.data};
     }
@@ -103,7 +74,37 @@ export const testingReducer = (state = initState, action) => {
 };
 
 
+export const getTestingQuestionsThunkCreator = () => {
+  return (dispatchEvent) => {
+    dispatchEvent(toggleIsFetching(true));
+    testingAPI.getTest()
+      .then(data => {
+        dispatchEvent(toggleIsFetching(false));
+        dispatchEvent(getTest(data));
+      })
+  }
+}
+
+
+export const postAnswersThunkCreator = (copyState) => {
+  return (dispatchEvent) => {
+    console.log(copyState);
+    testingAPI.postAnswers({answers: copyState})
+      .then(() => {
+        //change it to normal redirect
+        dispatchEvent(toggleIsFetching(false))
+        window.location.href = '/profile';
+      })
+      .catch((err) => {
+        //temp redirect
+        dispatchEvent(toggleIsFetching(false))
+        //alert(err);
+      });
+  }
+}
+
+
+
 export const getTest = (data) => ({type: 'TESTING-GET-QUESTIONS', data});
 export const updateTestAnswers = (data) => ({type: 'UPDATE-ANSWERS', data});
-export const postAnswersData = () => ({type: 'POST-ANSWERS'});
 export const toggleIsFetching = (data) => ({type: 'TOGGLE-IS-FETCHING', data});
