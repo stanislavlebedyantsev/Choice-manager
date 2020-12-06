@@ -13,22 +13,21 @@ export const goalsAPI = {
       .get("").then(response => response.data);
   },
   putGoals(obj) {
+    debugger
     return goalsAxios
       .put("", {
         ...obj
       }).then(response => response.data);
   },
-  postGoals(obj)  {
+  postGoals(obj) {
     return goalsAxios
       .post("/create", {
         ...obj
       }).then(response => response.data);
   },
-  deleteGoals(id){
+  deleteGoals(id) {
     return goalsAxios
-      .delete("", {
-        id
-      }).then(response => response.data);
+      .delete("", {data: {id}}).then(response => response.data);
   }
 };
 

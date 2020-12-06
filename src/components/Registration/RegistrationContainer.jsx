@@ -1,7 +1,7 @@
 import RegForm from "./RegForm";
 import React from "react";
 import {
-  registrationRequest,
+  registrationRequestThunkCreator,
   registrationUpdateText
 } from "../../redux/registrationReducer";
 import {connect} from "react-redux";
@@ -13,6 +13,6 @@ const mapStateToProps = (state) => ({
 
 
 export default connect(mapStateToProps, {
-  registrationRequest,
+  registrationRequestThunkCreator,
   registrationUpdateText
 })(RegForm);

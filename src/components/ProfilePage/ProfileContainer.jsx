@@ -3,69 +3,22 @@ import {connect} from "react-redux";
 import Profile from "./Profile";
 import * as axios from 'axios';
 import {
-  getProfileData,
+  getProfileDataThunkCreator,
   profilePutUpdates,
-  profileUpdateText,
+  profileUpdateText, putProfileDataThunkCreator,
 } from "../../redux/profileReducer";
-import ApexCharts from 'apexcharts';
-import ReactApexChart from 'apexcharts';
 import {toggleIsFetching} from "../../redux/profileReducer";
 import Preloader from "../common/Preloader/Preloader";
-import {profileAPI} from "../../api/profileApi";
 
-
-/*class ApexChart extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = '';
-
-  }
-
-  render() {
-    return (
-      <div id="chart">
-      </div>
-    );
-  }
-}*/
 
 class ProfileApiContainer extends React.Component {
-  /*constructor(props) {
-    super(props);
-    this.chart = {}
-    this.options = {
-      series: [{
-        name: 'Testing value',
-        data: [],
-      }],
-      chart: {
-        type: 'radar'
-      },
-      xaxis: {
-        categories: []
-      }
-
-    };
-    this.contentRef = React.createRef();
-  }*/
-
   componentDidMount() {
-    this.props.toggleIsFetching(true);
-    profileAPI.getProfile()
-      .then(data => {
-        this.props.getProfileData(data);
-        this.props.toggleIsFetching(false);
-      });
+    this.props.getProfileDataThunkCreator()
   }
 
   profilePutUpdates(data) {
-    profileAPI.putProfile(data)
+    this.props.putProfileDataThunkCreator(data)
   }
-  /*radarChartRender = async () =>{
-    debugger
-    this.chart = new ApexCharts(this.contentRef, this.options)
-    await this.chart.render()
-  }*/
   render() {
     return (
       <>
@@ -75,11 +28,7 @@ class ProfileApiContainer extends React.Component {
             <Profile state={this.props.profileStateData}
                      profileUpdateState={this.props.profileUpdateText}
                      profilePutState={this.profilePutUpdates.bind(this)}/>
-            {
-              /*this.props.profileStateData.radarChart.data && this.props.profileStateData.radarChart.caption ?
-                this.chart
-                : <div/>*/
-            }
+
           </div>
         }
       </>
@@ -94,7 +43,8 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps,
   {
-    getProfileData,
+    getProfileDataThunkCreator,
     profileUpdateText,
-    toggleIsFetching
+    toggleIsFetching,
+    putProfileDataThunkCreator
   })(ProfileApiContainer);

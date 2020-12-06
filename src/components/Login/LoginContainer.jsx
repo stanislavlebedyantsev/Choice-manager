@@ -1,6 +1,6 @@
 import Login from "./Login";
 import {
-  loginRequest,
+  loginRequestThunkCreator,
   loginUpdateText,
   toggleIsFetching
 } from "../../redux/loginReducer";
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
 
 
 export default connect(mapStateToProps, {
-  loginRequest,
+  loginRequestThunkCreator,
   loginUpdateText,
   toggleIsFetching
 })(Login);

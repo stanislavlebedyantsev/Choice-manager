@@ -29,6 +29,11 @@ const GoalComponent = (props) => {
       props.deleteTask(props.state.id)
     }
   };
+
+  const handleCheck = (obj) => {
+    obj = props.state
+    props.subtaskIsDoneChange(obj)
+  }
   return (
     <div className={s.goalContainer}>
       <div>
@@ -70,7 +75,7 @@ const GoalComponent = (props) => {
         {props.state.tasks.map(el => (
           <SubtaskComponent subtaskState={el}
                             taskId={props.state.id}
-                            subtaskIsDoneChange={props.subtaskIsDoneChange}
+                            subtaskIsDoneChange={handleCheck}
                             isEdit={props.state.isEdit}
                             editSubtask={props.editSubtask}
           />

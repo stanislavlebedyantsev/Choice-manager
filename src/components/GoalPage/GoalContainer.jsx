@@ -5,18 +5,17 @@ import Header from "../common/Header/Header";
 import GoalComponent from "./GoalsComponents/GoalComponent";
 import Footer from "../common/Footer/Footer";
 import {
-  addSubtask, addTask, deleteTask, editGoals, editSubtask, getTask, postEditedTask, putEditedTask,
-  subtaskIsDoneChange,
-  toggleEdit
+  addSubtask, addTask,
+  deleteTaskThunkCreator, editGoals,
+  editSubtask, getTaskThunkCreator,
+  postTaskThunkCreator, putTaskThunkCreator,
+  subtaskIsDoneChange, toggleEdit
 } from "../../redux/goalsReducer";
-import {goalsAPI} from "../../api/goalsApi";
 
 
 class GoalApiComponent extends React.Component {
   componentDidMount() {
-    goalsAPI.getGoals().then(response => {
-      this.props.getTask(response);
-    })
+    this.props.getTaskThunkCreator()
   }
 
 
@@ -33,21 +32,10 @@ class GoalApiComponent extends React.Component {
   }
 
   putEditedTaskBtn(obj) {
-    goalsAPI.putGoals(obj);
+    this.props.putTaskThunkCreator(obj)
   }
   postEditedTaskBtn(obj) {
-    goalsAPI.postGoals(obj)
-      .then(response => {
-        /////if andrey fix id in db use variant in comment
-        /*copyState.goals[action.data - 1].isEdit = false;*/
-        //////unless if andrey d fix id in db use this
-        console.log(response);
-        obj.id = response
-        this.props.postEditedTask(obj);
-      })
-      .catch(r => {
-        console.log(r);
-      });
+    this.props.postTaskThunkCreator(obj)
   }
 
   subtaskStateChange(obj) {
@@ -59,10 +47,7 @@ class GoalApiComponent extends React.Component {
   }
 
   deleteTask(obj) {
-    goalsAPI.deleteGoals(obj)
-      .then(response => {
-        this.props.deleteTask(obj);
-      });
+    this.props.deleteTaskThunkCreator(obj)
   }
 
   addNewTask() {
@@ -112,9 +97,10 @@ export default connect(mapStateToProps, {
   editGoals,
   editSubtask,
   addSubtask,
-  deleteTask,
+  deleteTaskThunkCreator,
   addTask,
   subtaskIsDoneChange,
-  getTask,
-  postEditedTask
+  getTaskThunkCreator,
+  postTaskThunkCreator,
+  putTaskThunkCreator
 })(GoalApiComponent);

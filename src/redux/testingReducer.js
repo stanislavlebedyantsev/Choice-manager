@@ -51,6 +51,7 @@ export const testingReducer = (state = initState, action) => {
           value: ""
         };
       }
+      console.log(copyState);
       return copyState;
     }
 

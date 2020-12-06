@@ -5,7 +5,7 @@ import {RegistrationFooter} from "./RegistrationFormComponents/RegistrationFoote
 
 const RegForm = (props) => {
   const onRegistration = () => {
-    props.registrationRequest();
+    props.registrationRequestThunkCreator(props.registrationStateText);
   };
   const handleChange = (event) => {
     let obj = {

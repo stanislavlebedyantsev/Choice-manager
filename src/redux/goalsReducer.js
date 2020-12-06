@@ -1,3 +1,5 @@
+import {goalsAPI} from "../api/goalsApi";
+
 const initState = {
   goals: [
     /*{
@@ -59,13 +61,14 @@ export const goalsReducer = (state = initState, action) => {
       return copyState;
     }
     case 'EDIT-SUBTASK': {
+      debugger
       copyState = {
         ...state
       };
       for (let i in copyState.goals) {
         if (copyState.goals[i].id === action.data.taskId) {
-          copyState.goals[i].tasks[action.data.id] = {
-            ...copyState.goals[i].tasks[action.data.id],
+          copyState.goals[i].tasks[action.data.id - 1] = {
+            ...copyState.goals[i].tasks[action.data.id - 1],
             name: action.data.name
           };
         }
@@ -76,15 +79,7 @@ export const goalsReducer = (state = initState, action) => {
       copyState = {
         ...state
       };
-      /////if andrey fix id in db use variant in comment
-      /*copyState.goals[action.data - 1].isEdit = true;*/
-      //////unless if andrey d fix id in db use this
-      for (let el of copyState.goals) {
-        if (el.id === action.data) {
-          el.isEdit = !el.isEdit;
-        }
-      }
-
+      copyState.goals[action.data - 1].isEdit = !copyState.goals[action.data - 1].isEdit;
       return copyState;
     }
     case 'ADD-SUBTASK': {
@@ -94,7 +89,7 @@ export const goalsReducer = (state = initState, action) => {
       for (let el of copyState.goals) {
         if (el.id === action.data) {
           el.tasks.push({
-            id: copyState.goals[action.data].tasks.length,
+            id: copyState.goals[action.data - 1].tasks.length + 1,
             name: '',
             done: false
           });
@@ -120,6 +115,7 @@ export const goalsReducer = (state = initState, action) => {
         ...state
       };
       copyState.goals.push({
+        id: copyState.goals.length + 1,
         name: '',
         explanation: '',
         done: false,
@@ -133,29 +129,13 @@ export const goalsReducer = (state = initState, action) => {
     case 'TOGGLE-SUBTASK': {
       copyState = {
         ...state
-      };
-      /////if andrey fix id in db use variant in comment
-      /*copyState.goals[action.data.taskId].tasks[action.data.subtaskId].isDone =
-        !copyState.goals[action.data.taskId].tasks[action.data.subtaskId].isDone;*/
-      //////unless if andrey d fix id in db use this
-      for (let el of copyState.goals) {
-        if (el.id === action.data.taskId) {
-          for (let subEl of el.tasks) {
-            if (subEl.id === action.data.subtaskId) {
-              subEl.done = !subEl.done;
-            }
-          }
-        }
       }
+      copyState.goals[action.data.taskId - 1].tasks[action.data.subtaskId - 1].done =
+        !copyState.goals[action.data.taskId - 1].tasks[action.data.subtaskId - 1].done;
       return copyState;
     }
     case 'POST-EDITED-TASK': {
       copyState = {...state};
-      for (let el of copyState.goals) {
-        if (!el.hasOwnProperty('id')) {
-          el.id = action.data.id;
-        }
-      }
       for (let el of copyState.goals) {
         if (el.hasOwnProperty('isAdded')) {
           delete el.isAdded;
@@ -177,3 +157,27 @@ export const addSubtask = (data) => ({type: 'ADD-SUBTASK', data});
 export const deleteTask = (data) => ({type: 'DELETE-TASK', data});
 export const addTask = () => ({type: 'ADD-TASK'});
 export const getTask = (data) => ({type: 'GET-TASKS', data});
+
+export const getTaskThunkCreator = () => (dispatchEvent) =>{
+  goalsAPI.getGoals().then(response => {
+    dispatchEvent(getTask(response));
+  })
+}
+export const postTaskThunkCreator = (obj) => (dispatchEvent) =>{
+  goalsAPI.postGoals(obj)
+    .then(response => {
+      dispatchEvent(postEditedTask(obj));
+    })
+    .catch(r => {
+      console.log(r);
+    });
+}
+export const deleteTaskThunkCreator = (obj) => (dispatchEvent) =>{
+  goalsAPI.deleteGoals(obj)
+    .then(response => {
+      dispatchEvent(deleteTask(obj));
+    });
+}
+export const putTaskThunkCreator = (obj) => (dispatchEvent) =>{
+  goalsAPI.putGoals(obj);
+}

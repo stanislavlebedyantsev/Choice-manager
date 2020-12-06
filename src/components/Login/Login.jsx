@@ -11,7 +11,7 @@ import Preloader from "../common/Preloader/Preloader";
 const Login = (props) => {
   const handleClick = () => {
     props.toggleIsFetching(true)
-    props.loginRequest();
+    props.loginRequestThunkCreator(props.loginStateText);
   };
   const handleChange = (event) => {
     let obj = {

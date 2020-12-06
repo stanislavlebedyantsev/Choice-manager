@@ -1,4 +1,6 @@
 import {loginAPI} from "../api/loginApi";
+import {registrationAPI} from "../api/registrationApi";
+import {registrationStateClear} from "./registrationReducer";
 
 const initState = {
   usernameOrEmail: '',
@@ -15,23 +17,11 @@ export const loginReducer = (state = initState, action) => {
       return copyState;
     }
     //fix async troubles
-    case 'LOGIN-REQUEST': {
+    case 'LOGIN-STATE-CLEAR': {
       copyState = {
         ...state
       };
-      loginAPI.postLogin({...copyState})
-        .then(data => {
-          copyState = {...initState};
-          localStorage.setItem('accessToken', data.accessToken);
-          localStorage.setItem('tokenType', data.tokenType);
-          window.location.href = '/testing';
-        })
-        .catch(() => {
-          alert("Wrong data. try again");
-        }).finally(() => {
 
-        copyState.isFetching = false;
-      });
       return copyState;
     }
     case 'TOGGLE-IS-FETCHING': {
@@ -45,5 +35,18 @@ export const loginReducer = (state = initState, action) => {
 
 export const toggleIsFetching = (data) => ({type: 'TOGGLE-IS-FETCHING', data});
 export const loginUpdateText = (newData) => ({type: 'LOGIN-UPDATE-TEXT', newData});
-export const loginRequest = () => ({type: 'LOGIN-REQUEST'});
+export const loginStateClear = () => ({type: 'LOGIN-STATE-CLEAR'});
 
+export const loginRequestThunkCreator = (state) => (dispatchEvent) => {
+  loginAPI.postLogin({...state})
+    .then(data => {
+      localStorage.setItem('accessToken', data.accessToken);
+      localStorage.setItem('tokenType', data.tokenType);
+      window.location.href = '/testing';
+      dispatchEvent(loginStateClear)
+    })
+    .catch(() => {
+      //alert("Wrong data. try again");
+    }).finally(() => {
+  });
+}

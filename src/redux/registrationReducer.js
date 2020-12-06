@@ -12,20 +12,8 @@ export const registrationReducer = (state = initState, action) => {
       return copyState;
     }
     //fix async troubles
-    case 'REGISTRATION-REQUEST': {
-      copyState = {...state};
-      registrationAPI.postRegistration(copyState)
-        .then(response => {
-          copyState = {...initState};
-        })
-        .then(() => {
-          //change it to normal redirect
-          window.location.href = '/login';
-        })
-        .catch(() => {
-          alert("smth goes wrong");
-        });
-      return copyState;
+    case 'REGISTRATION-STATE-CLEAR': {
+      return initState;
     }
     default:
       return state;
@@ -34,4 +22,18 @@ export const registrationReducer = (state = initState, action) => {
 };
 
 export const registrationUpdateText = (newData) => ({type: 'REGISTRATION-UPDATE-TEXT', newData});
-export const registrationRequest = () => ({type: 'REGISTRATION-REQUEST'});
+export const registrationStateClear = () => ({type: 'REGISTRATION-STATE-CLEAR'});
+
+export const registrationRequestThunkCreator = (state) => (dispatchEvent) => {
+  registrationAPI.postRegistration(state)
+    .then(response => {
+      dispatchEvent(registrationStateClear)
+    })
+    .then(() => {
+      //change it to normal redirect
+      window.location.href = '/login';
+    })
+    .catch(() => {
+      alert("smth goes wrong");
+    });
+}
