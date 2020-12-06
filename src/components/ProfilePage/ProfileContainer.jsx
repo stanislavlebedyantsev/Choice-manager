@@ -11,6 +11,7 @@ import ApexCharts from 'apexcharts';
 import ReactApexChart from 'apexcharts';
 import {toggleIsFetching} from "../../redux/profileReducer";
 import Preloader from "../common/Preloader/Preloader";
+import {profileAPI} from "../../api/profileApi";
 
 
 /*class ApexChart extends React.Component {
@@ -50,19 +51,16 @@ class ProfileApiContainer extends React.Component {
 
   componentDidMount() {
     this.props.toggleIsFetching(true);
-    axios
-      .get(`http://127.0.0.1:8080/profile/me`,
-        {
-          headers: {
-            Authorization: `${localStorage.getItem('tokenType')} ${localStorage.getItem('accessToken')}`
-          }
-        })
-      .then(response => {
-        this.props.getProfileData(response.data);
+    profileAPI.getProfile()
+      .then(data => {
+        this.props.getProfileData(data);
         this.props.toggleIsFetching(false);
       });
   }
 
+  profilePutUpdates(data) {
+    profileAPI.putProfile(data)
+  }
   /*radarChartRender = async () =>{
     debugger
     this.chart = new ApexCharts(this.contentRef, this.options)
@@ -76,7 +74,7 @@ class ProfileApiContainer extends React.Component {
           <div ref={this.contentRef}>
             <Profile state={this.props.profileStateData}
                      profileUpdateState={this.props.profileUpdateText}
-                     profilePutState={this.props.profilePutUpdates}/>
+                     profilePutState={this.profilePutUpdates.bind(this)}/>
             {
               /*this.props.profileStateData.radarChart.data && this.props.profileStateData.radarChart.caption ?
                 this.chart
@@ -98,6 +96,5 @@ export default connect(mapStateToProps,
   {
     getProfileData,
     profileUpdateText,
-    profilePutUpdates,
     toggleIsFetching
   })(ProfileApiContainer);

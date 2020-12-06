@@ -2,7 +2,7 @@ import s from "../Profile.module.css";
 
 const topSide = (props) => {
     const handleClick = () => {
-        props.profilePutState()
+        props.profilePutState(props.state)
     }
     return (
         <div className={s.leftSide}>

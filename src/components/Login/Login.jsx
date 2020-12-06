@@ -1,5 +1,4 @@
 import s from "./LoginComponent.module.css";
-import {NavLink, Redirect} from "react-router-dom";
 import React from 'react';
 import {LoginHeader} from "./LoginFormComponents/LoginHeader";
 import {LoginFooter} from "./LoginFormComponents/LoginFooter";

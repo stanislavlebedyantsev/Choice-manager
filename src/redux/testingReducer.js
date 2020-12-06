@@ -1,5 +1,6 @@
 import * as axios from 'axios';
 import {Redirect} from 'react-router-dom';
+import {testingAPI} from "../api/testingApi";
 
 const initState = {
   categories: [
@@ -79,27 +80,17 @@ export const testingReducer = (state = initState, action) => {
         answers: [...state.answers]
       };
       console.log(copyState);
-      axios
-        .post("http://127.0.0.1:8080/test", {
-          ...copyState
-        }, {
-          headers: {
-            Authorization: `${localStorage.getItem('tokenType')} ${localStorage.getItem('accessToken')}`
-          }
-        })
-        .then(response => {
-          copyState = {...initState};
-        })
+      testingAPI.postAnswers(copyState)
         .then(() => {
           //change it to normal redirect
           window.location.href = '/profile';
         })
-        .catch(() => {
+        .catch((err) => {
           //temp redirect
           taskList.isFetching = false;
-          alert('Server connection error');
+          alert(err);
         });
-      return initState;
+      return taskList;
     }
     case 'TOGGLE-IS-FETCHING': {
       return {...state, isFetching: action.data};

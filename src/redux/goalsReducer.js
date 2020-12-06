@@ -1,5 +1,3 @@
-import * as axios from 'axios';
-
 const initState = {
   goals: [
     /*{
@@ -45,7 +43,6 @@ export const goalsReducer = (state = initState, action) => {
         ...state,
         ...action.data
       };
-      console.log(copyState);
       return copyState;
     }
     case 'EDIT-TASK': {
@@ -94,11 +91,15 @@ export const goalsReducer = (state = initState, action) => {
       copyState = {
         ...state
       };
-      copyState.goals[action.data].tasks.push({
-        id: copyState.goals[action.data].tasks.length,
-        name: '',
-        isDone: false
-      });
+      for (let el of copyState.goals) {
+        if (el.id === action.data) {
+          el.tasks.push({
+            id: copyState.goals[action.data].tasks.length,
+            name: '',
+            done: false
+          });
+        }
+      }
       return copyState;
     }
     case 'DELETE-TASK': {
@@ -110,6 +111,7 @@ export const goalsReducer = (state = initState, action) => {
         if (el.id === action.data)
           id = i;
       });
+
       copyState.goals.splice(id, 1);
       return copyState;
     }
@@ -120,11 +122,12 @@ export const goalsReducer = (state = initState, action) => {
       copyState.goals.push({
         name: '',
         explanation: '',
-        isDone: false,
+        done: false,
         tasks: [],
         isEdit: true,
         isAdded: false
       });
+      console.log(copyState);
       return copyState;
     }
     case 'TOGGLE-SUBTASK': {
@@ -135,61 +138,29 @@ export const goalsReducer = (state = initState, action) => {
       /*copyState.goals[action.data.taskId].tasks[action.data.subtaskId].isDone =
         !copyState.goals[action.data.taskId].tasks[action.data.subtaskId].isDone;*/
       //////unless if andrey d fix id in db use this
-      for (let el of copyState.goals){
-        if(el.id === action.data.taskId){
-          for(let subEl of el.tasks){
-            if(subEl.id === action.data.subtaskId){
-              subEl.isDone = !subEl.isDone
+      for (let el of copyState.goals) {
+        if (el.id === action.data.taskId) {
+          for (let subEl of el.tasks) {
+            if (subEl.id === action.data.subtaskId) {
+              subEl.done = !subEl.done;
             }
           }
         }
       }
       return copyState;
     }
-    case 'PUT-EDITED-TASK': {
-      copyState = {...state};
-      axios
-        .put("http://127.0.0.1:8080/goals", {
-          ...action.data
-        }, {
-          headers: {
-            Authorization: `${localStorage.getItem('tokenType')} ${localStorage.getItem('accessToken')}`
-          }
-        })
-        .then(responce => {
-          /////if andrey fix id in db use variant in comment
-          /*copyState.goals[action.data - 1].isEdit = false;*/
-          //////unless if andrey d fix id in db use this
-          console.log(copyState);
-        });
-      return copyState;
-    }
     case 'POST-EDITED-TASK': {
       copyState = {...state};
-      delete
-      axios
-        .post("http://127.0.0.1:8080/goals/create", {
-          ...action.data
-        }, {
-          headers: {
-            Authorization: `${localStorage.getItem('tokenType')} ${localStorage.getItem('accessToken')}`
-          }
-        })
-        .then(responce => {
-          /////if andrey fix id in db use variant in comment
-          /*copyState.goals[action.data - 1].isEdit = false;*/
-          //////unless if andrey d fix id in db use this
-          console.log(responce.data);
-          for(let el of copyState.goals){
-            if(!el.hasOwnProperty('id')){
-              el.id = responce.data
-            }
-          }
-          console.log(copyState);
-        })
-        .catch(r =>{
-          console.log(r);
-        });
+      for (let el of copyState.goals) {
+        if (!el.hasOwnProperty('id')) {
+          el.id = action.data.id;
+        }
+      }
+      for (let el of copyState.goals) {
+        if (el.hasOwnProperty('isAdded')) {
+          delete el.isAdded;
+        }
+      }
       return copyState;
     }
     default:
@@ -200,7 +171,6 @@ export const goalsReducer = (state = initState, action) => {
 export const editGoals = (data) => ({type: 'EDIT-TASK', data});
 export const editSubtask = (data) => ({type: 'EDIT-SUBTASK', data});
 export const toggleEdit = (data) => ({type: 'TOGGLE-EDIT', data});
-export const putEditedTask = (data) => ({type: 'PUT-EDITED-TASK', data});
 export const postEditedTask = (data) => ({type: 'POST-EDITED-TASK', data});
 export const subtaskIsDoneChange = (data) => ({type: 'TOGGLE-SUBTASK', data});
 export const addSubtask = (data) => ({type: 'ADD-SUBTASK', data});

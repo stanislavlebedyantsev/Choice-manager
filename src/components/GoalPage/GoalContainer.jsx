@@ -9,22 +9,14 @@ import {
   subtaskIsDoneChange,
   toggleEdit
 } from "../../redux/goalsReducer";
-import * as axios from 'axios';
+import {goalsAPI} from "../../api/goalsApi";
 
 
 class GoalApiComponent extends React.Component {
   componentDidMount() {
-    axios
-      .get("http://127.0.0.1:8080/goals",
-        {
-          headers: {
-            Authorization: `${localStorage.getItem('tokenType')} ${localStorage.getItem('accessToken')}`
-          }
-        }
-      )
-      .then(responce => {
-        this.props.getTask(responce.data);
-      });
+    goalsAPI.getGoals().then(response => {
+      this.props.getTask(response);
+    })
   }
 
 
@@ -41,10 +33,21 @@ class GoalApiComponent extends React.Component {
   }
 
   putEditedTaskBtn(obj) {
-    this.props.putEditedTask(obj);
+    goalsAPI.putGoals(obj);
   }
   postEditedTaskBtn(obj) {
-    this.props.postEditedTask(obj);
+    goalsAPI.postGoals(obj)
+      .then(response => {
+        /////if andrey fix id in db use variant in comment
+        /*copyState.goals[action.data - 1].isEdit = false;*/
+        //////unless if andrey d fix id in db use this
+        console.log(response);
+        obj.id = response
+        this.props.postEditedTask(obj);
+      })
+      .catch(r => {
+        console.log(r);
+      });
   }
 
   subtaskStateChange(obj) {
@@ -56,7 +59,10 @@ class GoalApiComponent extends React.Component {
   }
 
   deleteTask(obj) {
-    this.props.deleteTask(obj);
+    goalsAPI.deleteGoals(obj)
+      .then(response => {
+        this.props.deleteTask(obj);
+      });
   }
 
   addNewTask() {
@@ -106,7 +112,6 @@ export default connect(mapStateToProps, {
   editGoals,
   editSubtask,
   addSubtask,
-  putEditedTask,
   deleteTask,
   addTask,
   subtaskIsDoneChange,

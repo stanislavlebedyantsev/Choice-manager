@@ -1,4 +1,4 @@
-import * as axios from 'axios';
+import {loginAPI} from "../api/loginApi";
 
 const initState = {
   usernameOrEmail: '',
@@ -19,14 +19,11 @@ export const loginReducer = (state = initState, action) => {
       copyState = {
         ...state
       };
-      axios
-        .post("http://127.0.0.1:8080/auth/login", {
-          ...copyState
-        })
-        .then(response => {
+      loginAPI.postLogin({...copyState})
+        .then(data => {
           copyState = {...initState};
-          localStorage.setItem('accessToken', response.data.accessToken);
-          localStorage.setItem('tokenType', response.data.tokenType);
+          localStorage.setItem('accessToken', data.accessToken);
+          localStorage.setItem('tokenType', data.tokenType);
           window.location.href = '/testing';
           return copyState;
         })

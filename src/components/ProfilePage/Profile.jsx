@@ -41,7 +41,7 @@ const Profile = (props) => {
             <div className={s.background}>
                 <Header/>
                 <div className={s.container}>
-                    <TopSide profilePutState={props.profilePutState}/>
+                    <TopSide state={props.state.userDto} profilePutState={props.profilePutState}/>
                     <div className={s.bottomSide}>
                         <BottomRightInput state={props.state.userDto} profileUpdateState={props.profileUpdateState}/>
                     </div>

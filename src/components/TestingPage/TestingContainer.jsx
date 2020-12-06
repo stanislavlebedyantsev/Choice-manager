@@ -6,25 +6,21 @@ import {
   toggleIsFetching,
   updateTestAnswers
 } from "../../redux/testingReducer";
-import * as axios from "axios";
 import Testing from "./Testing";
 import Preloader from "../common/Preloader/Preloader";
+import {testingAPI} from "../../api/testingApi";
 
 class TestingApiContainer extends React.Component {
   componentDidMount() {
     this.props.toggleIsFetching(true);
-    axios
-      .get('http://127.0.0.1:8080/test')
-      .then(response => {
+    testingAPI.getTest()
+      .then(data => {
         this.props.toggleIsFetching(false);
-        this.props.getTest(response.data);
-
+        this.props.getTest(data);
       })
-      .catch();
   }
 
   postAnswers() {
-    this.props.toggleIsFetching(true);
     this.props.postAnswersData();
   }
 

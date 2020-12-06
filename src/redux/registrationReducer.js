@@ -1,4 +1,4 @@
-import * as axios from "axios";
+import {registrationAPI} from "../api/registrationApi";
 
 const initState = {
 };
@@ -14,10 +14,7 @@ export const registrationReducer = (state = initState, action) => {
     //fix async troubles
     case 'REGISTRATION-REQUEST': {
       copyState = {...state};
-      axios
-        .post("http://127.0.0.1:8080/registration", {
-          ...copyState
-        })
+      registrationAPI.postRegistration(copyState)
         .then(response => {
           copyState = {...initState};
         })

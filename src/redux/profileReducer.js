@@ -1,5 +1,3 @@
-import * as axios from 'axios';
-
 const initState = {
   userDto: {
     /*name: '',
@@ -24,12 +22,8 @@ export const profileReducer = (state = initState, action) => {
       copyState.userDto.passwordConfirmation = '';
       console.log(copyState);
       for (let i in copyState.radarChart.data) {
-        copyState.radarChart.data[i] = Number(copyState.radarChart.data[i]) / 5;
-      }/*
-      copyState.radarChart = {
-        data: Object.values(copyState.radarChart.data),
-        caption: Object.values(copyState.radarChart.caption)
-      }*/
+        copyState.radarChart.data[i] = Number(copyState.radarChart.data[i]) / 4;
+      }
       console.log(copyState.radarChart);
       return copyState;
     }
@@ -43,19 +37,6 @@ export const profileReducer = (state = initState, action) => {
       console.log(copyState);
       return copyState;
     }
-    case 'PUT-PROFILE-DATA': {
-      copyState = {
-        ...state
-      };
-      axios
-        .put(`http://127.0.0.1:8080/profile/put`, copyState.userDto,
-          {
-            headers: {
-              accessToken: localStorage.getItem('accessKey')
-            }
-          });
-      return copyState;
-    }
     case 'TOGGLE-IS-FETCHING': {
       return {...state, isFetching: action.data};
     }
@@ -67,5 +48,4 @@ export const profileReducer = (state = initState, action) => {
 
 export const getProfileData = (data) => ({type: 'GET-PROFILE-DATA', data});
 export const profileUpdateText = (data) => ({type: 'UPDATE-PROFILE-DATA', data});
-export const profilePutUpdates = () => ({type: 'PUT-PROFILE-DATA'});
 export const toggleIsFetching = (data) => ({type: 'TOGGLE-IS-FETCHING', data});
