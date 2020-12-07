@@ -14,11 +14,14 @@ export const authReducer = (state = initState, action) => {
         ...action.data,
         isAuth: true
       };
+      /*localStorage.setItem('isAuth', true)
+      localStorage.setItem('isTested', true)*/
     }
     case 'TOGGLE-IS-TESTED': {
       return {...state, isTested: true};
     }
     case 'LOGOUT': {
+      localStorage.clear();
       return initState;
     }
     default:

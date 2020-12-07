@@ -10,7 +10,7 @@ const StartPage = (props) => {
                 <li>
                     <div className={s.slider1}>
                         <div className={s.slider1H1}>
-                            Choice manager<br/> The way to create your own
+                            Choice manager<br/> The way to create your own skills
                         </div>
                         <div className={s.slider1Right}>
                             <p>One of the most important things in life is to find your life vision and decide what you

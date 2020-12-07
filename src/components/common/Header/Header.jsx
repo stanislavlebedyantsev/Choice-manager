@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import {logout} from "../../../redux/authReducer";
 
 class Header extends React.Component{
-  logout(){
+    logout(){
     this.props.logout()
   }
   render() {

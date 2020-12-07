@@ -8,7 +8,7 @@ const DropDownMenu = (props) => {
   }
   return (
     <div className={s.dropDownContainer}>
-      <span><img src={dropdown} alt=""/></span>
+      <span><img src={dropdown} alt=""/>Menu</span>
       <div className={s.dropDownLinks}>
         <NavLink to={`/${props.linkTo}`}>{props.linkTo}</NavLink>
         <NavLink to={`/login`} onClick={handleClick}>logout</NavLink>

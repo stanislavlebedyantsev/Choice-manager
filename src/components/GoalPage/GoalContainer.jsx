@@ -64,9 +64,9 @@ class GoalApiComponent extends React.Component {
   }
 
   render() {
-    if (!this.props.isAuth) {
+    if (!localStorage.getItem('isAuth')) {
       return <Redirect to={'/login'}/>;
-    } else if (this.props.isAuth && !this.props.isTested) return <Redirect to={'/testing'}/>;
+    } else if (localStorage.getItem('isAuth') && !localStorage.getItem('isTested')) return <Redirect to={'/testing'}/>;
     return (
       <div className={s.background}>
         <Header/>

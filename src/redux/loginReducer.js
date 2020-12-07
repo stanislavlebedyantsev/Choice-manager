@@ -17,11 +17,7 @@ export const loginReducer = (state = initState, action) => {
     }
     //fix async troubles
     case 'LOGIN-STATE-CLEAR': {
-      copyState = {
-        ...state
-      };
-
-      return copyState;
+      return initState;
     }
     case 'TOGGLE-IS-FETCHING': {
       return {...state, isFetching: action.data};
@@ -40,14 +36,25 @@ export const loginRequestThunkCreator = (state, authReducer) => (dispatchEvent) 
   loginAPI.postLogin({...state})
     .then(data => {
       dispatchEvent(loginStateClear())
-      dispatchEvent(setUserData({
+      localStorage.setItem('tokenType', data.tokenType)
+      localStorage.setItem('accessToken', data.accessToken)
+      localStorage.setItem('isAuth', true)
+      localStorage.setItem('isTested', true)
+      if(data.tested) window.location.href= '/goals'
+      if(!data.tested) window.location.href= '/testing'
+      /*dispatchEvent(setUserData({
         accessToken: data.accessToken,
         tokenType: data.tokenType,
         isTested:data.tested
-      }))
+      }))*/
     })
-    .catch(() => {
-      //alert("Wrong data. try again");
-    }).finally(() => {
-  });
+    .catch((err) => {
+      debugger
+      const error = err.response.data
+      let errorText=''
+      for (let i in error){
+        errorText += error[i]
+      }
+      alert(errorText)
+    });
 }

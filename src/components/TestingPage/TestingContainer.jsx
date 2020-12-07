@@ -13,7 +13,6 @@ import {Redirect} from "react-router-dom";
 
 class TestingApiContainer extends React.Component {
   componentDidMount() {
-    this.props.clearAnswers()
     this.props.getTestingQuestionsThunkCreator()
   }
 
@@ -35,8 +34,8 @@ class TestingApiContainer extends React.Component {
   }
 
   render() {
-    if(!this.props.isAuth) return <Redirect to={'/login'}/>
-    if(this.props.isAuth && this.props.isTested) return <Redirect to={'/goals'}/>
+    if(!localStorage.getItem('isAuth')) return <Redirect to={'/login'}/>
+    if(localStorage.getItem('isAuth') && localStorage.getItem('isTested')) return <Redirect to={'/goals'}/>
     return (
       <>
         {this.props.isFetching ?

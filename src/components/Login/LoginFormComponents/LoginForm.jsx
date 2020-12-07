@@ -4,7 +4,7 @@ import React from "react";
 const LoginForm = (props) => {
   return (
     <div className={s.rightLogin}>
-      <h3 className={s.rightLoginh2}>Login</h3>
+      <h3 className={s.rightLoginh2}>Login to your account</h3>
       <div className={s.rightLoginUser}>
         <input name="usernameOrEmail" placeholder="Username"
                className={s.login}

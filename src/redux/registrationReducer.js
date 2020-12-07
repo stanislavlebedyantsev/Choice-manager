@@ -1,6 +1,12 @@
 import {registrationAPI} from "../api/registrationApi";
 
 const initState = {
+  username: '',
+  email: '',
+  password: '',
+  passwordConfirmation: '',
+  name: '',
+  surname: '',
   isRegistrationSuccess:false
 };
 
@@ -37,7 +43,12 @@ export const registrationRequestThunkCreator = (state) => (dispatchEvent) => {
       dispatchEvent(toggleIsRegistrationSuccess())
       dispatchEvent(registrationStateClear())
     })
-    .catch(() => {
-      alert("smth goes wrong");
+    .catch((err) => {
+      const error = err.response.data
+      let errorText=''
+      for (let i in error){
+        errorText += error[i]
+      }
+      alert(errorText)
     });
 }
