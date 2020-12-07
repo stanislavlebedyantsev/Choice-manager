@@ -133,6 +133,16 @@ export const goalsReducer = (state = initState, action) => {
         !copyState.goals[action.data.taskId - 1].tasks[action.data.subtaskId - 1].done;
       return copyState;
     }
+    case 'COMPLETE-TASK': {
+      copyState = {
+        ...state
+      }
+      copyState.goals[action.id - 1].done = !copyState.goals[action.id - 1].done
+      copyState.goals[action.id - 1].tasks.forEach(el => {
+        el.done = true
+      })
+      return copyState;
+    }
     case 'POST-EDITED-TASK': {
       copyState = {...state};
       for (let el of copyState.goals) {
@@ -140,6 +150,11 @@ export const goalsReducer = (state = initState, action) => {
           delete el.isAdded;
         }
       }
+      return copyState;
+    }
+    case 'EDIT-PROGRESS': {
+      copyState = {...state};
+      copyState.goals[action.id - 1].progress = action.data
       return copyState;
     }
     default:
@@ -156,6 +171,8 @@ export const addSubtask = (data) => ({type: 'ADD-SUBTASK', data});
 export const deleteTask = (data) => ({type: 'DELETE-TASK', data});
 export const addTask = () => ({type: 'ADD-TASK'});
 export const getTask = (data) => ({type: 'GET-TASKS', data});
+export const completeTask = (data) => ({type: 'COMPLETE-TASKS', data});
+export const editProgress = (data, id) => ({type: 'EDIT-PROGRESS', data, id});
 
 export const getTaskThunkCreator = () => (dispatchEvent) =>{
   goalsAPI.getGoals().then(response => {
@@ -175,8 +192,12 @@ export const deleteTaskThunkCreator = (obj) => (dispatchEvent) =>{
   goalsAPI.deleteGoals(obj)
     .then(response => {
       dispatchEvent(deleteTask(obj));
+      dispatchEvent(getTaskThunkCreator())
     });
 }
-export const putTaskThunkCreator = (obj) => (dispatchEvent) =>{
-  goalsAPI.putGoals(obj);
+export const putTaskThunkCreator = (obj, isComplete = false) => (dispatchEvent) =>{
+  goalsAPI.putGoals(obj).then((data) => {
+    dispatchEvent(editProgress(data, obj.id))
+    dispatchEvent(getTaskThunkCreator())
+  });
 }

@@ -22,7 +22,7 @@ const SubtaskComponent = (props) => {
     <div className={s.subtaskContainer}>
       <label className={s.checkbox}>
         <input type="checkbox" checked={props.subtaskState.done ? 'checked' : ''}
-               onChange={handleCheck}/>
+               onChange={!props.isTaskDone ? handleCheck : null}/>
         {
           props.isEdit ?
             <input className={s.editInput} name={"name"} value={props.subtaskState.name}

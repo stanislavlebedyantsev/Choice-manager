@@ -62,11 +62,29 @@
 .descriptionP {
     margin-bottom: -50px;
 }
+.progressBarBack {
+    position: relative;
+    border: 2px darkgrey solid;
+    width: 350px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
 .progressBar {
-    width: 400px;
-    height: 60px;
-    margin-top: -50px;
-
+    position: absolute;
+    border: 2px blue solid;
+    bottom: -2px;
+}
+.progressBarLabel{
+    position: absolute;
+    font-size: 24px;
+    left: 365px;
+}
+.progressBarContainer {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 30px;
 }
 
 .checkbox {

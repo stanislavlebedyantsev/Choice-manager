@@ -13,7 +13,6 @@ export const goalsAPI = {
       .get("").then(response => response.data);
   },
   putGoals(obj) {
-    debugger
     return goalsAxios
       .put("", {
         ...obj

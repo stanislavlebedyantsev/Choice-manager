@@ -2,14 +2,15 @@ import s from "./Registration.module.css";
 import React from 'react';
 import {RegistrationHeader} from "./RegistrationFormComponents/RegistrationHeader";
 import {RegistrationFooter} from "./RegistrationFormComponents/RegistrationFooter";
+import {Redirect} from "react-router-dom";
 
 const RegForm = (props) => {
   const onRegistration = () => {
-    props.registrationRequestThunkCreator(props.registrationStateText);
+    props.registrationRequestThunkCreator(props.registrationState);
   };
   const handleChange = (event) => {
     let obj = {
-      ...props.registrationStateText
+      ...props.registrationState
     };
     obj = {
       ...obj,
@@ -17,6 +18,7 @@ const RegForm = (props) => {
     };
     props.registrationUpdateText(obj);
   };
+  if(props.registrationState.isRegistrationSuccess) return  <Redirect to={'/login'}/>
   return (
     <div className={s.background}>
       <div className={s.container}>
@@ -27,27 +29,27 @@ const RegForm = (props) => {
             <div className={s.rightLoginUser}>
               <input name="name" placeholder="First name"
                      className={s.firstName}
-                     value={props.registrationStateText.name}
+                     value={props.registrationState.name}
                      onChange={handleChange}/>
               <input name="surname" placeholder="Second name"
                      className={s.secondName}
-                     value={props.registrationStateText.surname}
+                     value={props.registrationState.surname}
                      onChange={handleChange}/>
               <input name="email" placeholder="Email"
                      className={s.email}
-                     value={props.registrationStateText.email}
+                     value={props.registrationState.email}
                      onChange={handleChange}/>
               <input name="username" placeholder="Username"
                      className={s.username}
-                     value={props.registrationStateText.login}
+                     value={props.registrationState.login}
                      onChange={handleChange}/>
               <input type="password" name={"password"} placeholder="Password"
                      className={s.password}
-                     value={props.registrationStateText.password}
+                     value={props.registrationState.password}
                      onChange={handleChange}/>
               <input type="password" name={"passwordConfirmation"} placeholder="Confirm password"
                      className={s.confPassword}
-                     value={props.registrationStateText.passwordConfirmation}
+                     value={props.registrationState.passwordConfirmation}
                      onChange={handleChange}/>
               <div className={s.button}>
                 <button onClick={onRegistration}>Register</button>

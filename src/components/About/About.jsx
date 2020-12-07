@@ -1,8 +1,8 @@
 import s from './About.module.css';
-import Footer from "../common/Footer/Footer";
 import {NavLink} from "react-router-dom";
+import FooterContainer from "../common/Footer/FooterContainer";
 
-const About = (props) => {
+const About = () => {
   return (
     <div className={s.background}>
       <div className={s.content}>
@@ -33,7 +33,7 @@ const About = (props) => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <FooterContainer/>
     </div>
 
   );

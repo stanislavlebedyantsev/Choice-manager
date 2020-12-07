@@ -3,9 +3,9 @@ import Header from "../common/Header/Header";
 import TopSide from "./topSide/topSide";
 import BottomLeftText from "./bottomLeftText/bottomLeftText";
 import BottomRightInput from "./bottomRightInput/bottomRightInput";
-import Footer from "../common/Footer/Footer";
 import RadarChart from 'react-svg-radar-chart';
 import 'react-svg-radar-chart/build/css/index.css';
+import FooterContainer from "../common/Footer/FooterContainer";
 
 const Profile = (props) => {
     const defaultOptions = {
@@ -36,6 +36,7 @@ const Profile = (props) => {
         })
     };
 
+
     return (
         <div>
             <div className={s.background}>
@@ -65,7 +66,7 @@ const Profile = (props) => {
                     </div>
                     <BottomLeftText/>
                 </div>
-                <Footer/>
+                <FooterContainer/>
             </div>
         </div>
     );

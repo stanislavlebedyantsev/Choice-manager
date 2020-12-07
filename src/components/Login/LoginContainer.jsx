@@ -5,16 +5,20 @@ import {
   toggleIsFetching
 } from "../../redux/loginReducer";
 import {connect} from "react-redux";
+import {setUserData} from "../../redux/authReducer";
 
 
 const mapStateToProps = (state) => ({
   loginStateText: state.loginPage,
-  isFetching: state.loginPage.isFetching
+  isFetching: state.loginPage.isFetching,
+  isAuth: state.auth.isAuth,
+  isTested: state.auth.isTested
 });
 
 
 export default connect(mapStateToProps, {
   loginRequestThunkCreator,
   loginUpdateText,
-  toggleIsFetching
+  toggleIsFetching,
+  setUserData
 })(Login);

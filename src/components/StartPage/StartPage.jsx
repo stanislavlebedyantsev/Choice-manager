@@ -1,6 +1,4 @@
 import s from "./StartPage.module.css";
-import {Route, NavLink} from "react-router-dom";
-import SlideMenuBtn from "./SlideMenuBtn/SlideMenuBtn";
 import About from "../About/About";
 
 const StartPage = (props) => {

@@ -9,6 +9,7 @@ import {
 } from "../../redux/testingReducer";
 import Testing from "./Testing";
 import Preloader from "../common/Preloader/Preloader";
+import {Redirect} from "react-router-dom";
 
 class TestingApiContainer extends React.Component {
   componentDidMount() {
@@ -34,7 +35,8 @@ class TestingApiContainer extends React.Component {
   }
 
   render() {
-
+    if(!this.props.isAuth) return <Redirect to={'/login'}/>
+    if(this.props.isAuth && this.props.isTested) return <Redirect to={'/goals'}/>
     return (
       <>
         {this.props.isFetching ?
@@ -58,7 +60,9 @@ const mapStateToProps = (state) => {
     TestingQuestions: state.testingPage,
     isFetching: state.testingPage.isFetching,
     currentPage: state.testingPage.currentPage,
-    totalPages: state.testingPage.totalPages
+    totalPages: state.testingPage.totalPages,
+    isAuth: state.auth.isAuth,
+    isTested: state.auth.isTested,
   };
 };
 

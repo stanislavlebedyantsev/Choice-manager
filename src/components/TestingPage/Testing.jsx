@@ -1,12 +1,12 @@
 import Header from "../common/Header/Header";
 import s from "./TestingForm.module.css";
 import QuestionComponent from "./QuestionComponent/QuestionComponent";
-import Footer from "../common/Footer/Footer";
 import like from '../../images/like.svg';
 import dislike from '../../images/dislike.svg';
 import timer from '../../images/timer-testing-header.svg';
 import radarChart from '../../images/radarChart-testing-description.svg';
 import checkMark from "../../images/checkMark-black.svg";
+import FooterContainer from "../common/Footer/FooterContainer";
 
 const Testing = (props) => {
   return (
@@ -61,7 +61,7 @@ const Testing = (props) => {
           }
         </div>
       </div>
-      <Footer/>
+      <FooterContainer/>
     </div>
   );
 };

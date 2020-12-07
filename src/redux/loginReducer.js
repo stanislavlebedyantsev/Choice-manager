@@ -1,4 +1,5 @@
 import {loginAPI} from "../api/loginApi";
+import {setUserData} from "./authReducer";
 
 const initState = {
   usernameOrEmail: '',
@@ -35,13 +36,15 @@ export const toggleIsFetching = (data) => ({type: 'TOGGLE-IS-FETCHING', data});
 export const loginUpdateText = (newData) => ({type: 'LOGIN-UPDATE-TEXT', newData});
 export const loginStateClear = () => ({type: 'LOGIN-STATE-CLEAR'});
 
-export const loginRequestThunkCreator = (state) => (dispatchEvent) => {
+export const loginRequestThunkCreator = (state, authReducer) => (dispatchEvent) => {
   loginAPI.postLogin({...state})
     .then(data => {
-      localStorage.setItem('accessToken', data.accessToken);
-      localStorage.setItem('tokenType', data.tokenType);
-      window.location.href = '/testing';
-      dispatchEvent(loginStateClear)
+      dispatchEvent(loginStateClear())
+      dispatchEvent(setUserData({
+        accessToken: data.accessToken,
+        tokenType: data.tokenType,
+        isTested:data.tested
+      }))
     })
     .catch(() => {
       //alert("Wrong data. try again");

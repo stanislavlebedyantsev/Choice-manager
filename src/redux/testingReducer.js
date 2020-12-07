@@ -1,4 +1,5 @@
 import {testingAPI} from "../api/testingApi";
+import {toggleIsTested} from "./authReducer";
 
 const initState = {
   categories: [
@@ -119,14 +120,14 @@ export const getTestingQuestionsThunkCreator = (currentPage = 1) => {
 };
 
 
-export const postAnswersThunkCreator = (copyState, currentPage, totalPages) => {
+export const postAnswersThunkCreator = (copyState) => {
   return (dispatchEvent) => {
     console.log(copyState);
     testingAPI.postAnswers({answers: copyState})
       .then(() => {
         //change it to normal redirect
         dispatchEvent(toggleIsFetching(false));
-        window.location.href = '/profile';
+        dispatchEvent(toggleIsTested())
       })
       .catch((err) => {
         alert(err.response.data.error);

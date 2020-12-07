@@ -3,19 +3,20 @@ import {connect} from "react-redux";
 import s from "./Goals.module.css";
 import Header from "../common/Header/Header";
 import GoalComponent from "./GoalsComponents/GoalComponent";
-import Footer from "../common/Footer/Footer";
 import {
-  addSubtask, addTask,
-  deleteTaskThunkCreator, editGoals,
+  addSubtask, addTask, completeTask,
+  deleteTaskThunkCreator, editGoals, editProgress,
   editSubtask, getTaskThunkCreator,
   postTaskThunkCreator, putTaskThunkCreator,
   subtaskIsDoneChange, toggleEdit
 } from "../../redux/goalsReducer";
+import {Redirect} from "react-router-dom";
+import FooterContainer from "../common/Footer/FooterContainer";
 
 
 class GoalApiComponent extends React.Component {
   componentDidMount() {
-    this.props.getTaskThunkCreator()
+    this.props.getTaskThunkCreator();
   }
 
 
@@ -31,11 +32,15 @@ class GoalApiComponent extends React.Component {
     this.props.editSubtask(data);
   }
 
-  putEditedTaskBtn(obj) {
-    this.props.putTaskThunkCreator(obj)
+  putEditedTaskBtn(obj, taskIsDone = false) {
+    if (taskIsDone){
+      this.props.completeTask(obj.id);
+    }
+    this.props.putTaskThunkCreator(obj);
   }
+
   postEditedTaskBtn(obj) {
-    this.props.postTaskThunkCreator(obj)
+    this.props.postTaskThunkCreator(obj);
   }
 
   subtaskStateChange(obj) {
@@ -47,14 +52,21 @@ class GoalApiComponent extends React.Component {
   }
 
   deleteTask(obj) {
-    this.props.deleteTaskThunkCreator(obj)
+    this.props.deleteTaskThunkCreator(obj);
   }
 
   addNewTask() {
     this.props.addTask();
   }
 
+  completeTask(task) {
+    this.props.completeTask(task);
+  }
+
   render() {
+    if (!this.props.isAuth) {
+      return <Redirect to={'/login'}/>;
+    } else if (this.props.isAuth && !this.props.isTested) return <Redirect to={'/testing'}/>;
     return (
       <div className={s.background}>
         <Header/>
@@ -74,13 +86,14 @@ class GoalApiComponent extends React.Component {
                                  editSubtask={this.editSubtask.bind(this)}
                                  addSubtask={this.addStateSubtask.bind(this)}
                                  deleteTask={this.deleteTask.bind(this)}
+                                 completeTask={this.completeTask.bind(this)}
                   />
                 )) : null
             }
             <button className={s.addGoalBtn} onClick={this.addNewTask.bind(this)}/>
           </div>
         </div>
-        <Footer/>
+        <FooterContainer/>
       </div>
     );
   }
@@ -88,7 +101,9 @@ class GoalApiComponent extends React.Component {
 
 const mapStateToProps = (state) => ({
   goalsStateData: state.goalsPage,
-  isFetching: state.goalsPage.isFetching
+  isFetching: state.goalsPage.isFetching,
+  isAuth: state.auth.isAuth,
+  isTested: state.auth.isTested,
 });
 
 
@@ -102,5 +117,6 @@ export default connect(mapStateToProps, {
   subtaskIsDoneChange,
   getTaskThunkCreator,
   postTaskThunkCreator,
-  putTaskThunkCreator
+  putTaskThunkCreator,
+  completeTask
 })(GoalApiComponent);

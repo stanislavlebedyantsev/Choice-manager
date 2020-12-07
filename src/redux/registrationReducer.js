@@ -1,6 +1,7 @@
 import {registrationAPI} from "../api/registrationApi";
 
 const initState = {
+  isRegistrationSuccess:false
 };
 
 export const registrationReducer = (state = initState, action) => {
@@ -8,12 +9,17 @@ export const registrationReducer = (state = initState, action) => {
 
   switch (action.type) {
     case 'REGISTRATION-UPDATE-TEXT': {
-      copyState = action.newData;
+      copyState ={
+        ...state,
+        ...action.newData
+      }
       return copyState;
     }
-    //fix async troubles
     case 'REGISTRATION-STATE-CLEAR': {
       return initState;
+    }
+    case 'REGISTRATION-SUCCESS': {
+      return {...state, isRegistrationSuccess: true};
     }
     default:
       return state;
@@ -23,15 +29,13 @@ export const registrationReducer = (state = initState, action) => {
 
 export const registrationUpdateText = (newData) => ({type: 'REGISTRATION-UPDATE-TEXT', newData});
 export const registrationStateClear = () => ({type: 'REGISTRATION-STATE-CLEAR'});
+export const toggleIsRegistrationSuccess = () => ({type: 'REGISTRATION-SUCCESS'});
 
 export const registrationRequestThunkCreator = (state) => (dispatchEvent) => {
   registrationAPI.postRegistration(state)
-    .then(response => {
-      dispatchEvent(registrationStateClear)
-    })
     .then(() => {
-      //change it to normal redirect
-      window.location.href = '/login';
+      dispatchEvent(toggleIsRegistrationSuccess())
+      dispatchEvent(registrationStateClear())
     })
     .catch(() => {
       alert("smth goes wrong");

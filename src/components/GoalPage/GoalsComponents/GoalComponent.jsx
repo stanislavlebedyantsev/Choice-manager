@@ -1,5 +1,8 @@
 import s from "../Goals.module.css";
 import SubtaskComponent from "./SubtaskComponent";
+import GoalTopButtons from "./GoalTopButtons";
+import GoalFooterButtons from "./GoalFooterButtons";
+import ProgressBar from "./ProgressBar";
 
 const GoalComponent = (props) => {
   const handleChange = (event) => {
@@ -18,34 +21,32 @@ const GoalComponent = (props) => {
     } else if (event.target.name === 'save' && props.state.isEdit && !props.state.hasOwnProperty('isAdded')) {
       props.putEditedTask(props.state);
       props.toogleEditBtn(Number(props.state.id));
-    }
-    else if (event.target.name === 'save' && props.state.isEdit && props.state.hasOwnProperty('isAdded')) {
+    } else if (event.target.name === 'save' && props.state.isEdit && props.state.hasOwnProperty('isAdded')) {
       props.postEditedTask(props.state);
       props.toogleEditBtn(Number(props.state.id));
     } else if (event.target.name === 'addSubtask') {
-      props.addSubtask(props.state.id)
-    }
-    else if (event.target.name === 'delete') {
-      props.deleteTask(props.state.id)
+      props.addSubtask(props.state.id);
+    } else if (event.target.name === 'delete') {
+      props.deleteTask(props.state.id);
+    } else if (event.target.name === 'complete') {
+      const obj = {...props.state, done: true};
+      obj.tasks.forEach(el => {
+        el.done = true;
+      });
+      props.putEditedTask(obj, true);
     }
   };
 
   const handleCheck = (obj) => {
-    obj = props.state
-    props.subtaskIsDoneChange(obj)
-  }
+    props.subtaskIsDoneChange(obj);
+    props.putEditedTask(props.state);
+  };
   return (
     <div className={s.goalContainer}>
       <div>
-        <div className={s.buttons}>
-          {
-            !props.state.isEdit ?
-              <button className={s.editButton} name={'edit'} onClick={handleClick}/>
-              :
-              <button className={s.saveButton} name={'save'} onClick={handleClick}/>
-          }
-          <button className={s.deleteButton} name={'delete'} onClick={handleClick}/>
-        </div>
+        <GoalTopButtons handleClick={handleClick}
+                        done={props.state.done}
+                        isEdit={props.state.isEdit}/>
         <div className={s.goalNameH6}>
           {
             props.state.isEdit ?
@@ -71,19 +72,20 @@ const GoalComponent = (props) => {
               )
           }
         </div>
-        <progress className={s.progressBar} value="57" max="100"/>
+        <ProgressBar progress={props.state.progress}/>
         {props.state.tasks.map(el => (
           <SubtaskComponent subtaskState={el}
                             taskId={props.state.id}
                             subtaskIsDoneChange={handleCheck}
                             isEdit={props.state.isEdit}
                             editSubtask={props.editSubtask}
+                            isTaskDone={props.state.done}
           />
         ))}
-        {props.state.isEdit ?
-          <button name={'addSubtask'} onClick={handleClick} className={s.btn} >Add subtask</button>
-          : null}
-        <button className={s.btn}>Complete task</button>
+        <GoalFooterButtons handleClick={handleClick}
+                           done={props.state.done}
+                           isEdit={props.state.isEdit}/>
+
       </div>
     </div>
   );

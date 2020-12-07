@@ -8,7 +8,7 @@ import {connect} from "react-redux";
 
 
 const mapStateToProps = (state) => ({
-  registrationStateText: state.registrationPage
+  registrationState: state.registrationPage
 });
 
 
