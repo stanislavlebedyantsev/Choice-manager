@@ -6,7 +6,7 @@ import like from '../../images/like.svg';
 import dislike from '../../images/dislike.svg';
 import timer from '../../images/timer-testing-header.svg';
 import radarChart from '../../images/radarChart-testing-description.svg';
-import checkMark from "../../images/checkMark-black.svg"
+import checkMark from "../../images/checkMark-black.svg";
 
 const Testing = (props) => {
   return (
@@ -42,14 +42,27 @@ const Testing = (props) => {
               />);
             }) : <div/>
         }
-        {
-          props.TestingQuestions.categories.length !== 0 ?
-            <button className={s.btn} onClick={props.postAnswers}>Send testing data</button>
-            : null
-        }
+        <div className={s.pageNavigation}>
+          {
+            props.currentPage !== 1 ?
+            <button className={s.btn} onClick={() => props.goToPreviousCategory(props.currentPage)}>
+              Go to previous category
+            </button> : null
+          }
+          {
+            (props.TestingQuestions.categories.length !== 0
+              && props.currentPage === props.totalPages) ?
+              <button className={s.btn} onClick={props.postAnswers}>Send answers</button>
+              :
+              (
+                <button className={s.btn} onClick={() => props.goToNextCategory(props.currentPage)}>
+                  Go to next category</button>
+              )
+          }
+        </div>
       </div>
       <Footer/>
     </div>
   );
-}
+};
 export default Testing;

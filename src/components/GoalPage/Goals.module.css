@@ -1,7 +1,9 @@
 .background {
     background-image: url("../../images/goalBack.png");
+    background-attachment: fixed;
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    min-height: 900px;
 }
 
 .yourGoals {
@@ -13,7 +15,7 @@
 
 .container {
     width: 1200px;
-    height: 100%;
+    min-height: 645px;
     margin: 15px auto;
     display: grid;
 }

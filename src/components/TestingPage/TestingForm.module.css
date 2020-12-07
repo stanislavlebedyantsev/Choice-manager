@@ -214,3 +214,10 @@
 .questContainer {
     border-bottom: 1px solid #dcdcdc;
 }
+.pageNavigation .btn{
+    left: 0;
+}
+.pageNavigation{
+    display: flex;
+    justify-content: space-between;
+}

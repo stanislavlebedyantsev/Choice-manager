@@ -61,7 +61,6 @@ export const goalsReducer = (state = initState, action) => {
       return copyState;
     }
     case 'EDIT-SUBTASK': {
-      debugger
       copyState = {
         ...state
       };

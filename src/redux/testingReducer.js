@@ -26,35 +26,60 @@ const initState = {
     }*/
   ],
   isFetching: false,
-  isTesting: false
+  isTesting: false,
+  currentPage: 1,
+  totalPages: null,
+  countOfQuests: 0,
+  visitedPages:[1]
 };
 
 export const testingReducer = (state = initState, action) => {
   let copyState;
   switch (action.type) {
-    case 'TESTING-GET-QUESTIONS': {
-      let countOfQuests = 0;
+    case 'GET-QUESTIONS': {
+      let oldCountOfQuests;
       copyState = {...state};
       copyState = {
         ...copyState,
         categories: action.data.categories,
-        isTesting: action.data.isTesting
       };
-      for (let i of copyState.categories) {
-        countOfQuests += i.questions.length;
+      oldCountOfQuests = copyState.countOfQuests;
+      if (copyState.currentPage === 1) {
+        copyState.totalPages = action.data.categoryNumber;
       }
-      for (let i = 0; i < countOfQuests; i++) {
-        copyState.answers[i] = {
-          question: {
-            id: i + 1
-          },
-          value: ""
-        };
+
+      if(!copyState.visitedPages.some(el => el === copyState.currentPage)
+        || !copyState.answers.length) {
+        copyState.countOfQuests = copyState.categories[0].questions.length;
+        for (let i = 0; i < copyState.countOfQuests; i++) {
+          copyState.answers.push({
+            question: {
+              id: copyState.categories[0].questions[i].id
+            },
+            value: ""
+          });
+        }
+      }
+      if(!copyState.visitedPages.some(el => el === copyState.currentPage)){
+        copyState.visitedPages.push(copyState.currentPage)
       }
       console.log(copyState);
       return copyState;
     }
-
+    case 'CURRENT-PAGE-INC': {
+      copyState = {...state};
+      if (copyState.currentPage + 1 <= copyState.totalPages){
+        copyState.currentPage++;
+      }
+      return copyState;
+    }
+    case 'CURRENT-PAGE-DEC': {
+      copyState = {...state};
+      if (copyState.currentPage - 1 > 0){
+        copyState.currentPage--;
+      }
+      return copyState;
+    }
     case 'UPDATE-ANSWERS': {
       copyState = {...state};
       copyState = {
@@ -67,6 +92,13 @@ export const testingReducer = (state = initState, action) => {
     case 'TOGGLE-IS-FETCHING': {
       return {...state, isFetching: action.data};
     }
+    case 'CLEAR-ANSWERS': {
+      copyState = {
+        ...state,
+        answers: []
+      }
+      return copyState;
+    }
 
     default:
       copyState = state;
@@ -75,37 +107,40 @@ export const testingReducer = (state = initState, action) => {
 };
 
 
-export const getTestingQuestionsThunkCreator = () => {
+export const getTestingQuestionsThunkCreator = (currentPage = 1) => {
   return (dispatchEvent) => {
     dispatchEvent(toggleIsFetching(true));
-    testingAPI.getTest()
+    testingAPI.getTest(currentPage)
       .then(data => {
         dispatchEvent(toggleIsFetching(false));
         dispatchEvent(getTest(data));
-      })
-  }
-}
+      });
+  };
+};
 
 
-export const postAnswersThunkCreator = (copyState) => {
+export const postAnswersThunkCreator = (copyState, currentPage, totalPages) => {
   return (dispatchEvent) => {
     console.log(copyState);
     testingAPI.postAnswers({answers: copyState})
       .then(() => {
         //change it to normal redirect
-        dispatchEvent(toggleIsFetching(false))
+        dispatchEvent(toggleIsFetching(false));
         window.location.href = '/profile';
       })
       .catch((err) => {
+        alert(err.response.data.error);
         //temp redirect
-        dispatchEvent(toggleIsFetching(false))
+        dispatchEvent(toggleIsFetching(false));
         //alert(err);
       });
-  }
-}
+  };
+};
 
 
-
-export const getTest = (data) => ({type: 'TESTING-GET-QUESTIONS', data});
+export const getTest = (data) => ({type: 'GET-QUESTIONS', data});
+export const clearAnswers = () => ({type: 'CLEAR-ANSWERS'});
+export const currentPageInc = () => ({type: 'CURRENT-PAGE-INC'});
+export const currentPageDec = () => ({type: 'CURRENT-PAGE-DEC'});
 export const updateTestAnswers = (data) => ({type: 'UPDATE-ANSWERS', data});
 export const toggleIsFetching = (data) => ({type: 'TOGGLE-IS-FETCHING', data});

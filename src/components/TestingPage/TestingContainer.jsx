@@ -1,6 +1,9 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {
+  clearAnswers,
+  currentPageDec,
+  currentPageInc,
   getTestingQuestionsThunkCreator, postAnswersThunkCreator,
   updateTestAnswers
 } from "../../redux/testingReducer";
@@ -9,7 +12,17 @@ import Preloader from "../common/Preloader/Preloader";
 
 class TestingApiContainer extends React.Component {
   componentDidMount() {
+    this.props.clearAnswers()
     this.props.getTestingQuestionsThunkCreator()
+  }
+
+  goToNextCategory(currentPage){
+    this.props.currentPageInc()
+    this.props.getTestingQuestionsThunkCreator(currentPage + 1)
+  }
+  goToPreviousCategory(currentPage){
+    this.props.currentPageDec()
+    this.props.getTestingQuestionsThunkCreator(currentPage - 1)
   }
 
   postAnswers() {
@@ -29,6 +42,10 @@ class TestingApiContainer extends React.Component {
           <Testing TestingQuestions={this.props.TestingQuestions}
                    postAnswers={this.postAnswers.bind(this)}
                    updateAnswers={this.updateAnswers.bind(this)}
+                   goToNextCategory={this.goToNextCategory.bind(this)}
+                   goToPreviousCategory={this.goToPreviousCategory.bind(this)}
+                   currentPage={this.props.currentPage}
+                   totalPages={this.props.totalPages}
           />
         }
       </>
@@ -39,7 +56,9 @@ class TestingApiContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     TestingQuestions: state.testingPage,
-    isFetching: state.testingPage.isFetching
+    isFetching: state.testingPage.isFetching,
+    currentPage: state.testingPage.currentPage,
+    totalPages: state.testingPage.totalPages
   };
 };
 
@@ -47,6 +66,8 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateTestAnswers,
   postAnswersThunkCreator,
-  getTestingQuestionsThunkCreator
+  getTestingQuestionsThunkCreator,
+  currentPageInc,
+  currentPageDec,
+  clearAnswers
 })(TestingApiContainer);
-

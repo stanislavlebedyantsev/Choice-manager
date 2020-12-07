@@ -6,8 +6,9 @@ import * as axios from "axios";
 class EmailConfirmApiComponent extends React.Component {
   componentDidMount() {
     console.log(this.props);
+    debugger
     axios
-      .post(`http://127.0.0.1:8080/activation/${this.props.match.params.activationCode}`,
+      .post(`http://127.0.0.1:8080/activate/${this.props.match.params.activationCode}`,
         {
           activateCode: this.props.match.params.activationCode
         }

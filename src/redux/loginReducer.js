@@ -1,6 +1,4 @@
 import {loginAPI} from "../api/loginApi";
-import {registrationAPI} from "../api/registrationApi";
-import {registrationStateClear} from "./registrationReducer";
 
 const initState = {
   usernameOrEmail: '',
