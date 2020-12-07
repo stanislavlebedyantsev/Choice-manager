@@ -32,7 +32,7 @@ const Login = (props) => {
           <div className={s.container}>
             <div className={s.rightSide}>
               <LoginHeader/>
-              <SocialsLogin/>
+              {/*<SocialsLogin/>*/}
               <LoginForm handleChange={handleChange}
                          handleClick={handleClick}
                          stateText={props.loginStateText}

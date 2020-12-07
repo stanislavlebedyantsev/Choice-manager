@@ -2,7 +2,7 @@ let initState = {
   accessToken: null,
   tokenType: null,
   isAuth: false,
-  isTested:false
+  isTested: false
 };
 
 export const authReducer = (state = initState, action) => {
@@ -15,8 +15,11 @@ export const authReducer = (state = initState, action) => {
         isAuth: true
       };
     }
-    case 'TOGGLE-IS-TESTED':{
-      return {...state, isTested: true}
+    case 'TOGGLE-IS-TESTED': {
+      return {...state, isTested: true};
+    }
+    case 'LOGOUT': {
+      return initState;
     }
     default:
       return state;
@@ -25,3 +28,4 @@ export const authReducer = (state = initState, action) => {
 
 export const setUserData = (data) => ({type: 'SET-USER-DATA', data});
 export const toggleIsTested = (data) => ({type: 'TOGGLE-IS-TESTED', data});
+export const logout = () => ({type: 'LOGOUT'});

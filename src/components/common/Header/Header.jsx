@@ -1,22 +1,38 @@
 import s from './Header.module.css';
-import {Route, NavLink} from "react-router-dom";
+import React from 'react'
+import {Route} from "react-router-dom";
+import DropDownMenu from "../DropDownMenu/DropDownMenu";
+import {connect} from "react-redux";
+import {logout} from "../../../redux/authReducer";
 
-const Header = (props) => {
-  return (
-    <div>
-      <nav className={s.content}>
-        <div className={s.logo}>
-          Choice manager <Route path={"/about"}> | About us</Route>
-          <Route path={"/testing"}> | Testing</Route>
-          <Route path={"/goals"}> | Goals</Route>
-          <Route path={"/profile"}> | Profile</Route>
-        </div>
-        <div className={s.signIn}>
-          <Route path={"/about"}><NavLink to="/login">SignIn</NavLink></Route>
-        </div>
-      </nav>
-    </div>
-  );
-};
+class Header extends React.Component{
+  logout(){
+    this.props.logout()
+  }
+  render() {
+    return (
+      <div>
+        <nav className={s.content}>
+          <div className={s.logo}>
+            Choice manager <Route path={"/about"}> | About us</Route>
+            <Route path={"/testing"}> | Testing</Route>
+            <Route path={"/goals"}> | Goals</Route>
+            <Route path={"/profile"}> | Profile</Route>
+          </div>
+          <div>
+            <Route path={"/goals"} render={() => <DropDownMenu linkTo={"profile"} logout={this.logout.bind(this)}/>}/>
+            <Route path={"/profile"} render={() => <DropDownMenu linkTo={"goals"} logout={this.logout.bind(this)}/>}/>
+          </div>
+        </nav>
+      </div>
+    );
+  }
+}
 
-export default Header;
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth
+})
+
+export default connect(mapStateToProps, {
+  logout
+})(Header);
