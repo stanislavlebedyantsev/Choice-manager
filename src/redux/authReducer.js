@@ -21,8 +21,7 @@ export const authReducer = (state = initState, action) => {
       return {...state, isTested: true};
     }
     case 'LOGOUT': {
-      /*debugger*/
-      localStorage.clear();
+      debugger
       return initState;
     }
     default:
@@ -35,5 +34,4 @@ export const toggleIsTested = (data) => ({type: 'TOGGLE-IS-TESTED', data});
 export const logout = () => ({type: 'LOGOUT'});
 
 
-/*export const logoutThunkCreator = () => ();*/
 

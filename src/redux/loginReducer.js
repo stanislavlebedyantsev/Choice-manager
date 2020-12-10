@@ -35,23 +35,18 @@ export const loginStateClear = () => ({type: 'LOGIN-STATE-CLEAR'});
 export const loginRequestThunkCreator = (state, authReducer) => (dispatchEvent) => {
   loginAPI.postLogin({...state})
     .then(data => {
-
       dispatchEvent(loginStateClear());
       localStorage.setItem('tokenType', data.tokenType);
       localStorage.setItem('accessToken', data.accessToken);
       localStorage.setItem('isAuth', true);
       localStorage.setItem('isTested', data.tested);
-      dispatchEvent(setUserData({
+      /*dispatchEvent(setUserData({
         accessToken: data.accessToken,
         tokenType: data.tokenType,
         isTested:data.tested
-      }))
-      /*if (localStorage.getItem('isTested') === 'true') {
-        window.location.href = '/goals';
-      }
-      if (localStorage.getItem('isTested') === 'false') {
-        window.location.href = '/testing';
-      }*/
+      }))*/
+      if(data.tested) window.location.href= '/goals'
+      if(!data.tested) window.location.href= '/testing'
 
     })
     .catch((err) => {

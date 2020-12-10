@@ -21,7 +21,7 @@ class ProfileApiContainer extends React.Component {
     this.props.putProfileDataThunkCreator(data)
   }
   render() {
-    if (!localStorage.getItem('isAuth')) return <Redirect to={'/login'}/>
+    if (localStorage.getItem('isAuth') !== 'true') return <Redirect to={'/login'}/>
     return (
       <>
         {this.props.isFetching ?
