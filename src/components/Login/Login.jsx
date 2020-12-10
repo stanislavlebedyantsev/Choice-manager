@@ -24,6 +24,8 @@ const Login = (props) => {
     };
     props.loginUpdateText(obj);
   };
+  if (props.isAuth && props.isTested) return <Redirect to={'/goals'}/>
+  if (props.isAuth && !props.isTested) return <Redirect to={'/testing'}/>
   return (
     <>
       {<div className={s.background}>

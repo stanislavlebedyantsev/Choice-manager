@@ -9,7 +9,6 @@ const profileAxios = axios.create({
 
 export const profileAPI = {
   getProfile() {
-    console.log(localStorage);
     return profileAxios
       .get("/me").then(response => response.data);
   },

@@ -1,8 +1,6 @@
 .background {
     background-image: url("../../images/profileBack.png");
-    background-size: 100% 100%;
-    position: relative;
-    padding-bottom: 10px;
+    background-size: 100% 100%          ;
 }
 
 .container {
@@ -158,15 +156,7 @@
     height: 330px;
     background-image: url("../../images/logoProfile.png");
     margin-left: 10%;
-    margin-top: 0;
-}
-
-.radarChart{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 1000px;
-    margin-left: 173px;
+    margin-top: 0px;
 }
 .radarChartDescription{
     font-size: 18px;

@@ -13,6 +13,7 @@ import {Redirect} from "react-router-dom";
 
 class TestingApiContainer extends React.Component {
   componentDidMount() {
+    this.props.clearAnswers()
     this.props.getTestingQuestionsThunkCreator()
   }
 

@@ -2,6 +2,34 @@ import {goalsAPI} from "../api/goalsApi";
 
 const initState = {
   goals: [
+    /*{
+      id: 0,
+      name: '12',
+      explanations: '1',
+      isDone: false,
+      tasks: [
+        {
+          id: 0,
+          name: '',
+          isDone: false
+        }
+      ],
+      isEdit: false
+    },
+    {
+      id: 1,
+      name: '125345',
+      explanations: '134534534',
+      isDone: false,
+      tasks: [
+        {
+          id: 0,
+          name: '',
+          isDone: false
+        }
+      ],
+      isEdit: false
+    }*/
   ],
   isFetching: false
 };

@@ -25,7 +25,7 @@ const RegForm = (props) => {
         <div className={s.rightSide}>
           <RegistrationHeader/>
           <div className={s.rightLogin}>
-            <h3 className={s.rightLoginh2}>Registration to take action</h3>
+            <h3 className={s.rightLoginh2}>Registration</h3>
             <div className={s.rightLoginUser}>
               <input name="name" placeholder="First name"
                      className={s.firstName}

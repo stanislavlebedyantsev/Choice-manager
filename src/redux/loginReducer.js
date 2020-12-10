@@ -49,9 +49,12 @@ export const loginRequestThunkCreator = (state, authReducer) => (dispatchEvent) 
       }))*/
     })
     .catch((err) => {
-      const error = err.response.data.error;
-      let errorText = '';
-      errorText += error;
-      alert(errorText);
+      debugger
+      const error = err.response.data
+      let errorText=''
+      for (let i in error){
+        errorText += error[i]
+      }
+      alert(errorText)
     });
-};
+}

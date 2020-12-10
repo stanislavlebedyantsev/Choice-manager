@@ -5,13 +5,12 @@ import DropDownMenu from "../DropDownMenu/DropDownMenu";
 import {connect} from "react-redux";
 import {logout} from "../../../redux/authReducer";
 
-class Header extends React.Component {
-  logout() {
-    this.props.logout();
+class Header extends React.Component{
+    logout(){
+    this.props.logout()
   }
 
   render() {
-    if (!this.props.isAuth) return <Redirect to={'/login'}/>;
     return (
       <div>
         <nav className={s.content}>

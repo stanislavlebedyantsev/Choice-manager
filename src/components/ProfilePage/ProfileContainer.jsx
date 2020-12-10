@@ -7,21 +7,17 @@ import {
 } from "../../redux/profileReducer";
 import {toggleIsFetching} from "../../redux/profileReducer";
 import Preloader from "../common/Preloader/Preloader";
-import {Redirect} from "react-router-dom";
-import {toggleIsTested} from "../../redux/authReducer";
 
 
 class ProfileApiContainer extends React.Component {
   componentDidMount() {
     this.props.getProfileDataThunkCreator()
-    /*this.props.toggleIsTested(false)*/
   }
 
   profilePutUpdates(data) {
     this.props.putProfileDataThunkCreator(data)
   }
   render() {
-    if (localStorage.getItem('isAuth') !== 'true') return <Redirect to={'/login'}/>
     return (
       <>
         {this.props.isFetching ?
@@ -29,8 +25,8 @@ class ProfileApiContainer extends React.Component {
           <div>
             <Profile state={this.props.profileStateData}
                      profileUpdateState={this.props.profileUpdateText}
-                     profilePutState={this.profilePutUpdates.bind(this)}
-            />
+                     profilePutState={this.profilePutUpdates.bind(this)}/>
+
           </div>
         }
       </>
@@ -40,8 +36,7 @@ class ProfileApiContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
   profileStateData: state.profilePage,
-  isFetching: state.profilePage.isFetching,
-  isAuth: state.auth.isAuth
+  isFetching: state.profilePage.isFetching
 });
 
 export default connect(mapStateToProps,
@@ -49,6 +44,5 @@ export default connect(mapStateToProps,
     getProfileDataThunkCreator,
     profileUpdateText,
     toggleIsFetching,
-    putProfileDataThunkCreator,
-    toggleIsTested
+    putProfileDataThunkCreator
   })(ProfileApiContainer);

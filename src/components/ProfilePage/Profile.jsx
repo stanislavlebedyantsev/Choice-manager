@@ -6,36 +6,35 @@ import BottomRightInput from "./bottomRightInput/bottomRightInput";
 import RadarChart from 'react-svg-radar-chart';
 import 'react-svg-radar-chart/build/css/index.css';
 import FooterContainer from "../common/Footer/FooterContainer";
-import {NavLink} from "react-router-dom";
 
 const Profile = (props) => {
-  const defaultOptions = {
-    axes: true, // show axes?
-    scales: 10, // show scale circles?
-    captions: true, // show captions?
-    captionMargin: 20,
-    dots: false, // show dots?
-    zoomDistance: 1.2, // where on the axes are the captions?
-    setViewBox: (options) => `-${options.captionMargin} 0 ${options.size + options.captionMargin * 2} ${options.size}`, // custom viewBox ?
-    axisProps: () => ({className: 'axis'}),
-    scaleProps: () => ({className: 'scale', fill: 'none'}),
-    shapeProps: () => ({className: 'shape'}),
-    captionProps: () => ({
-      className: 'caption',
-      textAnchor: 'middle',
-      fontSize: 24,
-      fontFamily: 'sans-serif'
-    }),
-    dotProps: () => ({
-      className: 'dot',
-      mouseEnter: (dot) => {
-        console.log(dot);
-      },
-      mouseLeave: (dot) => {
-        console.log(dot);
-      }
-    })
-  };
+    const defaultOptions = {
+        axes: true, // show axes?
+        scales: 10, // show scale circles?
+        captions: true, // show captions?
+        captionMargin: 10,
+        dots: false, // show dots?
+        zoomDistance: 1.2, // where on the axes are the captions?
+        setViewBox: (options) => `-${options.captionMargin} 0 ${options.size + options.captionMargin * 2} ${options.size}`, // custom viewBox ?
+        axisProps: () => ({className: 'axis'}),
+        scaleProps: () => ({className: 'scale', fill: 'none'}),
+        shapeProps: () => ({className: 'shape'}),
+        captionProps: () => ({
+            className: 'caption',
+            textAnchor: 'middle',
+            fontSize: 24,
+            fontFamily: 'sans-serif'
+        }),
+        dotProps: () => ({
+            className: 'dot',
+            mouseEnter: (dot) => {
+                console.log(dot);
+            },
+            mouseLeave: (dot) => {
+                console.log(dot);
+            }
+        })
+    };
 
 
   return (

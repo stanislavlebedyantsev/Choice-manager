@@ -17,7 +17,7 @@ const EmailConfirm = () => {
             <div className={s.thirdGrid}>
                 <p className={s.introP}>With your new Choice Manager account you can create your goal to bit it.Choice Manager is a site that helps students making choices based on passion, skills and an open mind. The site presents a structured way, in which you will discover new things about yourself and making it clear where you want to take action.
                 </p>
-                <button className={s.btn} onClick={() => window.location.href = '/login'}>Start working</button>
+                <button className={s.btn}>Start working</button>
             </div>
         </div>
     </div>
