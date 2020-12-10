@@ -9,6 +9,7 @@ const goalsAxios = axios.create({
 
 export const goalsAPI = {
   getGoals() {
+    /*debugger*/
     return goalsAxios
       .get("").then(response => response.data);
   },

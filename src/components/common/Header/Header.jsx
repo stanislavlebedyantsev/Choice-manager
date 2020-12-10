@@ -1,15 +1,18 @@
 import s from './Header.module.css';
-import React from 'react'
-import {Route} from "react-router-dom";
+import React from 'react';
+import {Redirect, Route} from "react-router-dom";
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
 import {connect} from "react-redux";
 import {logout} from "../../../redux/authReducer";
 
-class Header extends React.Component{
-    logout(){
-    this.props.logout()
+class Header extends React.Component {
+  logout() {
+    this.props.logout();
+    window.location.href = '/login';
   }
+
   render() {
+    if (!this.props.isAuth) return <Redirect to={'/login'}/>;
     return (
       <div>
         <nav className={s.content}>
@@ -31,7 +34,7 @@ class Header extends React.Component{
 
 const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth
-})
+});
 
 export default connect(mapStateToProps, {
   logout

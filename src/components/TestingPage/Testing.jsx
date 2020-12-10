@@ -11,7 +11,7 @@ import FooterContainer from "../common/Footer/FooterContainer";
 const Testing = (props) => {
   return (
     <div>
-      <Header/>
+      {/*<Header/>*/}
       <div className={s.pageDescription}>
         <h1>Test yourself</h1>
         <div className={`${s.descriptionContainer}`}>

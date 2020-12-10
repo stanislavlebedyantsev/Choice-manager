@@ -1,11 +1,15 @@
 .background {
     background-image: url("../../images/profileBack.png");
-    background-size: 100% 100%          ;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .container {
+    position: relative;
     width: 1480px;
-    margin: 20px auto;
+    padding-top: 52px;
+    margin: 0px auto;
     background: white;
     display: grid;
     grid-template-columns: 550px 500px 430px;
@@ -212,3 +216,59 @@
 .radarChartDescription a:hover::before {
     box-shadow: inset 0 0 0 160px #23bbf7;
 }*/
+
+.inputFile{
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.uploadBtn {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #23bbf7;
+    font-size: 20px;
+    background: transparent;
+    cursor: pointer;
+    border: 1px solid #23bbf7;
+    border-radius: 30px;
+    width: 240px;
+    height: 70px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    overflow: hidden;
+    text-decoration: none;
+    outline: none;
+}
+
+.uploadBtn:before {
+    content: '';
+    position: absolute;
+    top: -130px;
+    margin: auto;
+    display: block;
+    border-radius: 50%;
+    width: 310px;
+    height: 300px;
+    left: -1px;
+    -webkit-transition: box-shadow .3s ease-in-out;
+    transition: box-shadow .3s ease-in-out;
+    z-index: -1;
+
+}
+
+.uploadBtn:hover {
+    color: #fff;
+}
+
+.uploadBtn:hover::before {
+    box-shadow: inset 0 0 0 160px #23bbf7;
+}

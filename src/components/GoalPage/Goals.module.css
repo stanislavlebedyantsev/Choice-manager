@@ -4,6 +4,8 @@
     background-size: 100% 100%;
     background-repeat: no-repeat;
     min-height: 900px;
+    display: flex;
+    flex-direction: column;
 }
 
 .yourGoals {
@@ -14,13 +16,16 @@
 }
 
 .container {
+    height: 100%;
+    position: relative;
     width: 1200px;
-    min-height: 645px;
-    margin: 15px auto;
+    margin: 0 auto;
     display: grid;
+    min-height: 100%;
 }
 
 .grid {
+    min-height: 544px;
     margin-top: 50px;
     display: grid;
     grid-template-rows: 1fr 1fr;

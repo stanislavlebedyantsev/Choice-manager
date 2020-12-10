@@ -26,3 +26,6 @@
 .dropDownContainer:hover .dropDownLinks {
     display: block;
 }
+.imgDropdown{
+    padding-right: 10px;
+}

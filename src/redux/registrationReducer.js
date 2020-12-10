@@ -44,10 +44,15 @@ export const registrationRequestThunkCreator = (state) => (dispatchEvent) => {
       dispatchEvent(registrationStateClear())
     })
     .catch((err) => {
-      const error = err.response.data
       let errorText=''
-      for (let i in error){
-        errorText += error[i]
+      if(err.response){
+        const error = err.response.data
+        for (let i in error){
+          errorText += error[i]
+          errorText += '\n'
+        }
+      }else{
+        errorText = 'Server connection error'
       }
       alert(errorText)
     });

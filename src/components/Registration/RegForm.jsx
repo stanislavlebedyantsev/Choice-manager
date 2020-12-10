@@ -30,29 +30,29 @@ const RegForm = (props) => {
               <input name="name" placeholder="First name"
                      className={s.firstName}
                      value={props.registrationState.name}
-                     onChange={handleChange}/>
+                     onChange={handleChange} required/>
               <input name="surname" placeholder="Second name"
                      className={s.secondName}
                      value={props.registrationState.surname}
-                     onChange={handleChange}/>
-              <input name="email" placeholder="Email"
+                     onChange={handleChange} required/>
+              <input type='email' name="email" placeholder="Email"
                      className={s.email}
                      value={props.registrationState.email}
-                     onChange={handleChange}/>
+                     onChange={handleChange} required/>
               <input name="username" placeholder="Username"
                      className={s.username}
                      value={props.registrationState.login}
-                     onChange={handleChange}/>
+                     onChange={handleChange} required/>
               <input type="password" name={"password"} placeholder="Password"
                      className={s.password}
                      value={props.registrationState.password}
-                     onChange={handleChange}/>
+                     onChange={handleChange} required/>
               <input type="password" name={"passwordConfirmation"} placeholder="Confirm password"
                      className={s.confPassword}
                      value={props.registrationState.passwordConfirmation}
-                     onChange={handleChange}/>
+                     onChange={handleChange} required/>
               <div className={s.button}>
-                <button onClick={onRegistration}>Register</button>
+                <button type={"submit"} onClick={onRegistration}>Register</button>
               </div>
             </div>
           </div>

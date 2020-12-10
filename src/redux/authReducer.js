@@ -21,6 +21,7 @@ export const authReducer = (state = initState, action) => {
       return {...state, isTested: true};
     }
     case 'LOGOUT': {
+      /*debugger*/
       localStorage.clear();
       return initState;
     }
@@ -32,3 +33,7 @@ export const authReducer = (state = initState, action) => {
 export const setUserData = (data) => ({type: 'SET-USER-DATA', data});
 export const toggleIsTested = (data) => ({type: 'TOGGLE-IS-TESTED', data});
 export const logout = () => ({type: 'LOGOUT'});
+
+
+/*export const logoutThunkCreator = () => ();*/
+
