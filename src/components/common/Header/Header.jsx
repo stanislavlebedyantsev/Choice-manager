@@ -3,12 +3,11 @@ import React from 'react';
 import {Redirect, Route} from "react-router-dom";
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
 import {connect} from "react-redux";
-import {logout, logoutThunkCreator} from "../../../redux/authReducer";
+import {logout} from "../../../redux/authReducer";
 
 class Header extends React.Component {
   logout() {
     this.props.logout();
-    localStorage.clear()
     window.location.href = '/login';
   }
 
