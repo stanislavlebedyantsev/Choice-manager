@@ -14,14 +14,12 @@ export const authReducer = (state = initState, action) => {
         ...action.data,
         isAuth: true
       };
-      /*localStorage.setItem('isAuth', true)
-      localStorage.setItem('isTested', true)*/
     }
     case 'TOGGLE-IS-TESTED': {
       return {...state, isTested: true};
     }
     case 'LOGOUT': {
-      debugger
+      localStorage.clear();
       return initState;
     }
     default:
@@ -32,6 +30,3 @@ export const authReducer = (state = initState, action) => {
 export const setUserData = (data) => ({type: 'SET-USER-DATA', data});
 export const toggleIsTested = (data) => ({type: 'TOGGLE-IS-TESTED', data});
 export const logout = () => ({type: 'LOGOUT'});
-
-
-
