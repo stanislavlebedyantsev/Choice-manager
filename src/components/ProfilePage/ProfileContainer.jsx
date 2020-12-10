@@ -26,7 +26,7 @@ class ProfileApiContainer extends React.Component {
       <>
         {this.props.isFetching ?
           (<Preloader/>) :
-          <div ref={this.contentRef}>
+          <div>
             <Profile state={this.props.profileStateData}
                      profileUpdateState={this.props.profileUpdateText}
                      profilePutState={this.profilePutUpdates.bind(this)}

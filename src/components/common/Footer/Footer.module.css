@@ -1,15 +1,14 @@
 .background {
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5px;
     height: 200px;
-    /*display: grid;
-    grid-template-rows: 100px;
-    grid-template-columns: 400px 400px 400px 400px;*/
     margin-left: auto;
     margin-right: auto;
     background-color: #2d6786;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .companyName {
@@ -18,7 +17,6 @@
     font-size: large;
     font-family: 'Montserrat', sans-serif;
     margin-top: 20px;
-    /*margin-left: 140px;*/
     grid-row: 1;
     grid-column: 1;
     height: 150px;
