@@ -12,8 +12,7 @@ const mapStateToProps = (state) => ({
   loginStateText: state.loginPage,
   isFetching: state.loginPage.isFetching,
   isAuth: state.auth.isAuth,
-  isTested: state.auth.isTested,
-  stateUserData: state.auth
+  isTested: state.auth.isTested
 });
 
 

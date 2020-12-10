@@ -127,10 +127,8 @@ export const postAnswersThunkCreator = (copyState) => {
       .then(() => {
         //change it to normal redirect
         dispatchEvent(toggleIsFetching(false));
-        localStorage.setItem('isTested', true)
         dispatchEvent(toggleIsTested())
         localStorage.setItem('isTested', 'true')
-        if(localStorage.getItem('isTested') === 'true') window.location.herf = '\goals'
       })
       .catch((err) => {
         alert(err.response.data.error);

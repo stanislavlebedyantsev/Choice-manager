@@ -11,7 +11,7 @@ import {Redirect} from "react-router-dom";
 
 const Login = (props) => {
   const handleClick = () => {
-    props.toggleIsFetching(true);
+    props.toggleIsFetching(true)
     props.loginRequestThunkCreator(props.loginStateText, props.stateUserData);
   };
   const handleChange = (event) => {
@@ -24,7 +24,6 @@ const Login = (props) => {
     };
     props.loginUpdateText(obj);
   };
-  if(props.isAuth) return <Redirect to={'/testing'}/>
   return (
     <>
       {<div className={s.background}>

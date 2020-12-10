@@ -8,7 +8,6 @@ import {logout} from "../../../redux/authReducer";
 class Header extends React.Component {
   logout() {
     this.props.logout();
-    window.location.href = '/login';
   }
 
   render() {

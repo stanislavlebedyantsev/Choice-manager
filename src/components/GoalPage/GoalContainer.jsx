@@ -33,7 +33,7 @@ class GoalApiComponent extends React.Component {
   }
 
   putEditedTaskBtn(obj, taskIsDone = false) {
-    if (taskIsDone){
+    if (taskIsDone) {
       this.props.completeTask(obj.id);
     }
     this.props.putTaskThunkCreator(obj);
@@ -64,9 +64,8 @@ class GoalApiComponent extends React.Component {
   }
 
   render() {
-    if (localStorage.getItem('isAuth') !== 'true') {
-      return <Redirect to={'/login'}/>;
-    } else if (localStorage.getItem('isAuth') === 'true'
+    if (localStorage.getItem('isAuth') !== 'true') return <Redirect to={'/login'}/>;
+    else if (localStorage.getItem('isAuth') === 'true'
       && localStorage.getItem('isTested') !== 'true') return <Redirect to={'/testing'}/>;
     return (
       <div className={s.background}>
