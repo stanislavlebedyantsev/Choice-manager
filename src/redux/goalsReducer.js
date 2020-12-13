@@ -24,9 +24,7 @@ export const goalsReducer = (state = initState, action) => {
       };
       for (let i in copyState.goals) {
         if (copyState.goals[i].id === action.data.id) {
-          copyState.goals[i] = {
-            ...action.data
-          };
+          copyState.goals.splice(i, 1, action.data);
         }
       }
       return copyState;
@@ -37,10 +35,10 @@ export const goalsReducer = (state = initState, action) => {
       };
       for (let i in copyState.goals) {
         if (copyState.goals[i].id === action.data.taskId) {
-          copyState.goals[i].tasks[action.data.id - 1] = {
-            ...copyState.goals[i].tasks[action.data.id - 1],
-            name: action.data.name
-          };
+          for (let taskId in copyState.goals[i].tasks) {
+            if (copyState.goals[i].tasks[taskId].id === action.data.id)
+              copyState.goals[i].tasks.splice(taskId, 1, action.data);
+          }
         }
       }
       return copyState;
@@ -121,8 +119,12 @@ export const getTaskThunkCreator = () => (dispatchEvent) => {
   });
 };
 export const postTaskThunkCreator = (obj) => (dispatchEvent) => {
+  delete obj.id;
+  for (let el of obj.tasks) {
+    delete el.id;
+  }
   goalsAPI.postGoals(obj)
-    .then(response => {
+    .then(() => {
       dispatchEvent(getTaskThunkCreator());
     })
     .catch(r => {
@@ -131,12 +133,12 @@ export const postTaskThunkCreator = (obj) => (dispatchEvent) => {
 };
 export const deleteTaskThunkCreator = (obj) => (dispatchEvent) => {
   goalsAPI.deleteGoals(obj)
-    .then(response => {
+    .then(() => {
       dispatchEvent(getTaskThunkCreator());
     });
 };
-export const putTaskThunkCreator = (obj, isComplete = false) => (dispatchEvent) => {
-  goalsAPI.putGoals(obj).then((data) => {
+export const putTaskThunkCreator = (obj) => (dispatchEvent) => {
+  goalsAPI.putGoals(obj).then(() => {
     dispatchEvent(getTaskThunkCreator());
   });
 };
