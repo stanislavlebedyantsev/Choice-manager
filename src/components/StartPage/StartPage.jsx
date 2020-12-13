@@ -23,17 +23,17 @@ const StartPage = (props) => {
                 <li>
                     <div className={s.slider2}>
                         <div className={s.overText}>
-                            <div className={s.overText2}></div>
+                            <div className={s.overText2}/>
                         </div>
-                        <div className={s.slider2Text}>JUST<br/> DO<br/> IT</div>
+                        <div className={s.slider2Text}>TAKE<br/> ACTION</div>
                         <div className={s.underText}>
-                            <div className={s.underText2}></div>
+                            <div className={s.underText2}/>
                         </div>
                     </div>
                 </li>
                 <li>
                     <div className={s.container}>
-                        <div className={s.ourStory}></div>
+                        <div className={s.ourStory}/>
                         <div className={s.containerText}>
                             <div className={s.leftText}>
                                 I am thankful for all of those who said NO to me. It’s because of them I’m doing it myself

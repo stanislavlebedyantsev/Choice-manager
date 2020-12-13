@@ -4,8 +4,8 @@ import s from "./Goals.module.css";
 import Header from "../common/Header/Header";
 import GoalComponent from "./GoalsComponents/GoalComponent";
 import {
-  addSubtask, addTask, completeTask,
-  deleteTaskThunkCreator, editGoals, editProgress,
+  addSubtask, addTask,
+  deleteTaskThunkCreator, editGoals,
   editSubtask, getTaskThunkCreator,
   postTaskThunkCreator, putTaskThunkCreator,
   subtaskIsDoneChange, toggleEdit
@@ -19,7 +19,6 @@ class GoalApiComponent extends React.Component {
     this.props.getTaskThunkCreator();
   }
 
-
   toggleEditBtn(id) {
     this.props.toggleEdit(id);
   }
@@ -32,27 +31,24 @@ class GoalApiComponent extends React.Component {
     this.props.editSubtask(data);
   }
 
-  putEditedTaskBtn(obj, taskIsDone = false) {
-    if (taskIsDone){
-      this.props.completeTask(obj.id);
-    }
-    this.props.putTaskThunkCreator(obj);
+  putEditedTaskBtn(objForPut) {
+    this.props.putTaskThunkCreator(objForPut);
   }
 
-  postEditedTaskBtn(obj) {
-    this.props.postTaskThunkCreator(obj);
+  postEditedTaskBtn(newTask) {
+    this.props.postTaskThunkCreator(newTask);
   }
 
-  subtaskStateChange(obj) {
-    this.props.subtaskIsDoneChange(obj);
+  subtaskStateChange(tasksId) {
+    this.props.subtaskIsDoneChange(tasksId);
   }
 
-  addStateSubtask(obj) {
-    this.props.addSubtask(obj);
+  addStateSubtask(id) {
+    this.props.addSubtask(id);
   }
 
-  deleteTask(obj) {
-    this.props.deleteTaskThunkCreator(obj);
+  deleteTask(id) {
+    this.props.deleteTaskThunkCreator(id);
   }
 
   addNewTask() {
@@ -117,6 +113,5 @@ export default connect(mapStateToProps, {
   subtaskIsDoneChange,
   getTaskThunkCreator,
   postTaskThunkCreator,
-  putTaskThunkCreator,
-  completeTask
+  putTaskThunkCreator
 })(GoalApiComponent);

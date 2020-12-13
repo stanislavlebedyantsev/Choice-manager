@@ -9,7 +9,6 @@
     height: 950px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 10px;
     display: grid;
     grid-template-columns: 1800px;
     grid-template-rows: 200px 630px;

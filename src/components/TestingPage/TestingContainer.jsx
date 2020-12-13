@@ -35,8 +35,9 @@ class TestingApiContainer extends React.Component {
   }
 
   render() {
-    if(localStorage.getItem('isAuth') === 'false')  return <Redirect to={'/login'}/>
-    if(localStorage.getItem('isAuth') === 'true' && localStorage.getItem('isTested') === 'true') return <Redirect to={'/goals'}/>
+    if(localStorage.getItem('isAuth') !== 'true')  return <Redirect to={'/login'}/>
+    if(localStorage.getItem('isAuth') === 'true'
+      && localStorage.getItem('isTested') === 'true') return <Redirect to={'/goals'}/>
     return (
       <>
         {this.props.isFetching ?

@@ -128,7 +128,7 @@
 .slider2{
     display: grid;
     grid-template-columns: 1900px;
-    grid-template-rows: 100px 550px 200px;
+    grid-template-rows: 100px 350px 200px;
     margin-top: 55px;
 }
 

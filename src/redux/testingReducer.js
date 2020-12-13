@@ -126,9 +126,9 @@ export const postAnswersThunkCreator = (copyState) => {
     testingAPI.postAnswers({answers: copyState})
       .then(() => {
         //change it to normal redirect
+        localStorage.setItem('isTested', 'true')
         dispatchEvent(toggleIsFetching(false));
         dispatchEvent(toggleIsTested())
-        localStorage.setItem('isTested', 'true')
       })
       .catch((err) => {
         alert(err.response.data.error);

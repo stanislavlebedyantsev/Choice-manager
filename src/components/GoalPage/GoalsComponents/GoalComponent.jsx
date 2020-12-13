@@ -20,25 +20,23 @@ const GoalComponent = (props) => {
       props.toogleEditBtn(Number(props.state.id));
     } else if (event.target.name === 'save' && props.state.isEdit && !props.state.hasOwnProperty('isAdded')) {
       props.putEditedTask(props.state);
-      props.toogleEditBtn(Number(props.state.id));
     } else if (event.target.name === 'save' && props.state.isEdit && props.state.hasOwnProperty('isAdded')) {
       props.postEditedTask(props.state);
-      props.toogleEditBtn(Number(props.state.id));
     } else if (event.target.name === 'addSubtask') {
       props.addSubtask(props.state.id);
     } else if (event.target.name === 'delete') {
       props.deleteTask(props.state.id);
     } else if (event.target.name === 'complete') {
-      const obj = {...props.state, done: true};
-      obj.tasks.forEach(el => {
+      const objForPut = {...props.state, done: true};
+      objForPut.tasks.forEach(el => {
         el.done = true;
       });
-      props.putEditedTask(obj, true);
+      props.putEditedTask(objForPut, true);
     }
   };
 
-  const handleCheck = (obj) => {
-    props.subtaskIsDoneChange(obj);
+  const handleCheck = (tasksId) => {
+    props.subtaskIsDoneChange(tasksId);
     props.putEditedTask(props.state);
   };
   return (
