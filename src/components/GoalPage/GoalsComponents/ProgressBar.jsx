@@ -6,7 +6,11 @@ const ProgressBar = (props) => {
       <div className={s.progressBarBack} >
         <div>
           <span style={{width: `${props.progress}%`}} className={s.progressBar}/>
+
         </div>
+      </div>
+      <div className={s.progress}>
+        {props.progress}%
       </div>
     </div>
   )

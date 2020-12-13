@@ -1,8 +1,7 @@
 .background {
-    background-image: url("../../images/bgImage.jpg");
-    height: 805px;
+    background-image: url("../../images/goals.jpg");
+    height: 945px;
     background-size: 100% 100%;
-    padding: 70px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,7 +69,7 @@
     grid-row: 1;
     display: grid;
     grid-template-columns: 580px;
-    grid-template-rows: 170px 150px 50px 300px;
+    grid-template-rows: 170px 150px 50px 200px;
     background: #ffffff;
     border-radius: 20px;
 }
@@ -92,7 +91,7 @@
     grid-column: 1;
     grid-row: 4;
     padding-left: 80px;
-    margin-top: 140px;
+    margin-top: 100px;
     margin-bottom: 20px;
 }
 
@@ -122,7 +121,7 @@
 }
 
 .googleText{
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 .signFacebook{

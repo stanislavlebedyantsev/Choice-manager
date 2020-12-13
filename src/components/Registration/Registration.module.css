@@ -1,19 +1,16 @@
 .background{
-    background-image: url("../../images/bgImage.jpg");
+    background-image: url("../../images/goals.jpg");
     height: 945px;
     background-size:100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /*test page because render trouble*/
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 500px;
-    height: 800px;
-    width: 30%;
-    margin-left: 10%;
-    grid-template-columns: 950px 580px;
-    grid-template-rows: 800px;
 }
 
 .leftSide{

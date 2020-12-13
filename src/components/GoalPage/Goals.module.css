@@ -1,5 +1,5 @@
 .background {
-    background-image: url("../../images/goalBack.png");
+    background-image: url("../../images/goals.jpg");
     background-attachment: fixed;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -9,6 +9,7 @@
 }
 
 .yourGoals {
+    color: white;
     font-size: 50px;
     text-align: center;
     font-weight: bold;
@@ -18,7 +19,6 @@
 .container {
     position: relative;
     height: 100%;
-    position: relative;
     width: 1200px;
     margin: 0 auto;
     display: grid;
@@ -70,16 +70,24 @@
 }
 .progressBarBack {
     position: relative;
-    border: 2px darkgrey solid;
+    border: 15px darkgrey solid;
     width: 350px;
+
+    border-radius: 30px;
     display: flex;
     justify-content: left;
     align-items: center;
 }
 .progressBar {
     position: absolute;
-    border: 2px blue solid;
-    bottom: -2px;
+    border: 15px blue solid;
+    border-radius: 30px;
+    bottom: -15px;
+    left: -15px;
+}
+.progress{
+    font-size: 20px;
+    margin-left: 10px;
 }
 .progressBarLabel{
     position: absolute;

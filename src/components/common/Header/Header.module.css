@@ -8,24 +8,39 @@
     width: 97.9%;
 }
 
-.logo {
+.logo{
+    color:white;
 }
 
-.signIn a {
+.signIn {
     text-decoration: none;
     color: #ffffff;
     background: #1fafed;
-    padding: 15px 30px;
+    padding: 10px 20px;
     border-radius: 30px;
     border: 3px #23bbf7 solid;
 }
 
-.signIn a:hover {
+.signIn:hover {
     color: #ffffff;
     background: #32b5ed;
     box-shadow: 0 0 10px #1fafed;
 }
-
-.signIn a:active {
+.signIn:active {
     color: #ffffff;
+}
+.navLink{
+    margin-right: 20px;
+    color: white;
+}
+.navLink:hover{
+    color: #1fafed;
+    transition: 0.5s;
+}
+.navLink:not(hover){
+    color: white;
+    transition: 0.5s;
+}
+.navLink:active{
+   color: white;
 }

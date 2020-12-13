@@ -1,13 +1,12 @@
 import s from './Header.module.css';
 import React from 'react';
-import {Redirect, Route} from "react-router-dom";
-import DropDownMenu from "../DropDownMenu/DropDownMenu";
+import {NavLink, Route} from "react-router-dom";
 import {connect} from "react-redux";
 import {logout} from "../../../redux/authReducer";
 
-class Header extends React.Component{
-    logout(){
-    this.props.logout()
+class Header extends React.Component {
+  logout() {
+    this.props.logout();
   }
 
   render() {
@@ -21,8 +20,9 @@ class Header extends React.Component{
             <Route path={"/profile"}> | Profile</Route>
           </div>
           <div>
-            <Route path={"/goals"} render={() => <DropDownMenu linkTo={"profile"} logout={this.logout.bind(this)}/>}/>
-            <Route path={"/profile"} render={() => <DropDownMenu linkTo={"goals"} logout={this.logout.bind(this)}/>}/>
+            <Route path={"/goals"}> <NavLink to={'/profile'} className={s.navLink}>Profile</NavLink></Route>
+            <Route path={"/profile"}> <NavLink to={'/goals'} className={s.navLink}>Goals</NavLink></Route>
+            <NavLink to={`/login`} className={s.signIn} onClick={this.logout.bind(this)}>logout</NavLink>
           </div>
         </nav>
       </div>

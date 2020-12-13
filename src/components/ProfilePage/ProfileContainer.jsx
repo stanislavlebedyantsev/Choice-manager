@@ -7,6 +7,7 @@ import {
 } from "../../redux/profileReducer";
 import {toggleIsFetching} from "../../redux/profileReducer";
 import Preloader from "../common/Preloader/Preloader";
+import {Redirect} from "react-router-dom";
 
 
 class ProfileApiContainer extends React.Component {
@@ -18,6 +19,9 @@ class ProfileApiContainer extends React.Component {
     this.props.putProfileDataThunkCreator(data)
   }
   render() {
+    if (!localStorage.getItem('isAuth')) {
+      return <Redirect to={'/login'}/>;
+    } else if (localStorage.getItem('isAuth') && !localStorage.getItem('isTested')) return <Redirect to={'/testing'}/>;
     return (
       <>
         {this.props.isFetching ?
@@ -36,7 +40,9 @@ class ProfileApiContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
   profileStateData: state.profilePage,
-  isFetching: state.profilePage.isFetching
+  isFetching: state.profilePage.isFetching,
+  isAuth: state.auth.isAuth,
+  isTested: state.auth.isTested,
 });
 
 export default connect(mapStateToProps,

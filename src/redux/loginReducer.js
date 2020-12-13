@@ -42,19 +42,8 @@ export const loginRequestThunkCreator = (state, authReducer) => (dispatchEvent) 
       localStorage.setItem('isTested', data.tested)
       if(data.tested) window.location.href= '/goals'
       if(!data.tested) window.location.href= '/testing'
-      /*dispatchEvent(setUserData({
-        accessToken: data.accessToken,
-        tokenType: data.tokenType,
-        isTested:data.tested
-      }))*/
     })
     .catch((err) => {
-      debugger
-      const error = err.response.data
-      let errorText=''
-      for (let i in error){
-        errorText += error[i]
-      }
-      alert(errorText)
+      alert(err.response.data.error)
     });
 }

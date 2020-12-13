@@ -19,6 +19,7 @@ export const authReducer = (state = initState, action) => {
       return {...state, isTested: true};
     }
     case 'LOGOUT': {
+      localStorage.clear();
       return initState;
     }
     default:
