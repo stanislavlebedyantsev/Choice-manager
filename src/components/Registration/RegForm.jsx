@@ -3,6 +3,7 @@ import React from 'react';
 import {RegistrationHeader} from "./RegistrationFormComponents/RegistrationHeader";
 import {RegistrationFooter} from "./RegistrationFormComponents/RegistrationFooter";
 import {Redirect} from "react-router-dom";
+import btn from '../common/buttonsStyle/buttonsStyle.module.css'
 
 const RegForm = (props) => {
   const onRegistration = () => {
@@ -52,7 +53,7 @@ const RegForm = (props) => {
                      value={props.registrationState.passwordConfirmation}
                      onChange={handleChange} required/>
               <div className={s.button}>
-                <button type={"submit"} onClick={onRegistration}>Register</button>
+                <button className={btn.btn} type={"submit"} onClick={onRegistration}>Register</button>
               </div>
             </div>
           </div>

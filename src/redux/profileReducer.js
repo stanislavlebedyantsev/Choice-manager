@@ -22,11 +22,9 @@ export const profileReducer = (state = initState, action) => {
       };
       copyState.userDto.password = '';
       copyState.userDto.passwordConfirmation = '';
-      console.log(copyState);
       for (let i in copyState.radarChart.data) {
         copyState.radarChart.data[i] = Number(copyState.radarChart.data[i]) / 4;
       }
-      console.log(copyState.radarChart);
       return copyState;
     }
     case 'UPDATE-PROFILE-DATA': {
@@ -36,7 +34,6 @@ export const profileReducer = (state = initState, action) => {
       copyState.userDto = {
         ...action.data
       };
-      console.log(copyState);
       return copyState;
     }
     case 'TOGGLE-IS-FETCHING': {
@@ -56,7 +53,6 @@ export const getProfileDataThunkCreator = () => (dispatchEvent) =>{
   toggleIsFetching(true);
   profileAPI.getProfile()
     .then(data => {
-
       dispatchEvent(getProfileData(data));
       dispatchEvent(toggleIsFetching(false));
     });

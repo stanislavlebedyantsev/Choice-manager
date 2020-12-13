@@ -1,4 +1,4 @@
-import s from "../Goals.module.css";
+import s from '../../common/buttonsStyle/buttonsStyle.module.css'
 
 const GoalTopButtons = (props) => {
   return (

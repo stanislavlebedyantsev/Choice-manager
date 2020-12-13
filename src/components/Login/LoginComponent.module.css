@@ -1,21 +1,17 @@
 .background {
     background-image: url("../../images/bgImage.jpg");
-    height: 830px;
+    height: 805px;
     background-size: 100% 100%;
-    padding: 70px 0px;
+    padding: 70px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
-    height: 800px;
-    padding-left: 500px;
-    width: 30%; /*1530px*/
-    /*display: grid;*/
-    margin-left: 10%;
-    /*margin-top: 5%;
-    /*border: 1px solid;*/
+    width: 30%;
     grid-template-columns: 950px 580px;
     grid-template-rows: 800px;
-    /* box-shadow: 0 0 5px 0px;*/
 }
 
 .leftSide {
@@ -25,10 +21,9 @@
     display: grid;
     grid-template-columns: 950px;
     grid-template-rows: 130px 670px;
-    /*background: linear-gradient(45deg, deepskyblue, DodgerBlue);*/
 }
 .socials{
-    padding: 10px 0px;
+    padding: 10px 0;
 }
 .leftHeader {
     grid-column: 1;
@@ -69,17 +64,13 @@
     grid-row: 1;
 }
 
-/*h1{
-    text-align: center;
-
-}*/
 
 .rightSide {
     grid-column: 1;
     grid-row: 1;
     display: grid;
     grid-template-columns: 580px;
-    grid-template-rows: 100px 150px 175px 300px;
+    grid-template-rows: 170px 150px 50px 300px;
     background: #ffffff;
     border-radius: 20px;
 }
@@ -91,7 +82,7 @@
 
 .rightLogin {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 2;
     display: grid;
     grid-template-columns: 580px;
     grid-template-rows: 50px 500px;
@@ -166,7 +157,7 @@ h3 {
 .rightLoginUser {
     grid-column: 1;
     grid-row: 2;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 .login {
@@ -174,8 +165,7 @@ h3 {
     width: 450px;
     margin: 10px 76px 0;
     border: none;
-    border-bottom: 3px solid;
-    border-color: silver;
+    border-bottom: 3px silver solid;
     outline: none;
     font-size: 18px;
 }
@@ -185,24 +175,14 @@ h3 {
     width: 450px;
     margin: 20px 76px 0;
     border: none;
-    border-bottom: 3px solid;
-    border-color: silver;
+    border-bottom: 3px silver solid;
     outline: none;
     font-size: 18px;
 }
 
-.button button {
-    text-align: center;
-    margin: 20px 76px;
-    width: 455px;
-    height: 38px;
-    border-radius: 30px;
-    background: deepskyblue;
-    text-decoration: none;
-    font-family: Kurale, sans-serif;
-    font-size: x-large;
-    outline: none;
-    color: #ffffff;
+.button {
+    display: flex;
+    justify-content: center;
 }
 
 .leftButtons {

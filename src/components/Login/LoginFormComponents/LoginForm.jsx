@@ -1,5 +1,6 @@
 import s from "../LoginComponent.module.css";
 import React from "react";
+import btn from '../../common/buttonsStyle/buttonsStyle.module.css'
 
 const LoginForm = (props) => {
   return (
@@ -15,8 +16,7 @@ const LoginForm = (props) => {
                value={props.password}
                onChange={props.handleChange}/>
         <div className={s.button}>
-          {/*disabled={props.isFetching}*/}
-          <button onClick={props.handleClick}>Login</button>
+          <button className={btn.btn} onClick={props.handleClick}>Login</button>
         </div>
       </div>
     </div>);

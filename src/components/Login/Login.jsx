@@ -3,9 +3,6 @@ import React from 'react';
 import {LoginHeader} from "./LoginFormComponents/LoginHeader";
 import {LoginFooter} from "./LoginFormComponents/LoginFooter";
 import LoginForm from "./LoginFormComponents/LoginForm";
-import SocialsLogin from "./LoginFormComponents/SocialsLogin";
-import preloader from "../../images/Preloader.svg";
-import Preloader from "../common/Preloader/Preloader";
 import {Redirect} from "react-router-dom";
 
 

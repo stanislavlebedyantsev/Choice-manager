@@ -36,18 +36,13 @@
 }
 
 .btn {
-    margin-top: -10px;
+    padding: 30px 110px;
     color: white;
     font-size: 20px;
     background: #23bbf7;
     cursor: pointer;
     border: 1px solid #23bbf7;
     border-radius: 30px;
-    width: 240px;
-    height: 70px;
-    margin-left: auto;
-    position: relative;
-    left: 50%;
     transform: translate(-50%, 0);
     text-align: center;
     -webkit-transition: all .3s ease-in-out;
@@ -55,6 +50,10 @@
     overflow: hidden;
     text-decoration: none;
     outline: none;
+}
+.btnContainer{
+    position: absolute;
+    left: 40%;
 }
 
 
@@ -92,6 +91,7 @@
 /* the lowest grid */
 
 .thirdGrid {
+    position: relative;
     grid-column: 1;
     grid-row: 2;
 }
