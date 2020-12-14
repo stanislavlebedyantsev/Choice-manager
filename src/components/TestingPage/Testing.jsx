@@ -10,7 +10,7 @@ import FooterContainer from "../common/Footer/FooterContainer";
 
 const Testing = (props) => {
   return (
-    <div>
+    <div className={s.background}>
       {/*<Header/>*/}
       <div className={s.pageDescription}>
         <h1>Test yourself</h1>

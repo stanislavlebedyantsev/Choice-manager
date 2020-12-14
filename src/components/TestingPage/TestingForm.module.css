@@ -3,7 +3,12 @@
     margin: auto;
     font-family: 'Montserrat', sans-serif;
 }
+.background{
+    background-image: url("../../images/testingDiscription.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
 
+}
 .answerBlock {
     margin-bottom: 20px;
     display: flex;
@@ -26,11 +31,11 @@
     overflow: hidden;
 }
 
-.pageDescription {
+/*.pageDescription {
     background-image: url("../../images/testingDiscription.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
-}
+}*/
 
 .pageDescription h1 {
     font-family: 'Montserrat', sans-serif;
