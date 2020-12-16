@@ -4,6 +4,7 @@ import {LoginHeader} from "./LoginFormComponents/LoginHeader";
 import {LoginFooter} from "./LoginFormComponents/LoginFooter";
 import LoginForm from "./LoginFormComponents/LoginForm";
 import {Redirect} from "react-router-dom";
+import ErrorComponent from "../common/errorAlert/errorComponent";
 
 
 const Login = (props) => {
@@ -26,6 +27,10 @@ const Login = (props) => {
   return (
     <>
       {<div className={s.background}>
+        <ErrorComponent
+          isError={props.isError}
+          errorText={props.errorText}
+        />
         <div className={s.container}>
           <div className={s.rightSide}>
             <LoginHeader/>
@@ -34,7 +39,7 @@ const Login = (props) => {
                        handleClick={handleClick}
                        stateText={props.loginStateText}
                        isFetching={props.isFetching}/>
-            <LoginFooter/>
+            <LoginFooter hideError={props.hideError}/>
           </div>
         </div>
       </div>

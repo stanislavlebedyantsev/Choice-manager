@@ -5,14 +5,23 @@ const topSide = (props) => {
     props.profilePutState(props.state);
   };
   const handleFile = (event) => {
-    
-  }
+    let file = event.target.files[0];
+    props.editProfilePhoto(file);
+  };
   return (
     <div className={s.leftSide}>
-      <div className={s.userImg}>
-        <div className={s.userPhoto}/>
+      <div className={s.userAvatar}>
+        <div className={s.userPhoto}>
+          {
+            props.state.imageUrl ?
+            <img src={`data:image/png;base64,${props.state.imageUrl}`} alt="photo"/> : null
+          }
+        </div>
         <label htmlFor="file">
-          <input type="file" id={'file'} className={s.inputFile} name={'file'} accept={".jpg, .png, .jpeg"}/>
+          <input type="file" id={'file'} className={s.inputFile}
+                 name={'file'} accept={".jpg, .png"}
+                 onChange={handleFile}
+          />
           <div className={s.uploadBtn}>Upload photo</div>
         </label>
         {/*<button className={s.btn}>

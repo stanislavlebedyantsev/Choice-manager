@@ -128,7 +128,6 @@ export const postTaskThunkCreator = (obj) => (dispatchEvent) => {
       dispatchEvent(getTaskThunkCreator());
     })
     .catch(r => {
-      console.log(r);
     });
 };
 export const deleteTaskThunkCreator = (obj) => (dispatchEvent) => {

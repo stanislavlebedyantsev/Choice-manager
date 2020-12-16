@@ -1,10 +1,10 @@
 import {loginAPI} from "../api/loginApi";
-import {setUserData} from "./authReducer";
+import {setErrorText, toggleIsError} from "./errorReducer";
 
 const initState = {
   usernameOrEmail: '',
   password: '',
-  isFetching: false
+  isFetching: false,
 };
 
 export const loginReducer = (state = initState, action) => {
@@ -44,6 +44,7 @@ export const loginRequestThunkCreator = (state, authReducer) => (dispatchEvent) 
       if(!data.tested) window.location.href= '/testing'
     })
     .catch((err) => {
-      alert(err.response.data.error)
+      dispatchEvent(toggleIsError())
+      dispatchEvent(setErrorText(err.response.data.error))
     });
 }

@@ -6,6 +6,7 @@ import {profileReducer} from "./profileReducer";
 import {goalsReducer} from "./goalsReducer";
 import {authReducer} from "./authReducer";
 import thunkMiddleware from "redux-thunk";
+import {errorReducer} from "./errorReducer";
 
 
 let reducers = combineReducers({
@@ -15,6 +16,7 @@ let reducers = combineReducers({
   profilePage: profileReducer,
   goalsPage: goalsReducer,
   auth: authReducer,
+  error: errorReducer
 });
 
 export let store = createStore(reducers, applyMiddleware(thunkMiddleware));

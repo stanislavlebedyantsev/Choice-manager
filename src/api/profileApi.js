@@ -17,6 +17,11 @@ export const profileAPI = {
       .put("/put", {
         ...obj
       }).then(response => response.data);
+  },
+  postPhoto(photo){
+    return profileAxios
+      .post('/upload', photo)
+      .then(response => response.data)
   }
 };
 

@@ -4,6 +4,7 @@ import {RegistrationHeader} from "./RegistrationFormComponents/RegistrationHeade
 import {RegistrationFooter} from "./RegistrationFormComponents/RegistrationFooter";
 import {Redirect} from "react-router-dom";
 import btn from '../common/buttonsStyle/buttonsStyle.module.css'
+import ErrorComponent from "../common/errorAlert/errorComponent";
 
 const RegForm = (props) => {
   const onRegistration = () => {
@@ -22,6 +23,10 @@ const RegForm = (props) => {
   if(props.registrationState.isRegistrationSuccess) return  <Redirect to={'/login'}/>
   return (
     <div className={s.background}>
+      <ErrorComponent
+        isError={props.isError}
+        errorText={props.errorText}
+      />
       <div className={s.container}>
         <div className={s.rightSide}>
           <RegistrationHeader/>
@@ -57,7 +62,7 @@ const RegForm = (props) => {
               </div>
             </div>
           </div>
-          <RegistrationFooter/>
+          <RegistrationFooter hideError={props.hideError}/>
         </div>
       </div>
     </div>

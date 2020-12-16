@@ -2,8 +2,9 @@ import React from 'react';
 import {connect} from "react-redux";
 import Profile from "./Profile";
 import {
+  editProfilePhoto,
   getProfileDataThunkCreator,
-  profileUpdateText, putProfileDataThunkCreator,
+  profileUpdateText, putProfileDataThunkCreator, updateProfilePhotoThunkCreator,
 } from "../../redux/profileReducer";
 import {toggleIsFetching} from "../../redux/profileReducer";
 import Preloader from "../common/Preloader/Preloader";
@@ -12,16 +13,22 @@ import {Redirect} from "react-router-dom";
 
 class ProfileApiContainer extends React.Component {
   componentDidMount() {
-    this.props.getProfileDataThunkCreator()
+    this.props.getProfileDataThunkCreator();
+  }
+
+  editProfilePhoto(photo) {
+    this.props.updateProfilePhotoThunkCreator(photo)
   }
 
   profilePutUpdates(data) {
-    this.props.putProfileDataThunkCreator(data)
+    this.props.putProfileDataThunkCreator(data);
   }
+
   render() {
-    if (!localStorage.getItem('isAuth')) {
+    if (localStorage.getItem('isAuth') !== 'true') {
       return <Redirect to={'/login'}/>;
-    } else if (localStorage.getItem('isAuth') && !localStorage.getItem('isTested')) return <Redirect to={'/testing'}/>;
+    } else if (localStorage.getItem('isAuth') ==='true'
+      && localStorage.getItem('isTested') !== 'true') return <Redirect to={'/testing'}/>;
     return (
       <>
         {this.props.isFetching ?
@@ -29,7 +36,9 @@ class ProfileApiContainer extends React.Component {
           <div>
             <Profile state={this.props.profileStateData}
                      profileUpdateState={this.props.profileUpdateText}
-                     profilePutState={this.profilePutUpdates.bind(this)}/>
+                     profilePutState={this.profilePutUpdates.bind(this)}
+                     editProfilePhoto={this.editProfilePhoto.bind(this)}
+            />
 
           </div>
         }
@@ -50,5 +59,7 @@ export default connect(mapStateToProps,
     getProfileDataThunkCreator,
     profileUpdateText,
     toggleIsFetching,
-    putProfileDataThunkCreator
+    putProfileDataThunkCreator,
+    editProfilePhoto,
+    updateProfilePhotoThunkCreator
   })(ProfileApiContainer);

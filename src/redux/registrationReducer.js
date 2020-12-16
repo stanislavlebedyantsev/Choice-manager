@@ -1,4 +1,5 @@
 import {registrationAPI} from "../api/registrationApi";
+import {hideError, setErrorText, toggleIsError} from "./errorReducer";
 
 const initState = {
   username: '',
@@ -27,6 +28,17 @@ export const registrationReducer = (state = initState, action) => {
     case 'REGISTRATION-SUCCESS': {
       return {...state, isRegistrationSuccess: true};
     }
+    case 'SET-ERROR-TEXT':{
+      copyState = {...state}
+      copyState.isError = true
+      copyState.errorText = action.errorText
+      return copyState
+    }
+    case 'TOGGLE-ERROR':{
+      copyState = {...state}
+      copyState.isError = !copyState.isError
+      return copyState
+    }
     default:
       return state;
   }
@@ -42,6 +54,7 @@ export const registrationRequestThunkCreator = (state) => (dispatchEvent) => {
     .then(() => {
       dispatchEvent(toggleIsRegistrationSuccess())
       dispatchEvent(registrationStateClear())
+      dispatchEvent(hideError())
     })
     .catch((err) => {
       let errorText=''
@@ -54,6 +67,7 @@ export const registrationRequestThunkCreator = (state) => (dispatchEvent) => {
       }else{
         errorText = 'Server connection error'
       }
-      alert(errorText)
+      dispatchEvent(toggleIsError())
+      dispatchEvent(setErrorText(errorText))
     });
 }

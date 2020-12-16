@@ -1,31 +1,10 @@
 import {testingAPI} from "../api/testingApi";
 import {toggleIsTested} from "./authReducer";
+import {hideError, setErrorText, toggleIsError} from "./errorReducer";
 
 const initState = {
-  categories: [
-    /*{
-      id: 1,
-      name: '',
-      questions: [
-        {
-          id: 1,
-          description: '',
-          type: ''
-        }
-      ]
-    }*/
-  ],
-  answers: [
-    /*{
-      question: {
-        id: 1
-      },
-      user: {
-        id: 0
-      },
-      value: ""
-    }*/
-  ],
+  categories: [],
+  answers: [],
   isFetching: false,
   isTesting: false,
   currentPage: 1,
@@ -38,13 +17,11 @@ export const testingReducer = (state = initState, action) => {
   let copyState;
   switch (action.type) {
     case 'GET-QUESTIONS': {
-      let oldCountOfQuests;
       copyState = {...state};
       copyState = {
         ...copyState,
         categories: action.data.categories,
       };
-      oldCountOfQuests = copyState.countOfQuests;
       if (copyState.currentPage === 1) {
         copyState.totalPages = action.data.categoryNumber;
       }
@@ -64,7 +41,6 @@ export const testingReducer = (state = initState, action) => {
       if(!copyState.visitedPages.some(el => el === copyState.currentPage)){
         copyState.visitedPages.push(copyState.currentPage)
       }
-      console.log(copyState);
       return copyState;
     }
     case 'CURRENT-PAGE-INC': {
@@ -94,11 +70,16 @@ export const testingReducer = (state = initState, action) => {
       return {...state, isFetching: action.data};
     }
     case 'CLEAR-ANSWERS': {
-      copyState = {
-        ...state,
-        answers: []
-      }
-      return copyState;
+      return {
+        categories: [],
+        answers: [],
+        isFetching: false,
+        isTesting: false,
+        currentPage: 1,
+        totalPages: null,
+        countOfQuests: 0,
+        visitedPages:[1]
+      };
     }
 
     default:
@@ -122,19 +103,17 @@ export const getTestingQuestionsThunkCreator = (currentPage = 1) => {
 
 export const postAnswersThunkCreator = (copyState) => {
   return (dispatchEvent) => {
-    console.log(copyState);
     testingAPI.postAnswers({answers: copyState})
       .then(() => {
-        //change it to normal redirect
         localStorage.setItem('isTested', 'true')
         dispatchEvent(toggleIsFetching(false));
         dispatchEvent(toggleIsTested())
+        dispatchEvent(hideError())
       })
       .catch((err) => {
-        alert(err.response.data.error);
-        //temp redirect
+        dispatchEvent(toggleIsError())
+        dispatchEvent(setErrorText(err.response.data.error))
         dispatchEvent(toggleIsFetching(false));
-        //alert(err);
       });
   };
 };

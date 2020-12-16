@@ -6,13 +6,16 @@ import {
 } from "../../redux/loginReducer";
 import {connect} from "react-redux";
 import {setUserData} from "../../redux/authReducer";
+import {hideError} from "../../redux/errorReducer";
 
 
 const mapStateToProps = (state) => ({
   loginStateText: state.loginPage,
   isFetching: state.loginPage.isFetching,
   isAuth: state.auth.isAuth,
-  isTested: state.auth.isTested
+  isTested: state.auth.isTested,
+  isError: state.error.isError,
+  errorText: state.error.errorText
 });
 
 
@@ -20,5 +23,6 @@ export default connect(mapStateToProps, {
   loginRequestThunkCreator,
   loginUpdateText,
   toggleIsFetching,
-  setUserData
+  setUserData,
+  hideError
 })(Login);

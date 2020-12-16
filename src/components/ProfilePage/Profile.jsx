@@ -6,8 +6,12 @@ import BottomRightInput from "./bottomRightInput/bottomRightInput";
 import RadarChart from 'react-svg-radar-chart';
 import 'react-svg-radar-chart/build/css/index.css';
 import FooterContainer from "../common/Footer/FooterContainer";
+import {NavLink} from "react-router-dom";
 
 const Profile = (props) => {
+  const handleClick = () => {
+    localStorage.setItem('isTested', false);
+  };
   const defaultOptions = {
     axes: true, // show axes?
     scales: 10, // show scale circles?
@@ -42,7 +46,10 @@ const Profile = (props) => {
       <div className={s.background}>
         <Header/>
         <div className={s.container}>
-          <TopSide state={props.state.userDto} profilePutState={props.profilePutState}/>
+          <TopSide state={props.state.userDto}
+                   profilePutState={props.profilePutState}
+                   editProfilePhoto={props.editProfilePhoto}
+          />
           <BottomRightInput state={props.state.userDto}
                             profileUpdateState={props.profileUpdateState}/>
           <div>
@@ -54,7 +61,8 @@ const Profile = (props) => {
                       <p>This radar chart built after your testing.
                         If you would like to see your skill score improve on the radar chart,
                         you can take the test again at any time.</p>
-                      {/*<NavLink to={'/testing'}>Pass the test</NavLink>*/}
+                      <NavLink to={'/testing'} onClick={handleClick}
+                               className={`${s.uploadBtn} ${s.retestBtn}`}>Pass the test</NavLink>
                     </div>
                     <RadarChart
                       captions={props.state.radarChart.caption}
@@ -62,7 +70,7 @@ const Profile = (props) => {
                         // data
                         {
                           data: {...props.state.radarChart.data},
-                          meta: {color: '#58FCEC'}
+                          meta: {color: '#00FFFF'}
                         },
                       ]}
                       size={500}

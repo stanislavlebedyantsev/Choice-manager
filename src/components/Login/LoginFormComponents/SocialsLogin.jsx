@@ -1,5 +1,4 @@
 import s from "../LoginComponent.module.css";
-import {NavLink} from "react-router-dom";
 
 export const API_BASE_URL = 'http://localhost:8080';
 export const ACCESS_TOKEN = 'accessToken';
@@ -13,8 +12,12 @@ export const GITHUB_AUTH_URL = API_BASE_URL + '/oauth2/authorize/github?redirect
 const SocialsLogin= (props) =>{
   return(
     <div className={s.signFrom}>
-        <a href={GOOGLE_AUTH_URL} className={s.signGoogle}>Login with Google</a>
-        <a href={GOOGLE_AUTH_URL} className={s.signFacebook}>Login with Facebook </a>
+        <a href={GOOGLE_AUTH_URL} className={s.signGoogle}>
+          Login with Google
+        </a>
+        <a href={GOOGLE_AUTH_URL} className={s.signFacebook}>
+          Login with Facebook
+        </a>
     </div>
   )
 }

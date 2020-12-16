@@ -49,6 +49,8 @@ class TestingApiContainer extends React.Component {
                    goToPreviousCategory={this.goToPreviousCategory.bind(this)}
                    currentPage={this.props.currentPage}
                    totalPages={this.props.totalPages}
+                   isError={this.props.isError}
+                   errorText={this.props.errorText}
           />
         }
       </>
@@ -64,6 +66,8 @@ const mapStateToProps = (state) => {
     totalPages: state.testingPage.totalPages,
     isAuth: state.auth.isAuth,
     isTested: state.auth.isTested,
+    isError: state.error.isError,
+    errorText: state.error.errorText
   };
 };
 

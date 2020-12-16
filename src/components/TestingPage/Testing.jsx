@@ -1,4 +1,3 @@
-import Header from "../common/Header/Header";
 import s from "./TestingForm.module.css";
 import QuestionComponent from "./QuestionComponent/QuestionComponent";
 import like from '../../images/like.svg';
@@ -7,11 +6,16 @@ import timer from '../../images/timer-testing-header.svg';
 import radarChart from '../../images/radarChart-testing-description.svg';
 import checkMark from "../../images/checkMark-black.svg";
 import FooterContainer from "../common/Footer/FooterContainer";
+import ErrorComponent from "../common/errorAlert/errorComponent";
+import React from "react";
 
 const Testing = (props) => {
   return (
     <div className={s.background}>
-      {/*<Header/>*/}
+      <ErrorComponent
+        isError={props.isError}
+        errorText={props.errorText}
+      />
       <div className={s.pageDescription}>
         <h1>Test yourself</h1>
         <div className={`${s.descriptionContainer}`}>
