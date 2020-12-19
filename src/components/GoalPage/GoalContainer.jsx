@@ -10,8 +10,9 @@ import {
   postTaskThunkCreator, putTaskThunkCreator,
   subtaskIsDoneChange, toggleEdit
 } from "../../redux/goalsReducer";
-import {Redirect} from "react-router-dom";
 import FooterContainer from "../common/Footer/FooterContainer";
+import {withAuthAndTestingRedirectComponent} from "../../hoc/withAuthAndTestingRedirect";
+
 
 
 class GoalApiComponent extends React.Component {
@@ -60,9 +61,6 @@ class GoalApiComponent extends React.Component {
   }
 
   render() {
-    if (localStorage.getItem('isAuth') !== 'true') {
-      return <Redirect to={'/login'}/>;
-    } else if (localStorage.getItem('isAuth') === 'true' && localStorage.getItem('isTested') !== 'true') return <Redirect to={'/testing'}/>;
     return (
       <div className={s.background}>
         <Header/>
@@ -95,13 +93,12 @@ class GoalApiComponent extends React.Component {
   }
 }
 
+let AuthRedirectComponent = withAuthAndTestingRedirectComponent(GoalApiComponent);
+
 const mapStateToProps = (state) => ({
   goalsStateData: state.goalsPage,
-  isFetching: state.goalsPage.isFetching,
-  isAuth: state.auth.isAuth,
-  isTested: state.auth.isTested,
+  isFetching: state.goalsPage.isFetching
 });
-
 
 export default connect(mapStateToProps, {
   toggleEdit,
@@ -114,4 +111,4 @@ export default connect(mapStateToProps, {
   getTaskThunkCreator,
   postTaskThunkCreator,
   putTaskThunkCreator
-})(GoalApiComponent);
+})(AuthRedirectComponent);

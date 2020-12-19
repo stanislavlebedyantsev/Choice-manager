@@ -9,25 +9,27 @@ import {
 } from "../../redux/testingReducer";
 import Testing from "./Testing";
 import Preloader from "../common/Preloader/Preloader";
-import {Redirect} from "react-router-dom";
+import {withAuthAndTestingRedirectComponent} from "../../hoc/withAuthAndTestingRedirect";
 
 class TestingApiContainer extends React.Component {
   componentDidMount() {
-    this.props.clearAnswers()
-    this.props.getTestingQuestionsThunkCreator()
+    this.props.clearAnswers();
+    this.props.getTestingQuestionsThunkCreator();
   }
 
-  goToNextCategory(currentPage){
-    this.props.currentPageInc()
-    this.props.getTestingQuestionsThunkCreator(currentPage + 1)
+  goToNextCategory(currentPage) {
+    this.props.currentPageInc();
+    this.props.getTestingQuestionsThunkCreator(currentPage + 1);
   }
-  goToPreviousCategory(currentPage){
-    this.props.currentPageDec()
-    this.props.getTestingQuestionsThunkCreator(currentPage - 1)
+
+  goToPreviousCategory(currentPage) {
+    this.props.currentPageDec();
+    this.props.getTestingQuestionsThunkCreator(currentPage - 1);
   }
 
   postAnswers() {
-    this.props.postAnswersThunkCreator(this.props.TestingQuestions.answers)
+    this.props.postAnswersThunkCreator(this.props.TestingQuestions.answers);
+
   }
 
   updateAnswers(obj) {
@@ -35,9 +37,6 @@ class TestingApiContainer extends React.Component {
   }
 
   render() {
-    if(localStorage.getItem('isAuth') !== 'true')  return <Redirect to={'/login'}/>
-    if(localStorage.getItem('isAuth') === 'true'
-      && localStorage.getItem('isTested') === 'true') return <Redirect to={'/goals'}/>
     return (
       <>
         {this.props.isFetching ?
@@ -57,6 +56,9 @@ class TestingApiContainer extends React.Component {
     );
   }
 }
+
+
+let AuthRedirectComponent = withAuthAndTestingRedirectComponent(TestingApiContainer);
 
 const mapStateToProps = (state) => {
   return {
@@ -79,4 +81,5 @@ export default connect(mapStateToProps, {
   currentPageInc,
   currentPageDec,
   clearAnswers
-})(TestingApiContainer);
+})(AuthRedirectComponent);
+

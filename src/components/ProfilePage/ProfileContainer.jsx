@@ -8,7 +8,8 @@ import {
 } from "../../redux/profileReducer";
 import {toggleIsFetching} from "../../redux/profileReducer";
 import Preloader from "../common/Preloader/Preloader";
-import {Redirect} from "react-router-dom";
+import {withAuthAndTestingRedirectComponent} from "../../hoc/withAuthAndTestingRedirect";
+
 
 
 class ProfileApiContainer extends React.Component {
@@ -17,7 +18,7 @@ class ProfileApiContainer extends React.Component {
   }
 
   editProfilePhoto(photo) {
-    this.props.updateProfilePhotoThunkCreator(photo)
+    this.props.updateProfilePhotoThunkCreator(photo);
   }
 
   profilePutUpdates(data) {
@@ -25,10 +26,6 @@ class ProfileApiContainer extends React.Component {
   }
 
   render() {
-    if (localStorage.getItem('isAuth') !== 'true') {
-      return <Redirect to={'/login'}/>;
-    } else if (localStorage.getItem('isAuth') ==='true'
-      && localStorage.getItem('isTested') !== 'true') return <Redirect to={'/testing'}/>;
     return (
       <>
         {this.props.isFetching ?
@@ -47,6 +44,8 @@ class ProfileApiContainer extends React.Component {
   }
 }
 
+let AuthRedirectComponent = withAuthAndTestingRedirectComponent(ProfileApiContainer);
+
 const mapStateToProps = (state) => ({
   profileStateData: state.profilePage,
   isFetching: state.profilePage.isFetching,
@@ -62,4 +61,4 @@ export default connect(mapStateToProps,
     putProfileDataThunkCreator,
     editProfilePhoto,
     updateProfilePhotoThunkCreator
-  })(ProfileApiContainer);
+  })(AuthRedirectComponent);

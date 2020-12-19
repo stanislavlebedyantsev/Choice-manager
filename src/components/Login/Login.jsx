@@ -9,7 +9,7 @@ import ErrorComponent from "../common/errorAlert/errorComponent";
 
 const Login = (props) => {
   const handleClick = () => {
-    props.toggleIsFetching(true)
+    props.toggleIsFetching(true);
     props.loginRequestThunkCreator(props.loginStateText, props.stateUserData);
   };
   const handleChange = (event) => {
@@ -22,8 +22,12 @@ const Login = (props) => {
     };
     props.loginUpdateText(obj);
   };
-  if (props.isAuth && props.isTested) return <Redirect to={'/goals'}/>
-  if (props.isAuth && !props.isTested) return <Redirect to={'/testing'}/>
+  if (localStorage.getItem('isAuth') === 'true'
+    && localStorage.getItem('isTested') !== 'true')
+    return <Redirect to={'/testing'}/>;
+  else if (localStorage.getItem('isAuth') === 'true'
+    && localStorage.getItem('isTested') === 'true')
+    return <Redirect to={'/goals'}/>;
   return (
     <>
       {<div className={s.background}>

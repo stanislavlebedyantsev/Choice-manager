@@ -8,7 +8,6 @@ import {connect} from "react-redux";
 import {setUserData} from "../../redux/authReducer";
 import {hideError} from "../../redux/errorReducer";
 
-
 const mapStateToProps = (state) => ({
   loginStateText: state.loginPage,
   isFetching: state.loginPage.isFetching,
@@ -17,8 +16,6 @@ const mapStateToProps = (state) => ({
   isError: state.error.isError,
   errorText: state.error.errorText
 });
-
-
 export default connect(mapStateToProps, {
   loginRequestThunkCreator,
   loginUpdateText,
