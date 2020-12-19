@@ -1,20 +1,17 @@
 import s from "../Profile.module.css";
 
-const topSide = (props) => {
-  const handleClick = () => {
-    props.profilePutState(props.state);
-  };
+const PhotoUploadComponent = ({editProfilePhoto, state}) => {
   const handleFile = (event) => {
     let file = event.target.files[0];
-    props.editProfilePhoto(file);
+    editProfilePhoto(file);
   };
   return (
     <div className={s.leftSide}>
       <div className={s.userAvatar}>
         <div className={s.userPhoto}>
           {
-            props.state.imageUrl ?
-            <img src={`data:image/png;base64,${props.state.imageUrl}`} alt="photo"/> : null
+            state.imageUrl ?
+              <img src={`data:image/png;base64,${state.imageUrl}`} alt="photo"/> : null
           }
         </div>
         <label htmlFor="file">
@@ -24,17 +21,8 @@ const topSide = (props) => {
           />
           <div className={s.uploadBtn}>Upload photo</div>
         </label>
-        {/*<button className={s.btn}>
-          Upload photo
-        </button>*/}
-        <div>
-          <button className={s.btn} onClick={handleClick}>
-            Save
-          </button>
-        </div>
       </div>
-      <div className={s.uploadImg}/>
     </div>
   );
 };
-export default topSide;
+export default PhotoUploadComponent;

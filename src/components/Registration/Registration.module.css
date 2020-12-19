@@ -1,7 +1,7 @@
 .background{
+    height: 100vh;
     background-image: url("../../images/goals.jpg");
-    height: 945px;
-    background-size:100% 100%;
+    background-size:cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -99,7 +99,7 @@
 .rightLoginh2{
     grid-column: 1;
     grid-row: 1;
-    margin-top: 0px;
+    margin-top: 0;
     height: 81px;
 }
 
@@ -115,13 +115,16 @@ h3{
 .rightLoginUser{
     /*grid-column: 1;
     grid-row: 2;*/
-    margin-top: 0px;
+    margin-top: 0;
 }
 
+.nameAndSurname{
+    display: flex;
+}
 .firstName{
     height: 30px;
     width: 211px;
-    margin: 10px 75px 0px;
+    margin: 10px 75px 0;
     border: none;
     border-bottom: 3px solid ;
     border-color: silver;
@@ -132,7 +135,7 @@ h3{
 .secondName{
     height: 30px;
     width: 215px;
-    margin: 10px -50px 0px;
+    margin: 10px -50px 0;
     border: none;
     border-bottom: 3px solid ;
     border-color: silver;
@@ -143,7 +146,7 @@ h3{
 .email{
     height: 30px;
     width: 455px;
-    margin: 10px 75px 0px;
+    margin: 10px 75px 0;
     border: none;
     border-bottom: 3px solid ;
     border-color: silver;
@@ -154,7 +157,7 @@ h3{
 .username{
     height: 30px;
     width: 455px;
-    margin: 10px 75px 0px;
+    margin: 10px 75px 0;
     border: none;
     border-bottom: 3px solid ;
     border-color: silver;
@@ -165,7 +168,7 @@ h3{
 .phoneNumber{
     height: 30px;
     width: 455px;
-    margin: 10px 75px 0px;
+    margin: 10px 75px 0;
     border: none;
     border-bottom: 3px solid ;
     border-color: silver;
@@ -176,7 +179,7 @@ h3{
 .password{
     height: 30px;
     width: 455px;
-    margin: 10px 75px 0px;
+    margin: 10px 75px 0;
     border: none;
     border-bottom: 3px solid ;
     border-color: silver;
@@ -187,7 +190,7 @@ h3{
 .confPassword{
     height: 30px;
     width: 455px;
-    margin: 10px 75px 0px;
+    margin: 10px 75px 0;
     border: none;
     border-bottom: 3px solid ;
     border-color: silver;

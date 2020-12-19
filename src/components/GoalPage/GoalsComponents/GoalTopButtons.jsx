@@ -1,19 +1,19 @@
 import s from "../Goals.module.css";
 
-const GoalTopButtons = (props) => {
+const GoalTopButtons = ({handleEdit,handleDelete,handleSave,done,isEdit}) => {
   return (
     <div className={s.buttons}>
       {
-        !props.done ?
-          (!props.isEdit ?
-              <button className={s.editButton} name={'edit'} onClick={props.handleClick}/>
+        !done ?
+          (!isEdit ?
+              <button className={s.editButton} name={'edit'} onClick={handleEdit}/>
               :
-              <button className={s.saveButton} name={'save'} onClick={props.handleClick}/>
+              <button className={s.saveButton} name={'save'} onClick={handleSave}/>
           ) : <div/>
       }
 
 
-      <button className={s.deleteButton} name={'delete'} onClick={props.handleClick}/>
+      <button className={s.deleteButton} name={'delete'} onClick={handleDelete}/>
     </div>
   )
 }

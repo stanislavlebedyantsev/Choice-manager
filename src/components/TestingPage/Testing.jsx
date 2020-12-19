@@ -1,71 +1,41 @@
 import s from "./TestingForm.module.css";
 import QuestionComponent from "./QuestionComponent/QuestionComponent";
-import like from '../../images/like.svg';
-import dislike from '../../images/dislike.svg';
-import timer from '../../images/timer-testing-header.svg';
-import radarChart from '../../images/radarChart-testing-description.svg';
-import checkMark from "../../images/checkMark-black.svg";
-import FooterContainer from "../common/Footer/FooterContainer";
 import ErrorComponent from "../common/errorAlert/errorComponent";
 import React from "react";
+import Footer from "../common/Footer/Footer";
+import TestingHeader from "./TestingHeader/TestingHeader";
+import TestingNav from "./TestingNav/TestingNav";
 
-const Testing = (props) => {
+const Testing = ({currentPage,goToPreviousCategory,goToNextCategory,totalPages,TestingQuestions,updateAnswers,errorText,isError,postAnswers}) => {
   return (
     <div className={s.background}>
-      <ErrorComponent
-        isError={props.isError}
-        errorText={props.errorText}
-      />
-      <div className={s.pageDescription}>
-        <h1>Test yourself</h1>
-        <div className={`${s.descriptionContainer}`}>
-          <div className={`${s.descriptionTime} ${s.tip}`}>
-            <p><img src={timer} alt=""/></p>
-            <p>The test will take less than 10 minutes</p>
-          </div>
-          <div className={`${s.descriptionMarks} ${s.tip}`}>
-            <p><img src={checkMark} className={s.checkMarkBlack} alt=""/></p>
-            <p>Answers rotated from <img src={dislike} className={s.descrMarker} alt=""/> (or 0 value)
-              to <img src={like} className={s.descrMarker} alt=""/> (or 4 value)</p>
-          </div>
-          <div className={`${s.descriptionRadar} ${s.tip}`}>
-            <p><img src={radarChart} alt=""/></p>
-            <p>After the test you can see your result on radar chart at profile page</p>
-          </div>
-        </div>
-      </div>
+      {isError ?
+        <ErrorComponent
+          isError={isError}
+          errorText={errorText}
+        /> : null
+      }
+      <TestingHeader/>
       <div className={s.container}>
         {
-          props.TestingQuestions.categories.length !== 0 ?
-            props.TestingQuestions.categories.map((el) => {
+          TestingQuestions.categories.length !== 0 ?
+            TestingQuestions.categories.map((el) => {
               return (<QuestionComponent
-                state={props.TestingQuestions}
-                updateAnswers={props.updateAnswers}
+                state={TestingQuestions}
+                updateAnswers={updateAnswers}
                 questions={el.questions} categoryName={el.name}
                 key={el.id}
               />);
             }) : <div/>
         }
-        <div className={s.pageNavigation}>
-          {
-            props.currentPage !== 1 ?
-            <button className={s.btn} onClick={() => props.goToPreviousCategory(props.currentPage)}>
-              Go to previous category
-            </button> : null
-          }
-          {
-            (props.TestingQuestions.categories.length !== 0
-              && props.currentPage === props.totalPages) ?
-              <button className={s.btn} onClick={props.postAnswers}>Send answers</button>
-              :
-              (
-                <button className={s.btn} onClick={() => props.goToNextCategory(props.currentPage)}>
-                  Go to next category</button>
-              )
-          }
-        </div>
+        <TestingNav currentPage={currentPage}
+                    categories={TestingQuestions.categories}
+                    totalPages={totalPages}
+                    postAnswers={postAnswers}
+                    goToNextCategory={goToNextCategory}
+                    goToPreviousCategory={goToPreviousCategory}/>
       </div>
-      <FooterContainer/>
+      <Footer/>
     </div>
   );
 };

@@ -4,57 +4,22 @@ const initState = {
   goals: [],
   isFetching: false
 };
+const GET_TASK = 'choice-manager/goal/GET-TASKS';
+const ADD_SUBTASK = 'choice-manager/goal/ADD-SUBTASK';
+const TOGGLE_SUBTASK = 'choice-manager/goal/TOGGLE-SUBTASK';
+const TOGGLE_IS_FETCHING = 'choice-manager/goal/TOGGLE-IS-FETCHING';
 
 export const goalsReducer = (state = initState, action) => {
   let copyState;
   switch (action.type) {
-    case 'GET-TASKS': {
-      for (let el of action.data.goals) {
-        el.isEdit = false;
-      }
+    case GET_TASK: {
       copyState = {
         ...state,
-        ...action.data
+        ...action.goals
       };
       return copyState;
     }
-    case 'EDIT-TASK': {
-      copyState = {
-        ...state
-      };
-      for (let i in copyState.goals) {
-        if (copyState.goals[i].id === action.data.id) {
-          copyState.goals.splice(i, 1, action.data);
-        }
-      }
-      return copyState;
-    }
-    case 'EDIT-SUBTASK': {
-      copyState = {
-        ...state
-      };
-      for (let i in copyState.goals) {
-        if (copyState.goals[i].id === action.data.taskId) {
-          for (let taskId in copyState.goals[i].tasks) {
-            if (copyState.goals[i].tasks[taskId].id === action.data.id)
-              copyState.goals[i].tasks.splice(taskId, 1, action.data);
-          }
-        }
-      }
-      return copyState;
-    }
-    case 'TOGGLE-EDIT': {
-      copyState = {
-        ...state
-      };
-      for (let el of copyState.goals) {
-        if (el.id === action.data) {
-          el.isEdit = !el.isEdit;
-        }
-      }
-      return copyState;
-    }
-    case 'ADD-SUBTASK': {
+    case ADD_SUBTASK: {
       copyState = {
         ...state
       };
@@ -69,22 +34,7 @@ export const goalsReducer = (state = initState, action) => {
       }
       return copyState;
     }
-    case 'ADD-TASK': {
-      copyState = {
-        ...state
-      };
-      copyState.goals.push({
-        id: copyState.goals.length + 1,
-        name: '',
-        explanation: '',
-        done: false,
-        tasks: [],
-        isEdit: true,
-        isAdded: false
-      });
-      return copyState;
-    }
-    case 'TOGGLE-SUBTASK': {
+    case TOGGLE_SUBTASK: {
       copyState = {
         ...state
       };
@@ -100,44 +50,43 @@ export const goalsReducer = (state = initState, action) => {
 
       return copyState;
     }
+    case TOGGLE_IS_FETCHING: {
+      return {...state, isFetching: action.data};
+    }
     default:
       return state;
   }
 };
 
-export const editGoals = (data) => ({type: 'EDIT-TASK', data});
-export const editSubtask = (data) => ({type: 'EDIT-SUBTASK', data});
-export const toggleEdit = (data) => ({type: 'TOGGLE-EDIT', data});
-export const subtaskIsDoneChange = (data) => ({type: 'TOGGLE-SUBTASK', data});
-export const addSubtask = (data) => ({type: 'ADD-SUBTASK', data});
-export const addTask = () => ({type: 'ADD-TASK'});
-export const getTask = (data) => ({type: 'GET-TASKS', data});
+export const toggleIsFetching = (data) => ({type: TOGGLE_IS_FETCHING, data});
+export const subtaskIsDoneChange = (data) => ({type: TOGGLE_SUBTASK, data});
+export const addSubtask = (data) => ({type: ADD_SUBTASK, data});
+export const getTask = (goals) => ({type: GET_TASK, goals});
 
-export const getTaskThunkCreator = () => (dispatchEvent) => {
-  goalsAPI.getGoals().then(response => {
-    dispatchEvent(getTask(response));
-  });
+export const getTaskThunkCreator = () => async (dispatchEvent) => {
+  dispatchEvent(toggleIsFetching(true));
+  const response = await goalsAPI.getGoals();
+  dispatchEvent(getTask(response));
+  dispatchEvent(toggleIsFetching(false));
 };
-export const postTaskThunkCreator = (obj) => (dispatchEvent) => {
-  delete obj.id;
-  for (let el of obj.tasks) {
-    delete el.id;
-  }
-  goalsAPI.postGoals(obj)
-    .then(() => {
-      dispatchEvent(getTaskThunkCreator());
-    })
-    .catch(r => {
-    });
+export const postTaskThunkCreator = (obj) => async (dispatchEvent) => {
+  dispatchEvent(toggleIsFetching(true));
+  await goalsAPI.postGoals(obj);
+  dispatchEvent(getTaskThunkCreator());
+  dispatchEvent(toggleIsFetching(false));
+
 };
-export const deleteTaskThunkCreator = (obj) => (dispatchEvent) => {
-  goalsAPI.deleteGoals(obj)
-    .then(() => {
-      dispatchEvent(getTaskThunkCreator());
-    });
+export const deleteTaskThunkCreator = (obj) => async (dispatchEvent) => {
+  dispatchEvent(toggleIsFetching(true));
+
+  await goalsAPI.deleteGoals(obj);
+  dispatchEvent(getTaskThunkCreator());
+  dispatchEvent(toggleIsFetching(false));
+
 };
-export const putTaskThunkCreator = (obj) => (dispatchEvent) => {
-  goalsAPI.putGoals(obj).then(() => {
-    dispatchEvent(getTaskThunkCreator());
-  });
+export const putTaskThunkCreator = (obj) => async (dispatchEvent) => {
+  dispatchEvent(toggleIsFetching(true));
+  await goalsAPI.putGoals(obj);
+  dispatchEvent(getTaskThunkCreator());
+  dispatchEvent(toggleIsFetching(false));
 };

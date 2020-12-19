@@ -1,7 +1,7 @@
 import s from "./StartPage.module.css";
 import About from "../About/About";
 
-const StartPage = (props) => {
+const StartPage = () => {
     return (
         <div className={s.logo}>
             <div>

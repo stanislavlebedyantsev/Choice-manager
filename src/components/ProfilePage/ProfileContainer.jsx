@@ -2,14 +2,14 @@ import React from 'react';
 import {connect} from "react-redux";
 import Profile from "./Profile";
 import {
-  editProfilePhoto,
-  getProfileDataThunkCreator,
-  profileUpdateText, putProfileDataThunkCreator, updateProfilePhotoThunkCreator,
+  getProfileDataThunkCreator, putProfileDataThunkCreator,
+  updateProfilePhotoThunkCreator
 } from "../../redux/profileReducer";
 import {toggleIsFetching} from "../../redux/profileReducer";
 import Preloader from "../common/Preloader/Preloader";
 import {withAuthAndTestingRedirectComponent} from "../../hoc/withAuthAndTestingRedirect";
-
+import {compose} from "redux";
+import {getProfileData, getProfileIsFetching} from "../../redux/selectors";
 
 
 class ProfileApiContainer extends React.Component {
@@ -17,12 +17,12 @@ class ProfileApiContainer extends React.Component {
     this.props.getProfileDataThunkCreator();
   }
 
-  editProfilePhoto(photo) {
+  editProfilePhoto =(photo) => {
     this.props.updateProfilePhotoThunkCreator(photo);
   }
 
-  profilePutUpdates(data) {
-    this.props.putProfileDataThunkCreator(data);
+  profilePutUpdates = (profileData) => {
+    this.props.putProfileDataThunkCreator(profileData);
   }
 
   render() {
@@ -30,35 +30,29 @@ class ProfileApiContainer extends React.Component {
       <>
         {this.props.isFetching ?
           (<Preloader/>) :
-          <div>
-            <Profile state={this.props.profileStateData}
-                     profileUpdateState={this.props.profileUpdateText}
-                     profilePutState={this.profilePutUpdates.bind(this)}
-                     editProfilePhoto={this.editProfilePhoto.bind(this)}
-            />
-
-          </div>
+          <Profile state={this.props.profileStateData}
+                   profilePutState={this.profilePutUpdates}
+                   editProfilePhoto={this.editProfilePhoto}
+          />
         }
       </>
     );
   }
 }
 
-let AuthRedirectComponent = withAuthAndTestingRedirectComponent(ProfileApiContainer);
-
 const mapStateToProps = (state) => ({
-  profileStateData: state.profilePage,
-  isFetching: state.profilePage.isFetching,
-  isAuth: state.auth.isAuth,
-  isTested: state.auth.isTested,
+  profileStateData: getProfileData(state),
+  isFetching: getProfileIsFetching(state)
 });
 
-export default connect(mapStateToProps,
-  {
-    getProfileDataThunkCreator,
-    profileUpdateText,
-    toggleIsFetching,
-    putProfileDataThunkCreator,
-    editProfilePhoto,
-    updateProfilePhotoThunkCreator
-  })(AuthRedirectComponent);
+
+export default compose(
+  connect(mapStateToProps,
+    {
+      getProfileDataThunkCreator,
+      toggleIsFetching,
+      putProfileDataThunkCreator,
+      updateProfilePhotoThunkCreator
+    }),
+  withAuthAndTestingRedirectComponent,
+)(ProfileApiContainer);

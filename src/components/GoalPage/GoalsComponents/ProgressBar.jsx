@@ -1,17 +1,17 @@
 import s from "../Goals.module.css";
 
-const ProgressBar = (props) => {
+const ProgressBar = ({progress}) => {
   return (
     <div className={s.progressBarContainer}>
       <div className={s.progressBarBack} >
         <div>
-          <span style={{width: `${props.progress}%`}} className={s.progressBar}/>
+          <span style={{width: `${progress}%`}} className={s.progressBar}/>
 
         </div>
       </div>
-      <div className={s.progress}>
-        {props.progress}%
-      </div>
+      <span className={s.progress}>
+        {progress}%
+      </span>
     </div>
   )
 }

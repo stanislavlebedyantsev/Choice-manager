@@ -1,16 +1,17 @@
 .background {
+    height: 100vh;
     background-image: url("../../images/goals.jpg");
-    height: 945px;
-    background-size: 100% 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .container {
-    width: 30%;
-    grid-template-columns: 950px 580px;
-    grid-template-rows: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .leftSide {
@@ -140,7 +141,7 @@
 .rightLoginh2 {
     grid-column: 1;
     grid-row: 1;
-    margin-top: 0px;
+    margin-top: 0;
     height: 81px;
 }
 
