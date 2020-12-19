@@ -1,21 +1,39 @@
 import s from "../Profile.module.css";
 
 const topSide = (props) => {
+  const handleClick = () => {
+    props.profilePutState(props.state);
+  };
+  const handleFile = (event) => {
+    let file = event.target.files[0];
+    props.editProfilePhoto(file);
+  };
   return (
-    <div className={s.topSide}>
-      <div className={s.topLeftSide}>
-        <div className={s.profileImg}></div>
-        <h2 className={s.accountH2}>Account</h2>
+    <div className={s.leftSide}>
+      <div className={s.userAvatar}>
+        <div className={s.userPhoto}>
+          {
+            props.state.imageUrl ?
+            <img src={`data:image/png;base64,${props.state.imageUrl}`} alt="photo"/> : null
+          }
+        </div>
+        <label htmlFor="file">
+          <input type="file" id={'file'} className={s.inputFile}
+                 name={'file'} accept={".jpg, .png"}
+                 onChange={handleFile}
+          />
+          <div className={s.uploadBtn}>Upload photo</div>
+        </label>
+        {/*<button className={s.btn}>
+          Upload photo
+        </button>*/}
+        <div>
+          <button className={s.btn} onClick={handleClick}>
+            Save
+          </button>
+        </div>
       </div>
-      <div className={s.topRightSide}>
-        <button className={s.saveChange}>Save</button>
-        <h1 className={s.usernameH1}>Username</h1>
-        <h2 className={s.emailH2}>name@mail.com</h2>
-        <p className={s.downloadP}>Click here to download your photo or upload your own..</p>
-        <button className={s.downloadButton}>
-          <p className={s.buttonDownloadText}> Click on this area to upload your photo</p>
-        </button>
-      </div>
+      <div className={s.uploadImg}/>
     </div>
   );
 };

@@ -1,8 +1,10 @@
-import * as axios from 'axios';
+import {loginAPI} from "../api/loginApi";
+import {setErrorText, toggleIsError} from "./errorReducer";
 
 const initState = {
-  username: '',
-  password: ''
+  usernameOrEmail: '',
+  password: '',
+  isFetching: false,
 };
 
 export const loginReducer = (state = initState, action) => {
@@ -14,27 +16,11 @@ export const loginReducer = (state = initState, action) => {
       return copyState;
     }
     //fix async troubles
-    case 'LOGIN-REQUEST': {
-      copyState = {
-        email: state.username,
-        password: state.password
-      };
-      axios
-        .post("http://127.0.0.1:8080/auth/login", {
-          ...copyState
-        })
-        .then(response => {
-          copyState = {...initState};
-          localStorage.setItem('userId', response.data.id);
-          window.location.replace('/testing');
-          console.log(localStorage.getItem('userId'));
-          return copyState;
-        })
-        .catch(() => {
-          alert("Wrong data. try again");
-        });
-      return copyState;
-
+    case 'LOGIN-STATE-CLEAR': {
+      return initState;
+    }
+    case 'TOGGLE-IS-FETCHING': {
+      return {...state, isFetching: action.data};
     }
     default:
       return state;
@@ -42,6 +28,23 @@ export const loginReducer = (state = initState, action) => {
 
 };
 
-export const updateLoginTextCreator = (obj) => ({type: 'LOGIN-UPDATE-TEXT', newData: obj});
-export const requestLoginCreator = () => ({type: 'LOGIN-REQUEST'});
+export const toggleIsFetching = (data) => ({type: 'TOGGLE-IS-FETCHING', data});
+export const loginUpdateText = (newData) => ({type: 'LOGIN-UPDATE-TEXT', newData});
+export const loginStateClear = () => ({type: 'LOGIN-STATE-CLEAR'});
 
+export const loginRequestThunkCreator = (state, authReducer) => (dispatchEvent) => {
+  loginAPI.postLogin({...state})
+    .then(data => {
+      dispatchEvent(loginStateClear())
+      localStorage.setItem('tokenType', data.tokenType)
+      localStorage.setItem('accessToken', data.accessToken)
+      localStorage.setItem('isAuth', true)
+      localStorage.setItem('isTested', data.tested)
+      if(data.tested) window.location.href= '/goals'
+      if(!data.tested) window.location.href= '/testing'
+    })
+    .catch((err) => {
+      dispatchEvent(toggleIsError())
+      dispatchEvent(setErrorText(err.response.data.error))
+    });
+}

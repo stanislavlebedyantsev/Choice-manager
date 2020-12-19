@@ -1,0 +1,172 @@
+.background {
+    background-image: url("../../images/goals.jpg");
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    min-height: 900px;
+    display: flex;
+    flex-direction: column;
+}
+
+.yourGoals {
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-family: "Tw Cen MT", serif;
+}
+
+.container {
+    position: relative;
+    height: 100%;
+    width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    min-height: 100%;
+}
+
+.grid {
+    min-height: 544px;
+    margin-top: 50px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 2fr 2fr;
+    margin-bottom: 2vw;
+}
+
+.grid > div {
+    font-size: 5vw;
+    padding: .5em;
+    background: white;
+    text-align: center;
+    box-shadow: 0 0 5px;
+    border-radius: 30px;
+    margin-right: 35px;
+    margin-top: 35px;
+}
+
+.addGoalBtn{
+    margin-top: 35px;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    outline: none;
+    background-image: url("../../images/AddGoal.png");
+    background-size: 100% 100%;
+    background-color: transparent;
+}
+
+.goalNameH6 {
+    font-size: x-large;
+    text-align: left;
+    margin-top: -50px;
+    margin-left: 30px;
+    font-weight: lighter;
+    font-family: "Tw Cen MT", serif;
+}
+
+.descriptionP {
+    margin-bottom: -50px;
+}
+.progressBarBack {
+    position: relative;
+    border: 15px darkgrey solid;
+    width: 350px;
+
+    border-radius: 30px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.progressBar {
+    position: absolute;
+    border: 15px blue solid;
+    border-radius: 30px;
+    bottom: -15px;
+    left: -15px;
+}
+.progress{
+    font-size: 20px;
+    margin-left: 10px;
+}
+.progressBarLabel{
+    position: absolute;
+    font-size: 24px;
+    left: 365px;
+}
+.progressBarContainer {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.checkbox {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+    text-align: left;
+    padding: 5px;
+    margin-left: 25px;
+}
+.taskName{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 70%;
+    border-bottom: 2px solid darkgrey;
+}
+.discrPaddings{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-top: 22px;
+    border-bottom: 2px solid darkgrey;
+    width: 70%;
+}
+.buttons {
+    margin-top: -105px;
+    margin-right: -380px;
+}
+.editInput{
+    font-size: x-large;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid;
+    border-color: darkgrey;
+}
+.editButton {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background: white url("../../images/edit.png");
+    background-size: 100% 100%;
+    border: none;
+    outline: none;
+}
+.saveButton {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background: white url("../../images/save.svg");
+    background-size: 100% 100%;
+    border: none;
+    outline: none;
+}
+
+.deleteButton {
+    width: 30px;
+    height: 30px;
+    background: white url("../../images/delete.png");
+    background-size: 100% 100%;
+    border: none;
+    outline: none;
+}
+
+/* Complete and add task buttons */
+
+.btn:hover::before {
+    box-shadow: inset 0 0 0 160px #23bbf7;
+}
+

@@ -1,0 +1,69 @@
+.content {
+    position: relative;
+    display: flex;
+    /*grid-area: header;*/
+    font-size: 24px;
+    justify-content: space-between;
+    padding: 20px;
+    width: 97.9%;
+}
+
+.logo{
+    color:white;
+}
+
+.signIn {
+    position: relative;
+    color: #23bbf7;
+    background: transparent;
+    cursor: pointer;
+    border: 1px solid #23bbf7;
+    border-radius: 35px;
+    padding: 10px 20px;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translate(-10%, 0);
+    text-align: center;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    overflow: hidden;
+    text-decoration: none;
+    outline: none;
+}
+
+.signIn:before {
+    content: '';
+    position: absolute;
+    top:-1px;
+    border-radius: 35px;
+    width: 120px;
+    height: 51px;
+    left: -1px;
+    -webkit-transition: box-shadow .3s ease-in-out;
+    transition: box-shadow .3s ease-in-out;
+    z-index: -1;
+
+}
+.signIn:hover {
+    color: #fff;
+}
+
+.signIn:hover:before {
+    box-shadow: inset 0 0 0 160px #23bbf7;
+}
+
+.navLink{
+    margin-right: 20px;
+    color: white;
+}
+.navLink:hover{
+    color: #1fafed;
+    transition: 0.5s;
+}
+.navLink:not(hover){
+    color: white;
+    transition: 0.5s;
+}
+.navLink:active{
+   color: white;
+}

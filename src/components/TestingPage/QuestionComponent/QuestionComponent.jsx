@@ -1,9 +1,10 @@
 import React from "react";
 import s from '../TestingForm.module.css';
-import {updateAnswers} from "../../../redux/testingReducer";
+import AnswersRadioComponent from "../AnswersRadioComponent/AnswersRadioComponent";
+
 
 const QuestionComponent = (props) => {
-  const answerChange = (event) => {
+  const handleChange = (event) => {
     let copyState = props.state.answers;
     let obj = [
       ...copyState
@@ -12,32 +13,24 @@ const QuestionComponent = (props) => {
       question: {
         id: Number(event.target.id)
       },
-      user: {
-        id: 1
-      },
       value: event.target.value
     };
-    props.dispatch(updateAnswers(obj));
-    console.log(props.state.answers);
+    props.updateAnswers(obj)
   };
   const questArr = props.questions.map(el => {
     return (
-      <div>
-        <div className={s.questDiscr}>{el.description}</div>
+      <div className={s.questContainer}>
+        <div className={s.questDiscr}><p>{el.description}</p></div>
         <div className={s.answerBlock}>
           {
             el.type === 'special' ?
-              <textarea id={el.id} name={"answers"} placeholder={"Type your answer here"} onChange={answerChange}/> :
-              <div>
-                <input name={"answers"}
-                       type="range"
-                       id={el.id}
-                       min={0} max={5} step={0.5}
-                       value={props.state.answers[Number(el.id) - 1].value}
-                       onChange={answerChange}/>
-                <label htmlFor="answer">{props.state.answers[Number(el.id) - 1].value}</label>
-              </div>
-
+              <textarea key={el.id} id={el.id} className={s.textAnswers} rows={'5'}
+                        name={"answers"} placeholder={"Type your answer here"}
+                        value={props.state.answers[el.id-1].value}
+                        onChange={handleChange}/>
+              : <AnswersRadioComponent updateAnswers={props.updateAnswers}
+                                       answersState={props.state.answers}
+                                       key={el.id} id={el.id} />
           }
         </div>
       </div>
