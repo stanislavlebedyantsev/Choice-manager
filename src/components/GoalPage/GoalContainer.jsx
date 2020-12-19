@@ -14,6 +14,7 @@ import FooterContainer from "../common/Footer/FooterContainer";
 import {withAuthAndTestingRedirectComponent} from "../../hoc/withAuthAndTestingRedirect";
 
 
+
 class GoalApiComponent extends React.Component {
   componentDidMount() {
     this.props.getTaskThunkCreator();

@@ -11,6 +11,7 @@ import Preloader from "../common/Preloader/Preloader";
 import {withAuthAndTestingRedirectComponent} from "../../hoc/withAuthAndTestingRedirect";
 
 
+
 class ProfileApiContainer extends React.Component {
   componentDidMount() {
     this.props.getProfileDataThunkCreator();
@@ -44,6 +45,7 @@ class ProfileApiContainer extends React.Component {
 }
 
 let AuthRedirectComponent = withAuthAndTestingRedirectComponent(ProfileApiContainer);
+
 const mapStateToProps = (state) => ({
   profileStateData: state.profilePage,
   isFetching: state.profilePage.isFetching,

@@ -16,7 +16,6 @@ const mapStateToProps = (state) => ({
   isError: state.error.isError,
   errorText: state.error.errorText
 });
-
 export default connect(mapStateToProps, {
   loginRequestThunkCreator,
   loginUpdateText,

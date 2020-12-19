@@ -29,6 +29,7 @@ class TestingApiContainer extends React.Component {
 
   postAnswers() {
     this.props.postAnswersThunkCreator(this.props.TestingQuestions.answers);
+
   }
 
   updateAnswers(obj) {
@@ -56,6 +57,7 @@ class TestingApiContainer extends React.Component {
   }
 }
 
+
 let AuthRedirectComponent = withAuthAndTestingRedirectComponent(TestingApiContainer);
 
 const mapStateToProps = (state) => {
@@ -80,3 +82,4 @@ export default connect(mapStateToProps, {
   currentPageDec,
   clearAnswers
 })(AuthRedirectComponent);
+
