@@ -1,54 +1,39 @@
 import s from "./LoginComponent.module.css";
 import React from 'react';
-import {LoginHeader} from "./LoginFormComponents/LoginHeader";
-import {LoginFooter} from "./LoginFormComponents/LoginFooter";
+import LoginHeader from "./LoginFormComponents/LoginHeader";
+import LoginFooter from "./LoginFormComponents/LoginFooter";
 import LoginForm from "./LoginFormComponents/LoginForm";
 import {Redirect} from "react-router-dom";
-import ErrorComponent from "../common/errorAlert/errorComponent";
+import {reduxForm} from "redux-form";
 
+const ReduxLoginForm = reduxForm({form: 'login'})(LoginForm);
 
 const Login = (props) => {
-  const handleClick = () => {
-    props.toggleIsFetching(true);
-    props.loginRequestThunkCreator(props.loginStateText, props.stateUserData);
+  const handleSubmit = (formData) => {
+    props.loginRequestThunkCreator(formData);
   };
-  const handleChange = (event) => {
-    let obj = {
-      ...props.loginStateText
-    };
-    obj = {
-      ...obj,
-      [event.target.name]: event.target.value
-    };
-    props.loginUpdateText(obj);
-  };
-  if (localStorage.getItem('isAuth') === 'true'
-    && localStorage.getItem('isTested') !== 'true')
+  if (sessionStorage.getItem('isAuth') === 'true'
+    && sessionStorage.getItem('isTested') !== 'true')
     return <Redirect to={'/testing'}/>;
-  else if (localStorage.getItem('isAuth') === 'true'
-    && localStorage.getItem('isTested') === 'true')
+  else if (sessionStorage.getItem('isAuth') === 'true'
+    && sessionStorage.getItem('isTested') === 'true')
     return <Redirect to={'/goals'}/>;
   return (
-    <>
+    <div>
       {<div className={s.background}>
-        <ErrorComponent
-          isError={props.isError}
-          errorText={props.errorText}
-        />
         <div className={s.container}>
           <div className={s.rightSide}>
             <LoginHeader/>
-            {/*<SocialsLogin/>*/}
-            <LoginForm handleChange={handleChange}
-                       handleClick={handleClick}
-                       stateText={props.loginStateText}
-                       isFetching={props.isFetching}/>
-            <LoginFooter hideError={props.hideError}/>
+            <ReduxLoginForm onSubmit={handleSubmit}/>
+            <LoginFooter/>
           </div>
         </div>
       </div>
       }
-    </>
+    </div>
   );
+
 };
+
+
 export default Login;

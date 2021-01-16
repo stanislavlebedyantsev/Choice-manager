@@ -1,21 +1,18 @@
-import RegForm from "./RegForm";
+import Registration from "./Registration";
 import {
-  registrationRequestThunkCreator,
-  registrationUpdateText
+  registrationRequestThunkCreator
 } from "../../redux/registrationReducer";
 import {connect} from "react-redux";
-import {hideError} from "../../redux/errorReducer";
+import {getErrorText, getIsError, getIsRegistered} from "../../redux/selectors";
 
 
 const mapStateToProps = (state) => ({
-  registrationState: state.registrationPage,
-  isError: state.error.isError,
-  errorText: state.error.errorText
+  registrationState: getIsRegistered(state),
+  isError: getIsError(state),
+  errorText: getErrorText(state)
 });
 
 
 export default connect(mapStateToProps, {
-  registrationRequestThunkCreator,
-  registrationUpdateText,
-  hideError
-})(RegForm);
+  registrationRequestThunkCreator
+})(Registration);

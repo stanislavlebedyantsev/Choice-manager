@@ -17,14 +17,15 @@
     border-radius: 30px;
 }
 
-/* left photo and buttons topSide.jsx */
+/* left photo and buttons PhotoUploadComponent.jsx */
 
 .leftSide {
+    height: 450px;
     grid-column: 1;
     grid-row: 1;
     display: grid;
-    grid-template-columns: 650px;
-    grid-template-rows: 820px;
+    grid-template-columns: 550px;
+    grid-template-rows: 450px;
 }
 
 .userAvatar {
@@ -57,8 +58,13 @@
 
 /*upload photo button*/
 
+.saveInline{
+    position: relative;
+}
 .btn {
-    margin-top: 30px;
+    position: absolute;
+    left: -68.5%;
+    top: -84%;
     color: #23bbf7;
     font-size: 20px;
     background: transparent;
@@ -67,9 +73,6 @@
     border-radius: 30px;
     width: 240px;
     height: 70px;
-    margin-left: auto;
-    position: relative;
-    left: 50%;
     transform: translate(-50%, 0);
     text-align: center;
     -webkit-transition: all .3s ease-in-out;
@@ -142,8 +145,7 @@
 
 .textOverInput {
     display: inline-block;
-    margin-left: 20px;
-    margin-bottom: 3px;
+    margin: 16px 20px 3px;
     font-family: Kurale, sans-serif;
     color: grey;
     width: 70%;
@@ -162,7 +164,7 @@
     height: 330px;
     background-image: url("../../images/logoProfile.png");
     margin-left: 10%;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 .radarChartDescription {

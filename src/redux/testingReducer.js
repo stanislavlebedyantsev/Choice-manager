@@ -1,6 +1,6 @@
 import {testingAPI} from "../api/testingApi";
 import {toggleIsTested} from "./authReducer";
-import {hideError, setErrorText, toggleIsError} from "./errorReducer";
+import {hideError, setErrorText} from "./errorReducer";
 
 const initState = {
   categories: [],
@@ -10,23 +10,30 @@ const initState = {
   currentPage: 1,
   totalPages: null,
   countOfQuests: 0,
-  visitedPages:[1]
+  visitedPages: [1]
 };
+
+
+const GET_QUESTIONS = 'choice-manager/testing/GET-QUESTIONS';
+const CURRENT_PAGE_INC = 'choice-manager/testing/CURRENT-PAGE-INC';
+const CURRENT_PAGE_DEC = 'choice-manager/testing/CURRENT-PAGE-DEC';
+const UPDATE_ANSWERS = 'choice-manager/testing/UPDATE-ANSWERS';
+const CLEAR_ANSWERS = 'choice-manager/testing/CLEAR-ANSWERS';
+const TOGGLE_IS_FETCHING = 'choice-manager/testing/TOGGLE-IS-FETCHING';
 
 export const testingReducer = (state = initState, action) => {
   let copyState;
   switch (action.type) {
-    case 'GET-QUESTIONS': {
+    case GET_QUESTIONS: {
       copyState = {...state};
       copyState = {
         ...copyState,
         categories: action.data.categories,
       };
-      if (copyState.currentPage === 1) {
+      if (copyState.currentPage === 1 && !copyState.totalPages) {
         copyState.totalPages = action.data.categoryNumber;
       }
-
-      if(!copyState.visitedPages.some(el => el === copyState.currentPage)
+      if (!copyState.visitedPages.some(el => el === copyState.currentPage)
         || !copyState.answers.length) {
         copyState.countOfQuests = copyState.categories[0].questions.length;
         for (let i = 0; i < copyState.countOfQuests; i++) {
@@ -38,26 +45,26 @@ export const testingReducer = (state = initState, action) => {
           });
         }
       }
-      if(!copyState.visitedPages.some(el => el === copyState.currentPage)){
-        copyState.visitedPages.push(copyState.currentPage)
+      if (!copyState.visitedPages.some(el => el === copyState.currentPage)) {
+        copyState.visitedPages.push(copyState.currentPage);
       }
       return copyState;
     }
-    case 'CURRENT-PAGE-INC': {
+    case CURRENT_PAGE_INC: {
       copyState = {...state};
-      if (copyState.currentPage + 1 <= copyState.totalPages){
+      if (copyState.currentPage + 1 <= copyState.totalPages) {
         copyState.currentPage++;
       }
       return copyState;
     }
-    case 'CURRENT-PAGE-DEC': {
+    case CURRENT_PAGE_DEC: {
       copyState = {...state};
-      if (copyState.currentPage - 1 > 0){
+      if (copyState.currentPage - 1 > 0) {
         copyState.currentPage--;
       }
       return copyState;
     }
-    case 'UPDATE-ANSWERS': {
+    case UPDATE_ANSWERS: {
       copyState = {...state};
       copyState = {
         ...copyState,
@@ -65,23 +72,12 @@ export const testingReducer = (state = initState, action) => {
       };
       return copyState;
     }
-
-    case 'TOGGLE-IS-FETCHING': {
+    case TOGGLE_IS_FETCHING: {
       return {...state, isFetching: action.data};
     }
-    case 'CLEAR-ANSWERS': {
-      return {
-        categories: [],
-        answers: [],
-        isFetching: false,
-        isTesting: false,
-        currentPage: 1,
-        totalPages: null,
-        countOfQuests: 0,
-        visitedPages:[1]
-      };
+    case CLEAR_ANSWERS: {
+      return initState;
     }
-
     default:
       copyState = state;
       return copyState;
@@ -89,39 +85,36 @@ export const testingReducer = (state = initState, action) => {
 };
 
 
-export const getTestingQuestionsThunkCreator = (currentPage = 1) => {
-  return (dispatchEvent) => {
-    dispatchEvent(toggleIsFetching(true));
-    testingAPI.getTest(currentPage)
-      .then(data => {
-        dispatchEvent(toggleIsFetching(false));
-        dispatchEvent(getTest(data));
-      });
-  };
+export const getTestingQuestionsThunkCreator = (currentPage = 1) => async (dispatchEvent) => {
+  dispatchEvent(toggleIsFetching(true));
+  try {
+    const response = await testingAPI.getTest(currentPage);
+    dispatchEvent(toggleIsFetching(false));
+    dispatchEvent(getTest(response));
+  } catch (err) {
+    dispatchEvent(setErrorText(err.response.data.error));
+    dispatchEvent(toggleIsFetching(false));
+  }
 };
 
 
-export const postAnswersThunkCreator = (copyState) => {
-  return (dispatchEvent) => {
-    testingAPI.postAnswers({answers: copyState})
-      .then(() => {
-        localStorage.setItem('isTested', 'true')
-        dispatchEvent(toggleIsFetching(false));
-        dispatchEvent(toggleIsTested())
-        dispatchEvent(hideError())
-      })
-      .catch((err) => {
-        dispatchEvent(toggleIsError())
-        dispatchEvent(setErrorText(err.response.data.error))
-        dispatchEvent(toggleIsFetching(false));
-      });
-  };
+export const postAnswersThunkCreator = (copyState) => async (dispatchEvent) => {
+  dispatchEvent(toggleIsFetching(true));
+  try {
+    await testingAPI.postAnswers({answers: copyState});
+    sessionStorage.setItem('isTested', 'true');
+    dispatchEvent(toggleIsTested());
+    dispatchEvent(hideError());
+  } catch (err) {
+    dispatchEvent(setErrorText(err.response.data.error));
+  }
+  dispatchEvent(toggleIsFetching(false));
 };
 
 
-export const getTest = (data) => ({type: 'GET-QUESTIONS', data});
-export const clearAnswers = () => ({type: 'CLEAR-ANSWERS'});
-export const currentPageInc = () => ({type: 'CURRENT-PAGE-INC'});
-export const currentPageDec = () => ({type: 'CURRENT-PAGE-DEC'});
-export const updateTestAnswers = (data) => ({type: 'UPDATE-ANSWERS', data});
-export const toggleIsFetching = (data) => ({type: 'TOGGLE-IS-FETCHING', data});
+export const getTest = (data) => ({type: GET_QUESTIONS, data});
+export const clearAnswers = () => ({type: CLEAR_ANSWERS});
+export const currentPageInc = () => ({type: CURRENT_PAGE_INC});
+export const currentPageDec = () => ({type: CURRENT_PAGE_DEC});
+export const updateTestAnswers = (data) => ({type: UPDATE_ANSWERS, data});
+export const toggleIsFetching = (data) => ({type: TOGGLE_IS_FETCHING, data});

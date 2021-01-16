@@ -3,7 +3,7 @@ import * as axios from "axios";
 const goalsAxios = axios.create({
   baseURL: 'http://127.0.0.1:8080/goals',
   headers: {
-    Authorization: `${localStorage.getItem('tokenType')} ${localStorage.getItem('accessToken')}`
+    Authorization: `${sessionStorage.getItem('tokenType')} ${sessionStorage.getItem('accessToken')}`
   }
 });
 

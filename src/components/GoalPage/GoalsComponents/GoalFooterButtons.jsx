@@ -1,14 +1,22 @@
 import s from '../../common/buttonsStyle/buttonsStyle.module.css'
 
-const GoalTopButtons = (props) => {
+const GoalTopButtons = ({isEdit,done,handleAddSubTask,handleComplete}) => {
   return (
     <div >
-      {!props.done ? (props.isEdit ?
-        <button name={'addSubtask'} onClick={props.handleClick} className={s.btn}>Add subtask</button> : null)
+      {!done ? (isEdit ?
+        <button name={'addSubtask'}
+                onClick={handleAddSubTask}
+                className={s.btn}>
+          Add subtask
+        </button> : null)
         : null}
       {
-        !props.done ?
-          <button className={s.btn} name={'complete'} onClick={props.handleClick}>Complete task</button> : null
+        !done ?
+          <button className={s.btn}
+                  name={'complete'}
+                  onClick={handleComplete}>
+            Complete task
+          </button> : null
       }
     </div>
   )

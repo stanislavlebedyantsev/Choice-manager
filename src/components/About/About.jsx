@@ -1,6 +1,6 @@
 import s from './About.module.css';
 import {NavLink} from "react-router-dom";
-import FooterContainer from "../common/Footer/FooterContainer";
+import Footer from "../common/Footer/Footer";
 
 const About = () => {
   return (
@@ -33,7 +33,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <FooterContainer/>
+      <Footer/>
     </div>
 
   );

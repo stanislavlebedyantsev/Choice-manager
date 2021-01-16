@@ -12,10 +12,14 @@ let mapStateToPropsForRedirect = (state) => ({
 export const withAuthAndTestingRedirectComponent = (Component) => {
   class RedirectComponent extends React.Component {
     render() {
-      if (localStorage.getItem('isAuth') !== 'true') {
+      /*if (!this.props.isAuth)
         return <Redirect to={'/login'}/>;
-      } else if (localStorage.getItem('isAuth') === 'true'
-        && localStorage.getItem('isTested') !== 'true')
+      else if (this.props.isAuth && !this.props.isTested)
+        return <Redirect to={'/testing'}/>;*/
+      if (sessionStorage.getItem('isAuth') !== 'true') {
+        return <Redirect to={'/login'}/>;
+      } else if (sessionStorage.getItem('isAuth') === 'true'
+        && sessionStorage.getItem('isTested') !== 'true')
         return <Redirect to={'/testing'}/>;
       return <Component {...this.props} />;
     }

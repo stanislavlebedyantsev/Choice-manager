@@ -3,7 +3,7 @@ import * as axios from "axios";
 const profileAxios = axios.create({
   baseURL: 'http://127.0.0.1:8080/profile',
   headers: {
-    Authorization: `${localStorage.getItem('tokenType')} ${localStorage.getItem('accessToken')}`
+    Authorization: `${sessionStorage.getItem('tokenType')} ${sessionStorage.getItem('accessToken')}`
   }
 });
 
@@ -18,10 +18,10 @@ export const profileAPI = {
         ...obj
       }).then(response => response.data);
   },
-  postPhoto(photo){
+  postPhoto(photo) {
     return profileAxios
       .post('/upload', photo)
-      .then(response => response.data)
+      .then(response => response.data);
   }
 };
 

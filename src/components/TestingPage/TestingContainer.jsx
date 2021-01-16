@@ -9,7 +9,14 @@ import {
 } from "../../redux/testingReducer";
 import Testing from "./Testing";
 import Preloader from "../common/Preloader/Preloader";
-import {withAuthAndTestingRedirectComponent} from "../../hoc/withAuthAndTestingRedirect";
+import {Redirect} from "react-router-dom";
+import {
+  getErrorText,
+  getIsError,
+  getTestingCurrentPage,
+  getTestingIsFetching, getTestingQuestions,
+  getTestingTotalPages
+} from "../../redux/selectors";
 
 class TestingApiContainer extends React.Component {
   componentDidMount() {
@@ -37,6 +44,11 @@ class TestingApiContainer extends React.Component {
   }
 
   render() {
+    if (sessionStorage.getItem('isAuth') !== 'true') {
+      return <Redirect to={'/login'}/>;
+    } else if (sessionStorage.getItem('isAuth') === 'true'
+      && sessionStorage.getItem('isTested') === 'true')
+      return <Redirect to={'/goals'}/>;
     return (
       <>
         {this.props.isFetching ?
@@ -57,29 +69,22 @@ class TestingApiContainer extends React.Component {
   }
 }
 
-
-let AuthRedirectComponent = withAuthAndTestingRedirectComponent(TestingApiContainer);
-
 const mapStateToProps = (state) => {
   return {
-    TestingQuestions: state.testingPage,
-    isFetching: state.testingPage.isFetching,
-    currentPage: state.testingPage.currentPage,
-    totalPages: state.testingPage.totalPages,
-    isAuth: state.auth.isAuth,
-    isTested: state.auth.isTested,
-    isError: state.error.isError,
-    errorText: state.error.errorText
+    TestingQuestions: getTestingQuestions(state),
+    isFetching: getTestingIsFetching(state),
+    currentPage: getTestingCurrentPage(state),
+    totalPages: getTestingTotalPages(state),
+    isError: getIsError(state),
+    errorText: getErrorText(state)
   };
 };
-
-
 export default connect(mapStateToProps, {
-  updateTestAnswers,
-  postAnswersThunkCreator,
-  getTestingQuestionsThunkCreator,
-  currentPageInc,
-  currentPageDec,
-  clearAnswers
-})(AuthRedirectComponent);
-
+    updateTestAnswers,
+    postAnswersThunkCreator,
+    getTestingQuestionsThunkCreator,
+    currentPageInc,
+    currentPageDec,
+    clearAnswers
+  }
+)(TestingApiContainer);

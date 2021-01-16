@@ -1,13 +1,11 @@
 import {profileAPI} from "../api/profileApi";
+import {stopSubmit} from "redux-form";
+
+const GET_PROFILE_DATA = 'choice-manager/profile/GET-PROFILE-DATA';
+const TOGGLE_IS_FETCHING = 'choice-manager/profile/TOGGLE-IS-FETCHING';
 
 const initState = {
-  userDto: {
-    /*name: '',
-    surname: '',
-    email: '',
-    password:'',
-    passwordConfirmation:''*/
-  },
+  userDto: {},
   radarChart: {},
   isFetching: false
 };
@@ -15,7 +13,7 @@ const initState = {
 export const profileReducer = (state = initState, action) => {
   let copyState;
   switch (action.type) {
-    case 'GET-PROFILE-DATA': {
+    case GET_PROFILE_DATA: {
       copyState = {...state};
       copyState = {
         ...action.data
@@ -27,22 +25,8 @@ export const profileReducer = (state = initState, action) => {
       }
       return copyState;
     }
-    case 'UPDATE-PROFILE-DATA': {
-      copyState = {
-        ...state
-      };
-      copyState.userDto = {
-        ...action.data
-      };
-      return copyState;
-    }
-    case 'TOGGLE-IS-FETCHING': {
+    case TOGGLE_IS_FETCHING: {
       return {...state, isFetching: action.data};
-    }
-    case 'EDIT-PROFILE-PHOTO': {
-      copyState = {...state};
-      copyState.userDto.imageUrl = action.data;
-      return copyState;
     }
     default: {
       return state;
@@ -50,32 +34,32 @@ export const profileReducer = (state = initState, action) => {
   }
 };
 
-export const getProfileData = (data) => ({type: 'GET-PROFILE-DATA', data});
-export const profileUpdateText = (data) => ({type: 'UPDATE-PROFILE-DATA', data});
-export const toggleIsFetching = (data) => ({type: 'TOGGLE-IS-FETCHING', data});
-export const editProfilePhoto = (data) => ({type: 'EDIT-PROFILE-PHOTO', data});
+export const getProfileData = (data) => ({type: GET_PROFILE_DATA, data});
+export const toggleIsFetching = (data) => ({type: TOGGLE_IS_FETCHING, data});
 
-export const getProfileDataThunkCreator = () => (dispatchEvent) => {
-  toggleIsFetching(true);
-  profileAPI.getProfile()
-    .then(data => {
-      dispatchEvent(getProfileData(data));
-      dispatchEvent(toggleIsFetching(false));
-    });
-};
-export const putProfileDataThunkCreator = (data) => (dispatchEvent) => {
+export const getProfileDataThunkCreator = () => async (dispatchEvent) => {
   dispatchEvent(toggleIsFetching(true));
-  profileAPI.putProfile(data)
-    .then(data => {
-      dispatchEvent(toggleIsFetching(false));
-    });
+  try {
+    const response = await profileAPI.getProfile();
+    dispatchEvent(getProfileData(response));
+  } catch (e) {
+    stopSubmit('profile', {_error: e.response.data});
+  }
+  dispatchEvent(toggleIsFetching(false));
 };
-export const updateProfilePhotoThunkCreator = (file) => (dispatchEvent) => {
-  dispatchEvent(editProfilePhoto(file));
+export const putProfileDataThunkCreator = (profileData) => async (dispatchEvent) => {
+  dispatchEvent(toggleIsFetching(true));
+  try {
+    await profileAPI.putProfile(profileData);
+    dispatchEvent(getProfileDataThunkCreator());
+  } catch (err) {
+    dispatchEvent(stopSubmit('profile', {_error: 'Smth goes wrong'}));
+  }
+  dispatchEvent(toggleIsFetching(false));
+};
+export const updateProfilePhotoThunkCreator = (file) => async (dispatchEvent) => {
   let formData = new FormData();
-  formData.append('file', file)
-  profileAPI.postPhoto(formData)
-    .then(() => {
-      dispatchEvent(getProfileDataThunkCreator())
-    })
-}
+  formData.append('file', file);
+  await profileAPI.postPhoto(formData);
+  dispatchEvent(getProfileDataThunkCreator());
+};
