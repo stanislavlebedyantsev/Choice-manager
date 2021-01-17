@@ -1,5 +1,6 @@
 import {profileAPI} from "../api/profileApi";
 import {stopSubmit} from "redux-form";
+import {setErrorText} from "./errorReducer";
 
 const GET_PROFILE_DATA = 'choice-manager/profile/GET-PROFILE-DATA';
 const TOGGLE_IS_FETCHING = 'choice-manager/profile/TOGGLE-IS-FETCHING';
@@ -42,8 +43,8 @@ export const getProfileDataThunkCreator = () => async (dispatchEvent) => {
   try {
     const response = await profileAPI.getProfile();
     dispatchEvent(getProfileData(response));
-  } catch (e) {
-    stopSubmit('profile', {_error: e.response.data});
+  } catch (err) {
+    dispatchEvent(stopSubmit('profile', {_error: err.response ? err.response.data : err.message}));
   }
   dispatchEvent(toggleIsFetching(false));
 };
@@ -60,6 +61,10 @@ export const putProfileDataThunkCreator = (profileData) => async (dispatchEvent)
 export const updateProfilePhotoThunkCreator = (file) => async (dispatchEvent) => {
   let formData = new FormData();
   formData.append('file', file);
-  await profileAPI.postPhoto(formData);
-  dispatchEvent(getProfileDataThunkCreator());
+  try{
+    await profileAPI.postPhoto(formData);
+    dispatchEvent(getProfileDataThunkCreator());
+  }catch (err){
+    dispatchEvent(setErrorText(err.message));
+  }
 };

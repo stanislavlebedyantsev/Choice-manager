@@ -51,6 +51,7 @@ export const loginRequestThunkCreator = (formData) => async (dispatchEvent) => {
     if (response.tested) window.location.href = '/goals';
     if (!response.tested) window.location.href = '/testing';
   } catch (err) {
-    dispatchEvent(stopSubmit('login', {_error: Object.values(err.response.data)}));
+    dispatchEvent(stopSubmit('login', {_error: !err.response
+        ? err.message : Object.values(err.response.data.error)}));
   }
 };

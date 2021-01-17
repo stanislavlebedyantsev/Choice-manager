@@ -92,7 +92,7 @@ export const getTestingQuestionsThunkCreator = (currentPage = 1) => async (dispa
     dispatchEvent(toggleIsFetching(false));
     dispatchEvent(getTest(response));
   } catch (err) {
-    dispatchEvent(setErrorText(err.response.data.error));
+    dispatchEvent(setErrorText(err.message || err.response.data.error ));
     dispatchEvent(toggleIsFetching(false));
   }
 };
@@ -106,7 +106,7 @@ export const postAnswersThunkCreator = (copyState) => async (dispatchEvent) => {
     dispatchEvent(toggleIsTested());
     dispatchEvent(hideError());
   } catch (err) {
-    dispatchEvent(setErrorText(err.response.data.error));
+    dispatchEvent(setErrorText(err.message || err.response.data.error));
   }
   dispatchEvent(toggleIsFetching(false));
 };

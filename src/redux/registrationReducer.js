@@ -32,6 +32,7 @@ export const registrationRequestThunkCreator = (registrationData) => async (disp
     dispatchEvent(registrationStateClear());
     dispatchEvent(hideError());
   } catch (err) {
-    dispatchEvent(stopSubmit('registration', {_error: Object.values(err.response.data)}));
+    dispatchEvent(stopSubmit('registration', {_error: !err.response
+        ? err.message : Object.values(err.response.data)}));
   }
 };

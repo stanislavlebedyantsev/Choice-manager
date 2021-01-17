@@ -1,4 +1,5 @@
 import {goalsAPI} from "../api/goalsApi";
+import {setErrorText} from "./errorReducer";
 
 const initState = {
   goals: [],
@@ -65,8 +66,12 @@ export const getTask = (goals) => ({type: GET_TASK, goals});
 
 export const getTaskThunkCreator = () => async (dispatchEvent) => {
   dispatchEvent(toggleIsFetching(true));
-  const response = await goalsAPI.getGoals();
-  dispatchEvent(getTask(response));
+  try {
+    const response = await goalsAPI.getGoals();
+    dispatchEvent(getTask(response));
+  } catch (err) {
+    dispatchEvent(setErrorText(err.message));
+  }
   dispatchEvent(toggleIsFetching(false));
 };
 export const postTaskThunkCreator = (obj) => async (dispatchEvent) => {
