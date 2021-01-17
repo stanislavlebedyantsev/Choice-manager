@@ -102,7 +102,7 @@ const GoalComponent = React.memo(({state, putEditedTask, addSubtask, deleteTask,
                             editSubtask={handleEditSubtask}
                             isEdit={editMode}
                             isTaskDone={goalData.done}
-                            key={goalData.id}
+                            key={el.id}
           />
         ))}
         <GoalFooterButtons handleAddSubTask={handleAddSubTask}

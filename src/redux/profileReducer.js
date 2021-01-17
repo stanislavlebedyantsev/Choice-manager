@@ -20,9 +20,9 @@ export const profileReducer = (state = initState, action) => {
       };
       copyState.userDto.password = '';
       copyState.userDto.passwordConfirmation = '';
-      for (let i in copyState.radarChart.data) {
-        copyState.radarChart.data[i] = Number(copyState.radarChart.data[i]) / 4;
-      }
+      Object.keys(copyState.radarChart.data).map(key => {
+        copyState.radarChart.data[key] = Number(copyState.radarChart.data[key]) / 4;
+      })
       return copyState;
     }
     case TOGGLE_IS_FETCHING: {

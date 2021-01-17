@@ -9,7 +9,7 @@ import ProfileLogo from "./ProfileLogo/ProfileLogo";
 import Footer from "../common/Footer/Footer";
 
 
-const ProfileFormRedux = reduxForm({form: 'profile', enableReinitialize: true})(ProfileForm);
+const ProfileFormRedux = reduxForm({form: 'profile'})(ProfileForm);
 
 const Profile = ({state, profilePutState, editProfilePhoto}) => {
   const onSubmit = (formData) => {

@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import {BrowserRouter, Route} from "react-router-dom";
+import {Redirect, BrowserRouter, Route, Switch} from "react-router-dom";
 import LoginContainer from "./components/Login/LoginContainer";
 import Registration from "./components/Registration/RegistrationContainer";
 import StartPage from "./components/StartPage/StartPage";
@@ -29,14 +29,17 @@ class App extends React.Component {
     return (
       <div className="App">
         <div>
-          <Route path={"/login"} render={() => <LoginContainer/>}/>
-          <Route path={"/registration"} render={() => <Registration/>}/>
-          <Route path={"/checkEmail"} render={() => <checkEmail/>}/>
-          <Route path={"/profile"} render={lazyComponentHOC(ProfileContainer)}/>
-          <Route path={"/testing"} render={lazyComponentHOC(TestingContainer)}/>
-          <Route path={"/goals"} render={() => <GoalContainer/>}/>
-          <Route path={"/activate/:activationCode"} render={lazyComponentHOC(EmailConfirmApiComponent)}/>
-          <Route exact path={"/"} render={() => <StartPage/>}/>
+          <Switch>
+            <Route path={"/login"} render={() => <LoginContainer/>}/>
+            <Route path={"/registration"} render={() => <Registration/>}/>
+            <Route path={"/checkEmail"} render={() => <checkEmail/>}/>
+            <Route path={"/profile"} render={lazyComponentHOC(ProfileContainer)}/>
+            <Route path={"/testing"} render={lazyComponentHOC(TestingContainer)}/>
+            <Route path={"/goals"} render={() => <GoalContainer/>}/>
+            <Route path={"/activate/:activationCode"} render={lazyComponentHOC(EmailConfirmApiComponent)}/>
+            <Route exact path={"/"} render={() => <StartPage/>}/>
+            <Redirect from={'*'} to={'/'}/>
+          </Switch>
         </div>
       </div>
     );
@@ -58,15 +61,13 @@ const ChoiceManagerApp = () => {
     transition: transitions.SCALE
   };
   return (
-    <React.StrictMode>
-      <BrowserRouter>
-        <Provider store={store}>
-          <AlertProvider template={AlertTemplate} {...options}>
-            <AppContainer/>
-          </AlertProvider>
-        </Provider>
-      </BrowserRouter>
-    </React.StrictMode>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <Provider store={store}>
+        <AlertProvider template={AlertTemplate} {...options}>
+          <AppContainer/>
+        </AlertProvider>
+      </Provider>
+    </BrowserRouter>
   );
 };
 export default ChoiceManagerApp;
